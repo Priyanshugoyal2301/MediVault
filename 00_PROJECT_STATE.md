@@ -2,13 +2,13 @@
 
 > Purpose: this is the ONE file that should let a fresh model session understand "where the project currently stands" without re-scanning the entire codebase. `DEV_LOG.md` is the full historical record (append-only, never trimmed); this file is a compact, continuously-**overwritten** snapshot of the *current* state. If they conflict, `DEV_LOG.md` is the source of truth for history, this file is the source of truth for "what's true right now."
 
-**Last updated:** 2026-08-09 by Claude (Anthropic) — Feature 2 complete
+**Last updated:** 2026-08-09 by Gemini (Google DeepMind) — Feature 3 (RAG Q&A + Safety Layer + Frontend) complete — MVP FULLY SHIPPED
 
 ---
 
 ## 1. What exists right now (one paragraph)
 
-**Feature 2 fully built.** Feature 1 (Medical Report Understanding) remains complete. Feature 2 adds: `TimelineRepository` (subclassing `ScopedRepository`, owner-scoped) storing lab metric history from parsed reports; `GET /timeline` + `GET /timeline/{test_name}` endpoints in health-service; `_trigger_parse` background task now auto-populates `timeline_events` on successful parse. AI service gets a full anomaly detection engine: `zscore.py` (pure-Python Z-score trend detector with normalised slope + streak counter), `model.py` (IsolationForest scorer, z-score fallback for <5 points), `detector.py` (unified pipeline + bilingual EN/HI non-diagnostic summaries), and `POST /anomaly/detect` endpoint. Synthetic evaluation (200 patients, 20% injected anomalies): Precision=0.7358, Recall=0.9750, F1=0.8387, FAR=0.0875. conftest.py extended to handle `packages.*` namespace. 39 new unit tests all pass. README rewritten, CONTRIBUTING.md created, DEV_LOG updated, repo pushed to GitHub. Feature 3 (RAG Q&A + safety layer + frontend) is next.
+**MVP fully built (Features 1, 2, and 3 complete).** Feature 3 adds: Migration 003 (`knowledge_documents` with pgvector embeddings, `qa_sessions`, `qa_messages`); Knowledge Base pipeline (`cbc_guide`, `lipid_guide`, `thyroid_guide`, `hba1c_guide`, `general_health` - 13 chunks pre-embedded); `services/ai-service/safety/red_flags.py` (deterministic regex emergency guardrail covering cardiac, GI bleeding, vision loss, stroke, suicidal ideation, running in <100ms BEFORE any RAG/LLM call); RAG pipeline (`embedder.py`, `ingester.py`, `retriever.py`, `synthesizer.py`) producing bilingual EN/HI cited answers; `POST /qa` & `POST /embeddings` endpoints in ai-service; `POST /qa` proxy in health-service; React + Vite frontend in `apps/web/` (Dark mode medical theme, Dashboard, Upload flow with sample reports, Health Timeline chart with z-score markers, Evidence Q&A Chat with inline citations and safety alert banner); 59 unit tests added (132/132 total tests PASS); RAG Evaluation suite on 50 questions (Precision@5: 82.0%, Citation Correctness: 100.0%, Hallucination Rate: 18.0%).
 
 ## 2. What's built and working (checklist, keep current)
 
@@ -16,7 +16,7 @@
 - [x] `owner_id` scoping enforced at query layer (`ScopedRepository` base class) + DB-level NOT NULL FK
 - [x] Redacting logger mandatory export + pre-commit lint hook blocking bare `import logging`
 - [x] `Locale` type established in `shared-types/schemas.py`
-- [x] Alembic migrations 001 (users) and 002 (health tables) defined
+- [x] Alembic migrations 001 (users), 002 (health tables), 003 (Q&A + knowledge tables)
 - [x] Auth service: register, login, me endpoints + JWT (email-enumeration-safe)
 - [x] Report upload (POST /reports, 202 async) + file storage (local, owner-namespaced)
 - [x] OCR pipeline: pdfplumber native text → Tesseract fallback (eng+hin)
@@ -27,23 +27,23 @@
 - [x] Health timeline storage (derived from report_values — auto-populated on parse)
 - [x] Trend/anomaly detection (baseline z-score) — Feature 2 ✓
 - [x] Trend/anomaly detection (trained model — IsolationForest) — Feature 2 ✓
-- [ ] Knowledge base ingestion pipeline — Feature 3
-- [ ] RAG Q&A endpoint — Feature 3
-- [ ] Deterministic safety layer — Feature 3
-- [ ] Frontend — Feature 3
-- [ ] Evaluation numbers recorded (see `DEV_LOG.md`)
+- [x] Knowledge base ingestion pipeline — Feature 3 ✓
+- [x] RAG Q&A endpoint — Feature 3 ✓
+- [x] Deterministic safety layer — Feature 3 ✓
+- [x] Frontend (React + Vite) — Feature 3 ✓
+- [x] Evaluation numbers recorded for anomaly detection & RAG (see `DEV_LOG.md`) ✓
 
 - [x] Health timeline storage
 - [x] Trend/anomaly detection (baseline z-score)
 - [x] Trend/anomaly detection (trained model)
-- [ ] Knowledge base ingestion pipeline
-- [ ] RAG Q&A endpoint
-- [ ] Deterministic safety layer
-- [ ] Frontend: upload flow
-- [ ] Frontend: timeline view
-- [ ] Frontend: Q&A chat with citations
-- [ ] Evaluation numbers recorded for anomaly detection (see `DEV_LOG.md`)
-- [ ] Evaluation numbers recorded for retrieval/RAG (see `DEV_LOG.md`)
+- [x] Knowledge base ingestion pipeline
+- [x] RAG Q&A endpoint
+- [x] Deterministic safety layer
+- [x] Frontend: upload flow
+- [x] Frontend: timeline view
+- [x] Frontend: Q&A chat with citations
+- [x] Evaluation numbers recorded for anomaly detection (see `DEV_LOG.md`)
+- [x] Evaluation numbers recorded for retrieval/RAG (see `DEV_LOG.md`)
 
 ## 3. Known issues / half-finished work
 

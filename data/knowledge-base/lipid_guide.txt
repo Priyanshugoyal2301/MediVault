@@ -1,0 +1,96 @@
+SOURCE: NHS Cholesterol Guidelines; American Heart Association; ICMR Dietary Guidelines for Indians
+LICENCE: Public health guidance — freely available for educational use
+URL: https://www.nhs.uk/conditions/high-cholesterol/
+
+---
+
+Lipid Profile — Patient Guide
+
+A lipid profile (also called a lipid panel or cholesterol test) measures the fats and fatty substances in your blood. These lipids are important for cell structure and energy, but abnormal levels can increase the risk of heart disease and stroke.
+
+TOTAL CHOLESTEROL
+
+Total cholesterol is the sum of all cholesterol types in your blood.
+
+Desirable: Below 200 mg/dL
+Borderline high: 200–239 mg/dL
+High: 240 mg/dL and above
+
+Total cholesterol alone does not tell the full picture — the breakdown into HDL, LDL, and triglycerides is more informative.
+
+---
+
+LDL CHOLESTEROL (Low-Density Lipoprotein)
+
+LDL is often called "bad cholesterol" because high levels can lead to plaque buildup in arteries (atherosclerosis), increasing the risk of heart attack and stroke.
+
+Optimal: Below 100 mg/dL
+Near optimal: 100–129 mg/dL
+Borderline high: 130–159 mg/dL
+High: 160–189 mg/dL
+Very high: 190 mg/dL and above
+
+High LDL is one of the most important modifiable risk factors for cardiovascular disease. Dietary changes (reducing saturated fats, increasing fibre), exercise, and sometimes medication (statins) can help lower LDL.
+
+In the Indian context, cardiovascular disease tends to occur at younger ages and at lower cholesterol levels compared to Western populations, making regular monitoring particularly important.
+
+---
+
+HDL CHOLESTEROL (High-Density Lipoprotein)
+
+HDL is often called "good cholesterol" because it helps remove other forms of cholesterol from the bloodstream and carries them back to the liver for processing.
+
+Desirable:
+- Men: 40 mg/dL or higher
+- Women: 50 mg/dL or higher
+- Optimal for both: 60 mg/dL or higher
+
+Low HDL is a risk factor for heart disease. Regular exercise, healthy fats (nuts, olive oil, fish), and not smoking can help raise HDL levels.
+
+---
+
+TRIGLYCERIDES
+
+Triglycerides are the most common type of fat in your body. They store excess energy from your diet.
+
+Normal: Below 150 mg/dL
+Borderline high: 150–199 mg/dL
+High: 200–499 mg/dL
+Very high: 500 mg/dL and above
+
+High triglycerides combined with high LDL and low HDL significantly increases cardiovascular risk. Common causes include high sugar and refined carbohydrate diets, obesity, excessive alcohol consumption, and diabetes. The Indian vegetarian diet, while beneficial in many ways, can sometimes be high in refined carbohydrates (white rice, maida) which may elevate triglycerides.
+
+---
+
+VLDL CHOLESTEROL (Very Low-Density Lipoprotein)
+
+VLDL carries triglycerides in the blood. Like LDL, high VLDL contributes to plaque buildup in arteries.
+
+Normal: 2–30 mg/dL
+
+VLDL is usually estimated as triglycerides divided by 5 (in mg/dL).
+
+---
+
+TOTAL CHOLESTEROL / HDL RATIO
+
+This ratio provides a quick assessment of cardiovascular risk.
+
+Desirable: Below 5.0
+Optimal: Below 3.5
+
+A higher ratio indicates greater cardiovascular risk, even if individual numbers appear normal.
+
+---
+
+NON-HDL CHOLESTEROL
+
+Non-HDL cholesterol = Total cholesterol minus HDL. It captures all the potentially harmful cholesterol types (LDL + VLDL + others).
+
+Desirable: Below 130 mg/dL
+
+This metric is increasingly used because it is a better predictor of cardiovascular risk than LDL alone, especially in people with high triglycerides.
+
+---
+
+IMPORTANT: This information is for educational purposes only. It does not replace professional medical advice. Cholesterol management should be discussed with your healthcare provider, who can assess your overall cardiovascular risk including factors like age, blood pressure, diabetes, smoking status, and family history.

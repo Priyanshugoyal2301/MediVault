@@ -204,10 +204,11 @@ def timeline_app(monkeypatch):
     monkeypatch.setenv("AI_SERVICE_URL", "http://localhost:8001")
 
     from fastapi import FastAPI
-    from services.health_service.routers.timeline import router as timeline_router  # type: ignore
+    from services.health_service.routers.timeline import get_db as timeline_get_db, router as timeline_router  # type: ignore
 
     app = FastAPI()
     app.include_router(timeline_router)
+    app.dependency_overrides[timeline_get_db] = _stub_get_db
     return app
 
 
@@ -219,9 +220,6 @@ def timeline_client(timeline_app):
 class TestTimelineEndpoints:
     def test_get_timeline_returns_200_with_valid_header(self, timeline_app):
         owner_id = uuid.uuid4()
-        # DB already stubbed by fixture — just override at FastAPI level too for safety
-        timeline_app.dependency_overrides[_stub_get_db] = _stub_get_db
-
         with TestClient(timeline_app) as client:
             resp = client.get("/timeline", headers={"x-user-id": str(owner_id)})
         assert resp.status_code == 200

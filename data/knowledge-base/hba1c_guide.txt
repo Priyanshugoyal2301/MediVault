@@ -1,0 +1,68 @@
+SOURCE: WHO/IDF Guidelines on HbA1c; American Diabetes Association Standards of Care; ICMR Guidelines for Management of Type 2 Diabetes
+LICENCE: Public health guidance — freely available for educational use
+URL: https://www.who.int/publications/i/item/9789241599931
+
+---
+
+HbA1c (Glycated Haemoglobin) — Patient Guide
+
+HbA1c (also written as A1c or glycosylated haemoglobin) measures the average blood sugar level over the past 2–3 months. It reflects the percentage of haemoglobin (the oxygen-carrying protein in red blood cells) that has glucose attached to it.
+
+Unlike fasting blood glucose, which shows your blood sugar at a single point in time, HbA1c provides a longer-term picture of blood sugar control.
+
+---
+
+HOW HbA1c IS MEASURED
+
+HbA1c is reported as a percentage or in mmol/mol (IFCC units):
+
+| HbA1c (%) | IFCC (mmol/mol) | Interpretation |
+|-----------|-----------------|----------------|
+| Below 5.7% | Below 39 | Normal |
+| 5.7–6.4% | 39–47 | Pre-diabetes (increased risk) |
+| 6.5% or above | 48 or above | Diabetes |
+
+For people already diagnosed with diabetes, the target HbA1c is typically below 7.0% (53 mmol/mol), though your doctor may set a different target based on your individual situation.
+
+---
+
+WHAT AFFECTS HbA1c
+
+Diet and lifestyle: Regular physical activity and a balanced diet with controlled carbohydrate intake help lower HbA1c. The traditional Indian diet can be high in refined carbohydrates (white rice, roti made from maida), which may contribute to elevated blood sugar.
+
+Medications: Diabetes medications (metformin, insulin, etc.) work to lower blood sugar and consequently HbA1c.
+
+Red blood cell lifespan: Conditions that affect how long red blood cells live can influence HbA1c results. For example, iron deficiency anaemia (common in India) can falsely elevate HbA1c, while conditions causing rapid red blood cell turnover can falsely lower it.
+
+Haemoglobin variants: Certain haemoglobin variants (such as HbS in sickle cell trait, or HbE in parts of Northeast India) can interfere with some HbA1c assay methods, leading to inaccurate results.
+
+---
+
+FASTING BLOOD GLUCOSE vs. HbA1c
+
+| Test | What it measures | Normal range |
+|------|-----------------|--------------|
+| Fasting Blood Glucose | Blood sugar after 8+ hours of not eating | 70–99 mg/dL |
+| HbA1c | Average blood sugar over 2–3 months | Below 5.7% |
+| Post-Prandial Glucose | Blood sugar 2 hours after eating | Below 140 mg/dL |
+
+Both tests are useful. HbA1c is preferred for monitoring long-term control because it is not affected by what you ate the day before the test.
+
+---
+
+DIABETES IN INDIA — KEY CONTEXT
+
+India has the second-highest number of people with diabetes in the world (over 77 million adults, according to the International Diabetes Federation). Indians tend to develop diabetes at a younger age and at lower BMI compared to Western populations.
+
+Risk factors particularly relevant in the Indian context:
+- Family history of diabetes
+- Central obesity (excess fat around the waist)
+- Sedentary lifestyle
+- Diet high in refined carbohydrates and sugar
+- Polycystic ovary syndrome (PCOS) — common in Indian women
+
+Early detection through regular HbA1c screening is recommended for adults over 30 with one or more risk factors.
+
+---
+
+IMPORTANT: This information is for educational purposes only. Diabetes management should be done under the guidance of a qualified healthcare provider. HbA1c targets may vary based on age, other health conditions, and risk of hypoglycaemia.

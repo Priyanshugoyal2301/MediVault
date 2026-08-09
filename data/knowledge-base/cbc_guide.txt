@@ -1,0 +1,116 @@
+SOURCE: WHO Guidelines on Haemoglobin Concentrations; NHS Blood Tests Guide; ICMR Reference Values for Indians
+LICENCE: Public health guidance — freely available for educational use
+URL: https://www.who.int/publications/i/item/9789241549554
+
+---
+
+Complete Blood Count (CBC) — Patient Guide
+
+A Complete Blood Count (CBC) is one of the most commonly ordered blood tests. It measures several components of your blood and can help detect a wide range of conditions.
+
+HAEMOGLOBIN (Hb)
+
+Haemoglobin is the protein in red blood cells that carries oxygen from your lungs to the rest of your body and returns carbon dioxide back to the lungs for exhalation.
+
+Normal ranges (adults):
+- Men: 13.0–17.0 g/dL
+- Women: 12.0–15.5 g/dL
+- Pregnant women: 11.0–14.0 g/dL
+
+Low haemoglobin (anaemia) may indicate iron deficiency, vitamin B12 or folate deficiency, chronic disease, or blood loss. Symptoms may include fatigue, weakness, shortness of breath, and pale skin. Iron deficiency anaemia is particularly common in India, affecting approximately 50% of women of reproductive age according to ICMR data.
+
+High haemoglobin may be seen in people living at high altitudes, smokers, or those with certain lung or heart conditions. It may also indicate dehydration.
+
+---
+
+WHITE BLOOD CELL COUNT (WBC / TLC)
+
+White blood cells are part of your immune system and help fight infections. The total leucocyte count measures the overall number of white blood cells.
+
+Normal range: 4,000–11,000 cells per microlitre (cells/µL)
+
+High WBC (leucocytosis) may indicate infection, inflammation, stress response, or rarely, blood cancers such as leukaemia. A mildly elevated WBC is very common during acute infections and usually returns to normal after recovery.
+
+Low WBC (leucopenia) may indicate bone marrow problems, autoimmune conditions, or the effects of certain medications. A persistently low WBC may increase susceptibility to infections.
+
+---
+
+DIFFERENTIAL WHITE BLOOD CELL COUNT
+
+The differential count breaks down the WBC into five types:
+
+Neutrophils (40–70%): The first responders to bacterial infections. Elevated neutrophils (neutrophilia) often indicate bacterial infection or inflammation.
+
+Lymphocytes (20–40%): Key players in viral immunity and long-term immune memory. Elevated lymphocytes (lymphocytosis) may indicate viral infections such as dengue, hepatitis, or mononucleosis.
+
+Monocytes (2–8%): Part of the chronic inflammation response. Elevated monocytes may be seen in tuberculosis and other chronic infections.
+
+Eosinophils (1–4%): Involved in allergic reactions and parasitic infections. Elevated eosinophils (eosinophilia) are common in India due to parasitic infections and allergic conditions.
+
+Basophils (0–1%): Involved in allergic and inflammatory responses. Elevated basophils are uncommon but may be seen in certain blood disorders.
+
+---
+
+RED BLOOD CELL COUNT (RBC)
+
+Red blood cells carry oxygen throughout your body.
+
+Normal ranges:
+- Men: 4.5–5.5 million cells/µL
+- Women: 4.0–5.0 million cells/µL
+
+Low RBC count may indicate anaemia, blood loss, or nutritional deficiencies. High RBC count (polycythaemia) may indicate dehydration, smoking, or living at high altitude.
+
+---
+
+PLATELET COUNT
+
+Platelets help your blood clot and stop bleeding.
+
+Normal range: 150,000–400,000 per microlitre
+
+Low platelets (thrombocytopenia) may indicate dengue fever (very common in India during monsoon season), viral infections, liver disease, or certain medications. Symptoms may include easy bruising and prolonged bleeding from cuts.
+
+High platelets (thrombocytosis) may be a reaction to infection, inflammation, or iron deficiency, or rarely indicate a bone marrow disorder.
+
+---
+
+PACKED CELL VOLUME (PCV / Haematocrit)
+
+PCV measures the percentage of your blood volume occupied by red blood cells.
+
+Normal ranges:
+- Men: 38.8–50.0%
+- Women: 34.9–44.5%
+
+Low PCV often accompanies anaemia. High PCV may indicate dehydration or polycythaemia.
+
+---
+
+MEAN CORPUSCULAR VOLUME (MCV)
+
+MCV measures the average size of your red blood cells.
+
+Normal range: 80–100 femtolitres (fL)
+
+Low MCV (microcytic): Red blood cells are smaller than normal, commonly seen in iron deficiency anaemia and thalassaemia (thalassaemia trait is common in certain Indian populations).
+
+High MCV (macrocytic): Red blood cells are larger than normal, commonly seen in vitamin B12 or folate deficiency.
+
+Normal MCV with low haemoglobin may indicate anaemia of chronic disease.
+
+---
+
+ERYTHROCYTE SEDIMENTATION RATE (ESR)
+
+ESR measures how quickly red blood cells settle at the bottom of a test tube. A faster rate indicates inflammation in the body.
+
+Normal ranges:
+- Men: 0–15 mm/hr
+- Women: 0–20 mm/hr
+
+High ESR may indicate infection, inflammation, autoimmune conditions (such as rheumatoid arthritis), or tuberculosis. ESR is a non-specific test — it indicates that something may be causing inflammation but does not identify the specific cause.
+
+---
+
+IMPORTANT: This information is for educational purposes only. It does not replace professional medical advice. Always consult your healthcare provider for interpretation of your specific results.

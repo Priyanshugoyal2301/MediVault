@@ -1,0 +1,100 @@
+SOURCE: WHO Health Topics; NHS Health A to Z; ICMR Nutrient Requirements and Recommended Dietary Allowances for Indians
+LICENCE: Public health guidance — freely available for educational use
+URL: https://www.who.int/health-topics
+
+---
+
+General Health Literacy — Understanding Your Lab Reports
+
+This guide covers general concepts that apply across multiple types of blood tests and health reports.
+
+---
+
+WHAT IS A REFERENCE RANGE?
+
+A reference range (also called a normal range) is the set of values that is considered normal for a healthy person. Reference ranges are established by testing a large group of healthy individuals and finding the range that covers 95% of their results.
+
+Key points about reference ranges:
+- Different laboratories may have slightly different reference ranges depending on the equipment and methods they use.
+- Your result falling slightly outside the reference range does not necessarily mean you have a medical condition — it means further evaluation may be warranted.
+- Reference ranges may vary by age, sex, and sometimes ethnicity.
+- The reference ranges printed on your lab report are the ones most relevant to interpret your specific results.
+
+---
+
+UNDERSTANDING UNITS OF MEASUREMENT
+
+Common units you may see on blood test reports:
+
+| Unit | Full form | Used for |
+|------|-----------|----------|
+| g/dL | grams per decilitre | Haemoglobin |
+| mg/dL | milligrams per decilitre | Cholesterol, glucose, triglycerides |
+| cells/µL | cells per microlitre | WBC, RBC, platelets |
+| mIU/L | milli-international units per litre | TSH |
+| ng/dL | nanograms per decilitre | Free T4 |
+| pg/mL | picograms per millilitre | Free T3, Vitamin B12 |
+| mm/hr | millimetres per hour | ESR |
+| fL | femtolitres | MCV |
+| % | percentage | HbA1c, PCV, differential WBC |
+| mmol/L | millimoles per litre | Some glucose and cholesterol reports (SI units) |
+
+Note: Indian lab reports may use either conventional units (mg/dL) or SI units (mmol/L). The reference ranges on your report correspond to the units used.
+
+---
+
+FASTING vs. NON-FASTING TESTS
+
+Some tests require fasting (not eating or drinking anything except water for 8–12 hours before the blood draw):
+
+- Fasting required: Fasting blood glucose, lipid profile (for accurate triglycerides and LDL)
+- Fasting not required: CBC, thyroid function tests, HbA1c, kidney function tests, liver function tests
+
+Always follow your doctor's or laboratory's specific instructions about fasting.
+
+---
+
+WHEN TO WORRY — AND WHEN NOT TO
+
+A single abnormal result does not necessarily indicate a problem. Many factors can temporarily affect blood test results:
+
+- Dehydration can concentrate blood values
+- Recent illness can alter WBC counts
+- Medications can affect various parameters
+- Stress can temporarily raise blood sugar and cortisol
+- Recent vigorous exercise can affect muscle enzymes and blood counts
+- Menstruation can lower haemoglobin and iron
+
+Doctors typically look at trends over time (multiple tests) rather than a single snapshot. This is why maintaining a health timeline of your results is valuable.
+
+---
+
+READING AN INDIAN LAB REPORT
+
+Indian laboratory reports typically include:
+
+1. Patient details (name, age, sex, referring doctor)
+2. Sample information (date collected, type of sample)
+3. Test results in a table format:
+   - Test name
+   - Your result value
+   - Unit of measurement
+   - Reference range (normal range)
+   - Sometimes a flag: H (High), L (Low), or N (Normal)
+
+Look for the H and L flags first — these highlight values outside the reference range. But remember: a flagged value is not a diagnosis, it is an invitation to discuss the result with your healthcare provider.
+
+---
+
+WHAT TO DISCUSS WITH YOUR DOCTOR
+
+When reviewing your lab results with your doctor, consider asking:
+- Are any of these results concerning in the context of my overall health?
+- Should any tests be repeated to confirm the findings?
+- Do I need any additional tests?
+- Are there lifestyle changes that could help improve these results?
+- When should I get tested again?
+
+---
+
+IMPORTANT: Lab tests are one tool among many that healthcare providers use. They are most meaningful when interpreted alongside your symptoms, medical history, physical examination, and other clinical information. Never make treatment decisions based solely on lab results without consulting a qualified healthcare provider.

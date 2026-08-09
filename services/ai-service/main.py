@@ -16,7 +16,9 @@ from fastapi import FastAPI
 from packages.shared_utils import get_logger
 
 from .routers.anomaly import router as anomaly_router
+from .routers.embed_report import router as embed_report_router
 from .routers.parse import router as parse_router
+from .routers.qa import router as qa_router
 
 logger = get_logger(__name__)
 
@@ -28,6 +30,8 @@ app = FastAPI(
 
 app.include_router(parse_router)
 app.include_router(anomaly_router)
+app.include_router(qa_router)
+app.include_router(embed_report_router)
 
 
 @app.on_event("startup")

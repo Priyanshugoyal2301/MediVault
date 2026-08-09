@@ -1,0 +1,78 @@
+SOURCE: American Thyroid Association; NHS Thyroid Function Tests; ICMR Iodine Deficiency Guidelines
+LICENCE: Public health guidance — freely available for educational use
+URL: https://www.thyroid.org/thyroid-function-tests/
+
+---
+
+Thyroid Function Tests — Patient Guide
+
+The thyroid is a butterfly-shaped gland in your neck that produces hormones controlling your metabolism, energy levels, heart rate, body temperature, and many other vital functions.
+
+TSH (Thyroid-Stimulating Hormone)
+
+TSH is produced by the pituitary gland in the brain and tells your thyroid how much hormone to make. It is the most sensitive marker of thyroid function and is usually the first test ordered.
+
+Normal range: 0.4–4.0 mIU/L (may vary slightly between laboratories)
+
+High TSH: Suggests your thyroid is underactive (hypothyroidism). The pituitary is producing more TSH to try to stimulate the thyroid to work harder.
+
+Low TSH: Suggests your thyroid is overactive (hyperthyroidism). The pituitary is producing less TSH because there is already too much thyroid hormone.
+
+Hypothyroidism is common in India, particularly in regions with iodine deficiency. Subclinical hypothyroidism (mildly elevated TSH with normal T3/T4) affects approximately 10% of the adult Indian population.
+
+---
+
+FREE T4 (Free Thyroxine)
+
+T4 is the main hormone produced by the thyroid. "Free" T4 measures the active, unbound form available for use by the body.
+
+Normal range: 0.8–1.8 ng/dL (may vary between laboratories)
+
+Low Free T4 with high TSH: Confirms hypothyroidism. Symptoms may include fatigue, weight gain, cold intolerance, dry skin, constipation, and hair loss.
+
+High Free T4 with low TSH: Confirms hyperthyroidism. Symptoms may include weight loss, rapid heartbeat, anxiety, tremor, heat intolerance, and sweating.
+
+---
+
+FREE T3 (Free Triiodothyronine)
+
+T3 is the more active thyroid hormone. Most T3 is converted from T4 in the body's tissues.
+
+Normal range: 2.3–4.2 pg/mL
+
+T3 is particularly useful in diagnosing hyperthyroidism, where T3 levels may rise before T4 levels change. In some cases of hyperthyroidism (T3 thyrotoxicosis), T3 is elevated while T4 remains normal.
+
+---
+
+TOTAL T3 AND TOTAL T4
+
+These measure both the bound and unbound forms of the hormones. They can be affected by pregnancy, oral contraceptives, and liver disease, which alter the levels of binding proteins. Free T3 and Free T4 are generally more reliable for assessing true thyroid function.
+
+Normal Total T4: 5.0–12.0 µg/dL
+Normal Total T3: 80–200 ng/dL
+
+---
+
+THYROID ANTIBODIES
+
+Anti-TPO (Thyroid Peroxidase Antibodies): Elevated levels suggest autoimmune thyroid disease, most commonly Hashimoto's thyroiditis (the most common cause of hypothyroidism). Positive anti-TPO can be present years before thyroid hormone levels become abnormal.
+
+Anti-Thyroglobulin Antibodies: Also associated with autoimmune thyroid disease. Often tested alongside anti-TPO.
+
+Normal: Negative or below the laboratory's reference threshold.
+
+---
+
+INTERPRETING THYROID RESULTS TOGETHER
+
+| TSH | Free T4 | Likely Interpretation |
+|-----|---------|----------------------|
+| High | Low | Primary hypothyroidism |
+| High | Normal | Subclinical hypothyroidism |
+| Low | High | Primary hyperthyroidism |
+| Low | Normal | Subclinical hyperthyroidism |
+| Normal | Normal | Normal thyroid function |
+
+---
+
+IMPORTANT: This information is for educational purposes only. Thyroid conditions require proper medical evaluation and management. Many thyroid conditions are easily treatable with medication, but dosing and monitoring should be done by a qualified healthcare provider.

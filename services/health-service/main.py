@@ -9,6 +9,7 @@ from fastapi import FastAPI
 
 from packages.shared_utils import get_logger
 
+from .routers.qa import router as qa_router
 from .routers.reports import router as reports_router
 from .routers.timeline import router as timeline_router
 
@@ -22,6 +23,7 @@ app = FastAPI(
 
 app.include_router(reports_router)
 app.include_router(timeline_router)
+app.include_router(qa_router)
 
 
 @app.on_event("startup")
@@ -43,4 +45,5 @@ async def health_check() -> dict:
 #   DELETE /reports/{report_id}               (Feature 1 — cascade: file+DB+timeline)
 #   GET    /timeline                          (Feature 2)
 #   GET    /timeline/{test_name}              (Feature 2)
+#   POST   /qa                               (Feature 3 — proxy to ai-service)
 # ---------------------------------------------------------------------------
