@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.env
+
+# Node / Frontend
+node_modules/
+.next/
+out/
+.nuxt/
+dist/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Docker
+.dockerignore
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test artefacts
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.junit.xml
+
+# Alembic
+# (keep alembic.ini and versions/ — only ignore generated artefacts)
+
+# Data / model artefacts (large files — store externally)
+data/datasets/*.csv
+data/datasets/*.parquet
+data/datasets/*.pkl
+data/knowledge-base/*.pdf
+*.bin
+*.pt
+*.safetensors

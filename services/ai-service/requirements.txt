@@ -1,0 +1,20 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+# OCR + PDF parsing (Feature 1)
+pytesseract==0.3.13
+pdfplumber==0.11.0
+Pillow==10.3.0
+python-multipart==0.0.9
+pymupdf==1.24.3
+pydantic-settings==2.3.0
+# ML / anomaly detection (Feature 2)
+scikit-learn==1.5.0
+numpy==1.26.4
+# Embeddings + vector search (Feature 3)
+sentence-transformers==3.0.1
+pgvector==0.2.5
+# DB
+sqlalchemy[asyncio]==2.0.30
+asyncpg==0.29.0
+alembic==1.13.1
+python-dotenv==1.0.1
