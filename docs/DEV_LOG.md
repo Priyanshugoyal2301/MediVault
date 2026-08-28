@@ -1,7 +1,253 @@
 # DEV LOG
 
-> Append-only project log. Every meaningful change, decision, or removal gets an entry here.
-> Newest entries at the top. Do not delete old entries — this is the one file in the repo that's allowed to grow; everything else should stay clean per `04_AGENT_RULES.md`.
+## [2026-08-11] Phase 8: Document image quality (final ML phase)
+
+**Type:** feature | cv | ml | eval
+
+**What changed:**
+- `models/image_quality` MobileNetV3 / EfficientNet / OpenCV multi-label quality gate.
+- Flag `USE_IMAGE_QUALITY_MODEL` (default passthrough — OCR pipeline unchanged).
+- Synthetic degraded lab pages; train/eval; tests/phase8.
+- Validation PASS WITH OBSERVATIONS.
+
+**Why:** Block bad scans before OCR when flag on.
+
+**Affects:** image_quality package, quality adapter/registry — not FE/schemas; no prior phase engines.
+
+---
+
+## [2026-08-11] Phase 7: ML anomaly detection
+
+**Type:** feature | ml | eval | safety
+
+**What changed:**
+- `models/anomaly_detection` Isolation Forest / LOF / Robust Z (AE/OCSVM stubs).
+- Flags `USE_ANOMALY_MODEL` + `USE_OUTLIER_MODEL` alias; default statistical path.
+- Synthetic anomaly datasets + train/eval; non-diagnostic pattern language; tests/phase7.
+- Validation PASS WITH OBSERVATIONS; IF PR-AUC ~0.71 synthetic (LOF higher on synth).
+
+**Why:** Unsupervised unusual lab pattern flags without diagnoses.
+
+**Affects:** anomaly_detection package, adapters/registry/flags — not FE/response schema; no mutation of OCR/normalizer/retrieval/risk/forecast/health_score engines.
+
+---
+
+## [2026-08-11] Phase 6: Personalized health score + SHAP
+
+**Type:** feature | ml | eval | safety | xai
+
+**What changed:**
+- `models/health_score` (XGBoost/LightGBM/linear) 0–100 score + confidence + band.
+- `models/explainability` reusable SHAP + fallback attributions.
+- Flag `USE_HEALTH_SCORE_MODEL` (default off → unavailable).
+- Synthetic datasets + train/eval; tests/phase6.
+- Validation PASS WITH OBSERVATIONS; synthetic MAE ~2.0 / R² ~0.99.
+
+**Why:** Aggregate non-diagnostic health orientation with explainable contributors.
+
+**Affects:** health_score package, explainability, adapters/registry, HealthScoreResult fields — not FE/existing HTTP/OCR/normalizer/retrieval/risk/forecast engines.
+
+---
+
+## [2026-08-11] Phase 5: Biomarker forecasting
+
+**Type:** feature | ml | eval | safety
+
+**What changed:**
+- `models/forecasting` longitudinal engine (LightGBM/XGBoost/linear; LSTM/TT stubs).
+- Flag `USE_FORECAST_MODEL` (default off → unavailable).
+- Synthetic datasets + train/eval; prediction intervals + trend; tests/phase5.
+- Validation PASS WITH OBSERVATIONS; macro MAE ~4.6 on synthetic (per-biomarker preferred).
+
+**Why:** Non-diagnostic forecast of lab trajectories from irregular history.
+
+**Affects:** forecasting package, adapters/registry/flags, types (BiomarkerForecast*) — not FE/existing HTTP/OCR/normalizer/retrieval/risk engines.
+
+---
+
+## [2026-08-11] Phase 4: Disease risk prediction
+
+**Type:** feature | ml | eval | safety
+
+**What changed:**
+- `models/risk_prediction` multi-condition engine (XGBoost/LightGBM/logistic/sklearn_gb).
+- Flags `USE_RISK_MODEL` + `USE_DISEASE_RISK_MODEL` alias; default unavailable.
+- Synthetic datasets + train/eval; safety disclaimers; tests/phase4.
+- Validation PASS; macro ROC-AUC ML ~0.984 on synthetic.
+
+**Why:** Non-diagnostic probabilistic risk signals from lab biomarkers.
+
+**Affects:** risk package, adapters/registry/flags, types (optional conditions) — not FE/existing HTTP/OCR/normalizer/retrieval.
+
+---
+
+## [2026-08-11] Phase 3: Semantic medical retrieval
+
+**Type:** feature | ml | eval
+
+**What changed:**
+- `models/retrieval` SemanticRetriever: configurable BGE/MiniLM/char_tfidf, FAISS/NumPy vector store, chunk+index train/eval.
+- Registry `USE_EMBEDDING_SEARCH` → Semantic+BM25 fallback; BM25 default preserved.
+- Benchmark: MRR 0.806→0.958 offline on MediVault synthetic queries; tests `tests/phase3/` (15).
+- Validation **PASS** `validation/model3-validation.md`.
+
+**Why:** Meaning-based ranking over lexical-only BM25 without API break.
+
+**Affects:** retrieval package, adapters/registry, datasets/retrieval, docs — not OCR, normalizer internals, FE, `/qa` schema.
+
+---
+
+## [2026-08-11] Phase 2: Medical Test Normalization
+
+**Type:** feature | ml | eval
+
+**What changed:**
+- `models/normalizer` engine: alias + char_tfidf ML (ModernBERT/ClinicalBERT pluggable), LOINC subset, train/eval.
+- Registry `USE_ML_NORMALIZER` wires ML+Fallback; rules default.
+- `/parse` applies normalizer to `test_name` without API schema change.
+- Datasets synthetic + LOINC subset; tests `tests/phase2/` (30); overall phase suites green.
+- Validation **PASS**: `validation/model2-validation.md`. Benchmarks + `phase2-summary.md`.
+
+**Why:** Canonical analyte names/LOINC foundation for timeline, explainer keys, future ML.
+
+**Affects:** normalizer package, adapters/registry/parse, datasets, docs/flags — not FE schema/DB migration/OCR internals/RAG/risk.
+
+---
+
+## [2026-08-11] Phase 1A: Unlimited-OCR hardening
+
+**Type:** hardening | ops | test | docs
+
+**What changed:**
+- Safety: empty/malformed/timeout → legacy; `auto` never local HF; allow flags for local weights/download.
+- Startup validation, health readiness, parse/fallback logging, PHI endpoint warning.
+- Tests: `tests/phase1a/` (152 phase1+1a+ai unit green in session).
+- Docs: observation review, config/deploy/ML architecture, validation `model1a`, `phase1a-summary.md`.
+
+**Why:** Address validation O-06/O-07 and engineering observations without Phase 2 or accuracy work.
+
+**Affects:** models/ocr, adapters/registry/parse/main health, docs, tests — not FE/API schema/DB/normalizer/RAG/risk.
+
+---
+
+## [2026-08-11] Phase 1: Unlimited-OCR document understanding
+
+**Type:** feature | ml | eval
+
+**What changed:**
+- Integrated `models/ocr` Unlimited-OCR package (preprocess, HTTP/local/stub client, Medical JSON postprocess, metrics, dataset infra).
+- Adapters: `UnlimitedOCRDocumentParser` + `FallbackDocumentParser` (legacy always recoverable).
+- Registry selects parser via `USE_UNLIMITED_OCR` (default 0).
+- Env: `UNLIMITED_OCR_BACKEND`, `UNLIMITED_OCR_ENDPOINT`, etc.
+- Tests: `tests/phase1/` (PASS with unit regressions).
+- Validation **PASS**: `validation/model1-validation.md`.
+- Benchmark: `docs/benchmark_phase1.md`, eval JSON under `datasets/evaluation/`.
+- Summary: `phase1-summary.md`.
+
+**Why:** Start ML migration with document understanding while never breaking the demo path.
+
+**Affects:** models/ocr, ai-service adapters/registry/parse, docs, flags — not FE/API schema/DB/RAG/anomaly.
+
+---
+
+## [2026-08-10] Plan C lab: bake-offs, no vanity training
+
+**Type:** eval | feature | decision
+
+**What changed:**
+- Autonomous lab under `data/datasets/plan_c/` (IE fixtures, mixed-regime anomaly, tone eval, dense bake-off, Guardian gates).
+- Promoted: IE alias/separator hardening; synthesizer tone scrub + KB phrasing fixes; optional ref-range soft summary on `/anomaly/detect`.
+- Dense MiniLM hybrid ΔMRR=+0.036 but **demo-default veto** (cold HF risk) — keep `MEDIVAULT_FAST_KB=1`.
+- Rejected: trained IF/XGB/LayoutLM/LLM answers; anomaly OR-ref-range (FAR regression).
+- Report: `docs/PLAN_C_REPORT.md`.
+
+**Why:** Training only if it beats Plan B under metric ∧ data ∧ demo-risk. None cleared all three for a new trained model.
+
+**Affects:** parsers/patterns, rag/synthesizer, KB txt, anomaly detector/router, plan_c lab, docs.
+
+---
+
+## [2026-08-10] Plan B ML execution: statistical monitor + BM25/intent
+
+**Type:** feature | refactor | eval
+
+**What changed:**
+- Removed production IsolationForest; `anomaly/model.py` is now causal leave-last-out z + CUSUM (binary), with %Δ for score/summary only.
+- Default RAG path is pure-Python BM25 + intent boost (`rag/bm25.py`, `rag/intent.py`); MD5 cosine theater deleted from bootstrap.
+- `MEDIVAULT_FAST_KB=1` means BM25-only (demo default); dense MiniLM opt-in via `MEDIVAULT_USE_DENSE=1` + `FAST_KB=0`.
+- Eval: ablation script + Hit@5/MRR harness; results in `docs/ML_PLAN_B_RESULTS.md`.
+- Docs/UI claims updated (PROJECT_STATE, PRESENTATION_CLAIMS, JUDGE_QA, DEMO_SCRIPT, App.jsx).
+
+**Benchmarks (seed 42):**
+- Anomaly `statistical_monitor` F1=0.8696 FAR=0.0750 vs legacy IF F1=0.8387 FAR=0.0875.
+- RAG BM25+intent Hit@5=50/50 MRR=0.954.
+- Unit tests: 56 passed (`test_anomaly` + `test_rag`).
+
+**Why:** Plan B — IF and MD5 cosine were scientifically indefensible for n≈5–10 / ~13 chunks.
+
+**Affects:** ai-service anomaly/rag, data/datasets eval scripts, docs, apps/web labels.
+
+---
+
+## [2026-08-10] Code-freeze sprint: dashboard honesty + preflight scripts
+
+**Type:** fix | feature
+
+**What changed:**
+- Dashboard uses live report/metric counts; empty-state CTA to LIPID Demo; removed fake “4 reports / 100% privacy” stats.
+- BFF returns JSON 503 when upstream is down (no opaque connection errors).
+- `scripts/demo_preflight.ps1` + `scripts/smoke_demo.ps1` for day-of validation.
+- Sidebar “Demo” badge, logout aria-label; Auth defaults to Register; timeline scoring disclaimer.
+- KB path resolver fallbacks; `apps/api/README.md` route map corrected.
+
+**Why:** Judge-visible polish + deterministic ops before freeze.
+
+**Affects:** apps/web, apps/api, scripts/, ai-service/rag/ingester.py, docs.
+
+---
+
+## [2026-08-10] Final ship: KB bootstrap + demo reliability pack
+
+**Type:** fix | feature
+
+**What changed:**
+- AI startup loads knowledge-base into memory (`rag/bootstrap.py`); default `MEDIVAULT_FAST_KB=1` avoids HF download stalls; `/health` reports `kb_ready` / `kb_chunks`.
+- Auth default email → `judge@example.com`; added `email-validator` dependency.
+- Q&A suggestion chips for deterministic judge path.
+- Docs: `SHIP_CHECKLIST.md`, `JUDGE_QA.md` (50 Qs), `PRESENTATION_CLAIMS.md`, tightened `DEMO_SCRIPT.md`.
+
+**Why:** Empty in-memory KB was the #1 demo killer for cited guideline answers.
+
+**Affects:** ai-service main/rag, auth requirements, web QAChatView/AuthView, docs.
+
+**Follow-up needed:** none before freeze — rehearse checklist only.
+
+---
+
+## [2026-08-10] Hackathon hardening: BFF JWT, live frontend, honest metrics
+
+**Type:** feature | fix | evaluation-result
+
+**What changed:**
+- Implemented real API gateway (`apps/api`): JWT validation, strips client `X-User-ID`, proxies auth/health; AI not proxied.
+- Hardened AI `/parse` (storage-root allowlist) and `/anomaly/detect` with optional `X-Internal-Key`.
+- Health: magic-byte MIME sniffing; demo seed `POST /reports/demo/seed`; timeline `/anomaly` proxy; QA loads owner report values; explanation columns (migration 004).
+- Frontend wired to live BFF APIs (auth, upload/seed, timeline, Q&A); Vite proxy to `:8000`.
+- Dockerfiles copy `packages/`; compose binds health/AI/Postgres to `127.0.0.1`; shared uploads volume.
+- RAG eval script renamed metrics to Hit@5 / tone_violation; default MD5 mock; opt-in `--use-minilm`.
+- Retracted prior DEV_LOG claim that Precision@5 was measured on MiniLM (it was MD5 Hit@5). See correction below.
+- Docs: `00_PROJECT_STATE.md` rewritten honestly; added `docs/DEMO_SCRIPT.md`.
+
+**Why:**
+Maximize hackathon ROI: close Critical identity/LFI holes, make a reliable live demo, and stop overclaiming ML metrics.
+
+**Affects:** apps/api, apps/web, health-service, ai-service, docker-compose, migrations/004, evaluate_rag.py, README, PROJECT_STATE.
+
+**Follow-up needed:** encrypt-at-rest, durable OCR queue, real MiniLM eval numbers if pitching retrieval quality, WCAG pass.
+
+**Metric correction:** Earlier entry claimed “Precision@5 of 82.0% on MiniLM-L6-v2”. The harness used MD5 mock embeddings and measured keyword Hit@5, not classical Precision@5. Do not cite the old claim.
+
+---
 
 ## How to write an entry
 

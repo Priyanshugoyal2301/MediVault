@@ -35,7 +35,8 @@
 - **Vector store:** pgvector (inside Postgres) for MVP — avoids running a second database; migrate to a dedicated vector DB only if scale demands it
 - **Auth:** JWT-based, stateless — designed so a biometric/ID-verification provider can be swapped in as an additional auth strategy later
 - **File/report storage:** encrypted object storage (local disk abstraction in dev, S3-compatible in prod)
-- **ML/NLP:** scikit-learn / XGBoost for anomaly detection, a sentence-embedding model for retrieval, OCR via an established library (not hand-rolled)
+- **ML/NLP:** statistical personal-series anomaly; BM25 retrieval; optional Unlimited-OCR; optional Medical Test Normalizer (`USE_ML_NORMALIZER`); optional MiniLM dense retrieval
+- **Models package:** `models/ocr/` (Phase 1), scaffolds for risk/retrieval/normalizer/…  
 - **Containerization:** Docker + docker-compose for local dev, structured so each service has its own Dockerfile
 
 ## 3. Repository structure

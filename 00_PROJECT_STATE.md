@@ -1,123 +1,96 @@
 # PROJECT STATE — READ THIS FIRST, EVERY SESSION
 
-> Purpose: this is the ONE file that should let a fresh model session understand "where the project currently stands" without re-scanning the entire codebase. `DEV_LOG.md` is the full historical record (append-only, never trimmed); this file is a compact, continuously-**overwritten** snapshot of the *current* state. If they conflict, `DEV_LOG.md` is the source of truth for history, this file is the source of truth for "what's true right now."
+> Compact current-state snapshot. History lives in `docs/DEV_LOG.md`. Prefer honesty over marketing.
 
-**Last updated:** 2026-08-09 by Gemini (Google DeepMind) — Feature 3 (RAG Q&A + Safety Layer + Frontend) complete — MVP FULLY SHIPPED
-
----
-
-## 1. What exists right now (one paragraph)
-
-**MVP fully built (Features 1, 2, and 3 complete).** Feature 3 adds: Migration 003 (`knowledge_documents` with pgvector embeddings, `qa_sessions`, `qa_messages`); Knowledge Base pipeline (`cbc_guide`, `lipid_guide`, `thyroid_guide`, `hba1c_guide`, `general_health` - 13 chunks pre-embedded); `services/ai-service/safety/red_flags.py` (deterministic regex emergency guardrail covering cardiac, GI bleeding, vision loss, stroke, suicidal ideation, running in <100ms BEFORE any RAG/LLM call); RAG pipeline (`embedder.py`, `ingester.py`, `retriever.py`, `synthesizer.py`) producing bilingual EN/HI cited answers; `POST /qa` & `POST /embeddings` endpoints in ai-service; `POST /qa` proxy in health-service; React + Vite frontend in `apps/web/` (Dark mode medical theme, Dashboard, Upload flow with sample reports, Health Timeline chart with z-score markers, Evidence Q&A Chat with inline citations and safety alert banner); 59 unit tests added (132/132 total tests PASS); RAG Evaluation suite on 50 questions (Precision@5: 82.0%, Citation Correctness: 100.0%, Hallucination Rate: 18.0%).
-
-## 2. What's built and working (checklist, keep current)
-
-- [x] Repo scaffold per `02_ARCHITECTURE.md`
-- [x] `owner_id` scoping enforced at query layer (`ScopedRepository` base class) + DB-level NOT NULL FK
-- [x] Redacting logger mandatory export + pre-commit lint hook blocking bare `import logging`
-- [x] `Locale` type established in `shared-types/schemas.py`
-- [x] Alembic migrations 001 (users), 002 (health tables), 003 (Q&A + knowledge tables)
-- [x] Auth service: register, login, me endpoints + JWT (email-enumeration-safe)
-- [x] Report upload (POST /reports, 202 async) + file storage (local, owner-namespaced)
-- [x] OCR pipeline: pdfplumber native text → Tesseract fallback (eng+hin)
-- [x] Report parser: CBC, lipid, thyroid, HbA1c panels (25+ test names)
-- [x] Plain-language explainer: EN + HI, status normal/high/low/unknown, tone rules enforced
-- [x] Cross-user scoping tests for auth + health service
-- [x] Acceptance criteria tests for all four MVP panels
-- [x] Health timeline storage (derived from report_values — auto-populated on parse)
-- [x] Trend/anomaly detection (baseline z-score) — Feature 2 ✓
-- [x] Trend/anomaly detection (trained model — IsolationForest) — Feature 2 ✓
-- [x] Knowledge base ingestion pipeline — Feature 3 ✓
-- [x] RAG Q&A endpoint — Feature 3 ✓
-- [x] Deterministic safety layer — Feature 3 ✓
-- [x] Frontend (React + Vite) — Feature 3 ✓
-- [x] Evaluation numbers recorded for anomaly detection & RAG (see `DEV_LOG.md`) ✓
-
-- [x] Health timeline storage
-- [x] Trend/anomaly detection (baseline z-score)
-- [x] Trend/anomaly detection (trained model)
-- [x] Knowledge base ingestion pipeline
-- [x] RAG Q&A endpoint
-- [x] Deterministic safety layer
-- [x] Frontend: upload flow
-- [x] Frontend: timeline view
-- [x] Frontend: Q&A chat with citations
-- [x] Evaluation numbers recorded for anomaly detection (see `DEV_LOG.md`)
-- [x] Evaluation numbers recorded for retrieval/RAG (see `DEV_LOG.md`)
-
-## 3. Known issues / half-finished work
-
-- OCR: Tesseract handles typed-PDF lab printouts well (via pdfplumber text layer) but will parse handwritten annotations poorly. Explicitly accepted for MVP scope. See DEV_LOG [2026-08-08].
-- Anomaly detection dataset (MIMIC-IV vs synthetic) still unresolved — doesn't block Feature 1, must be resolved before Feature 2.
-- No linting rule yet to flag bare `import logging` in service code — flagged as follow-up in DEV_LOG [2026-08-08].
-
-## 4. Decisions already made (don't re-litigate without reason)
-
-- Backend: FastAPI (Python 3.11) — see DEV_LOG [2026-08-08]
-- Primary DB: PostgreSQL + pgvector extension — see DEV_LOG [2026-08-08]
-- Vector store: pgvector inside Postgres for MVP — see DEV_LOG [2026-08-08]
-- Auth strategy: JWT (python-jose + passlib/bcrypt) — see DEV_LOG [2026-08-08]
-- File storage: local disk in dev, S3-compatible in prod (boto3 abstraction) — see DEV_LOG [2026-08-08]
-- OCR engine: Tesseract (pytesseract + pdfplumber), self-hosted, **not** cloud OCR API — privacy rationale in DEV_LOG [2026-08-08]
-- Second language: Hindi (hi-IN) — see DEV_LOG [2026-08-08]
-- owner_id scoping: enforced at query layer via `ScopedRepository` base class — see DEV_LOG [2026-08-08]
-- ML: scikit-learn (anomaly), sentence-transformers (embeddings) — see DEV_LOG [2026-08-08]
-- Frontend framework: deferred to Feature 3 sprint (React or Next.js) — see DEV_LOG [2026-08-08]
-
-## 5. Explicit instruction for any new session / model switch
-
-Before doing anything else:
-1. Read this file in full.
-2. Read `03_MVP_SCOPE.md` to confirm current task is in scope.
-3. Do **not** re-read or re-summarize the entire codebase from scratch — use this file plus targeted file reads for the specific area you're changing. Only fall back to a broader scan if this file is clearly stale (check "Last updated" against recent git history) or missing information you need.
-4. At the end of your session (and at each meaningful sub-step checkpoint), update this file and add a `DEV_LOG.md` entry.
-5. **For Feature 1:** check `services/health-service/db/base_repository.py` before writing any repository — all health-data repositories must subclass `ScopedRepository`. Logger: `from packages.shared_utils import get_logger` — never `import logging`.
-
+**Last updated:** 2026-08-28 — ML platform Phases 1–9 integrated (all feature flags default off); Phase 10 repository consolidation
 
 ---
 
-## 1. What exists right now (one paragraph)
+## 1. What exists right now
 
-Repo scaffolded per `/docs/02_ARCHITECTURE.md`. All service directories created with skeleton `main.py` (FastAPI health-check only), `requirements.txt`, `Dockerfile`, and `README.md` documenting each service's API contract. `packages/shared-utils/logging.py` implements a redacting logger (strips health-data fields before log emission) — all services must use `get_logger()` from here. `packages/shared-types/schemas.py` is a stub awaiting Feature 1. `data/`, `infra/migrations/`, and `tests/` directories are placeholders with READMEs. No business logic exists yet. Feature 1 (Medical Report Understanding) has not started.
+MediVault is a **hackathon-ready prototype**: FastAPI microservices (auth / health / AI) behind a JWT BFF that validates tokens and injects trusted `X-User-ID`. The React frontend talks to live APIs (Vite proxy → `:8000`). Deterministic **demo seed** panels (`POST /reports/demo/seed`) populate CBC/Lipid + timeline without OCR.
 
-## 2. What's built and working (checklist, keep current)
+**Live demo path (flags off):** Tesseract + regex OCR, template bilingual explanations, BM25+intent RAG with template synthesizer, deterministic safety layer, and **statistical personal-series anomaly monitoring** (z-score / CUSUM — not a persisted clinical ML model).
 
-- [x] Repo scaffold per `02_ARCHITECTURE.md`
-- [ ] Auth service (basic email/password)
-- [ ] Report upload + OCR
-- [ ] Report value extraction (which panels supported: _none yet_)
-- [ ] Health timeline storage
-- [ ] Trend/anomaly detection (baseline z-score)
-- [ ] Trend/anomaly detection (trained model)
-- [ ] Knowledge base ingestion pipeline
-- [ ] RAG Q&A endpoint
-- [ ] Deterministic safety layer
-- [ ] Frontend: upload flow
-- [ ] Frontend: timeline view
-- [ ] Frontend: Q&A chat with citations
-- [ ] Evaluation numbers recorded for anomaly detection (see `DEV_LOG.md`)
-- [ ] Evaluation numbers recorded for retrieval/RAG (see `DEV_LOG.md`)
+**ML platform (Phases 1–9, default off):** Unlimited-OCR adapter, test normalizer, semantic retrieval, disease risk, biomarker forecasting, health score + SHAP, ML anomaly detection, image quality gate, and platform audit/benchmark tooling — all behind feature flags with graceful fallbacks. See `docs/MODEL_REGISTRY.md` and `docs/FEATURE_FLAGS.md`.
 
-## 3. Known issues / half-finished work
+This is **not** a production PHI system (no encrypt-at-rest, no durable job queue, no clinical validation).
 
-- None at scaffold stage — no feature code exists yet.
-- Three open questions logged in `DEV_LOG.md` [2026-08-08]: product name, second language, anomaly dataset source.
+---
 
-## 4. Decisions already made (don't re-litigate without reason)
+## 2. Status checklist
 
-- Backend: FastAPI (Python 3.11) — see DEV_LOG [2026-08-08]
-- Primary DB: PostgreSQL + pgvector extension — see DEV_LOG [2026-08-08]
-- Vector store: pgvector inside Postgres for MVP — see DEV_LOG [2026-08-08]
-- Auth strategy: JWT (python-jose + passlib/bcrypt) — see DEV_LOG [2026-08-08]
-- File storage: local disk in dev, S3-compatible in prod (boto3 abstraction) — see DEV_LOG [2026-08-08]
-- OCR: pytesseract + pdfplumber — see DEV_LOG [2026-08-08]
-- ML: scikit-learn (anomaly), sentence-transformers (embeddings) — see DEV_LOG [2026-08-08]
-- Frontend framework: deferred to Feature 3 sprint (React or Next.js) — see DEV_LOG [2026-08-08]
+### Implemented (demoable)
 
-## 5. Explicit instruction for any new session / model switch
+- [x] Auth: register / login / me (JWT, bcrypt, password min length 8)
+- [x] API gateway BFF: JWT verify, strip client `X-User-ID`, proxy auth/health
+- [x] Report upload + magic-byte MIME check + async parse
+- [x] Demo seed reports (CBC, Lipid) with explanations + timeline history
+- [x] OCR/parse/explain pipeline (legacy default; Unlimited-OCR optional)
+- [x] Timeline summary + `/timeline/{test}/anomaly` proxy to AI
+- [x] Q&A proxy loads owner-scoped report values into AI retriever
+- [x] Frontend wired to real APIs (auth, upload/seed, timeline, Q&A)
+- [x] Honest RAG eval (Hit@5 / MRR; BM25+intent default)
+- [x] ML Phases 1–9 source + phase test suites (flags default off)
+- [x] Research site (`apps/research-site/`) for portfolio / faculty review
 
-Before doing anything else:
-1. Read this file in full.
-2. Read `03_MVP_SCOPE.md` to confirm current task is in scope.
-3. Do **not** re-read or re-summarize the entire codebase from scratch — use this file plus targeted file reads for the specific area you're changing. Only fall back to a broader scan if this file is clearly stale (check "Last updated" against recent git history) or missing information you need.
-4. At the end of your session, before finishing, update this file's checklist, "what exists" paragraph, and "known issues" section, and add the corresponding detailed entry to `DEV_LOG.md`.
+### Prototype / partial
+
+- [ ] Encryption at rest / TLS termination
+- [ ] Durable OCR job queue (still FastAPI BackgroundTasks)
+- [ ] pgvector retrieval in the live Q&A path (in-memory KB chunks today)
+- [ ] `embed_report` vector write path (stub)
+- [ ] Account deletion / consent capture / access audit log
+- [ ] HTTP end-to-end integration test suite (phase unit tests exist; no full E2E)
+
+### Intentionally deferred
+
+- Full WCAG AA audit
+- S3 storage backend
+- Logout/token revocation store
+- Clinical / multi-site validation of ML models
+
+---
+
+## 3. How to run the demo (local)
+
+```bash
+# 1) Postgres
+docker-compose up -d postgres
+
+# 2) .env from .env.example — set POSTGRES_PASSWORD, AUTH_SECRET_KEY, INTERNAL_SERVICE_KEY
+
+# 3) Migrations (through 004)
+cd infra/migrations && alembic upgrade head && cd ../..
+
+# 4) Dev deps (one venv)
+pip install -r requirements-dev.txt
+
+# 5) Services (separate terminals, repo root on PYTHONPATH)
+$env:PYTHONPATH="."
+# auth :8001, health :8002, ai :8003, api :8000
+# web: cd apps/web && npm install && npm run dev  → :3000
+```
+
+See `docs/DEMO_SCRIPT.md` for the judge path.
+
+---
+
+## 4. Known issues
+
+- Default anomaly path is statistical — disclose thresholds and leave-last-out causality.
+- RAG default is BM25+intent — do not claim MiniLM numbers unless dense path was explicitly enabled.
+- ML Phases 4–8 metrics are largely **synthetic** — not clinical validation.
+- OCR quality on real Indian lab scans is not rigorously measured.
+- Model artifacts are **not** in git — run `models/*/train.py` if enabling ML flags.
+
+---
+
+## 5. Decisions
+
+- Public entry = BFF only for browser traffic
+- AI service not proxied through BFF
+- Prefer deterministic demo seed for live judging reliability
+- Template synthesizer kept (safer/faster than free-form LLM)
+- All ML flags default **off** — demo uses statistical monitor + BM25
+- Plan C: IE aliases + tone scrub; dense MiniLM only as warm optional (`MEDIVAULT_USE_DENSE=1`)
