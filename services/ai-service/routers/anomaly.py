@@ -16,14 +16,15 @@ TONE RULES: No diagnoses, no alarming language. See anomaly/detector.py.
 """
 
 from datetime import date
-from typing import Any
+from typing import Annotated, Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, field_validator
 
 from packages.shared_utils import get_logger
 
-from ..anomaly.detector import DetectionResult, detect
+from ..core.internal_auth import require_internal_key
+from ..core.registry import get_anomaly_detector
 
 logger = get_logger(__name__)
 router = APIRouter(prefix="/anomaly", tags=["anomaly"])
@@ -42,6 +43,9 @@ class AnomalyDetectRequest(BaseModel):
     test_name: str
     unit: str | None = None
     data_points: list[DataPoint]
+    # Optional lab reference interval — soft summary only (does not flip is_anomaly)
+    reference_range_low: float | None = None
+    reference_range_high: float | None = None
 
     @field_validator("data_points")
     @classmethod
@@ -76,23 +80,27 @@ class AnomalyDetectResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 @router.post("/detect", response_model=AnomalyDetectResponse)
-async def detect_anomaly(body: AnomalyDetectRequest) -> Any:
+async def detect_anomaly(
+    body: AnomalyDetectRequest,
+    _: Annotated[None, Depends(require_internal_key)],
+) -> Any:
     """
     Run trend + anomaly detection on a health metric time series.
 
-    - Requires at least 1 data point (returns insufficient_data for < 3).
-    - Sorts data points by date (oldest first) before analysis.
-    - Returns bilingual (EN + HI) non-diagnostic plain-language summaries.
+    Internal-only when INTERNAL_SERVICE_KEY is set.
     """
     # Sort by date (oldest first) to guarantee correct trend direction
     sorted_points = sorted(body.data_points, key=lambda dp: dp.date)
     pairs: list[tuple[date, float]] = [(dp.date, dp.value) for dp in sorted_points]
 
     try:
-        result: DetectionResult = detect(
+        # AnomalyDetector interface → default StatisticalAnomalyDetector
+        result = get_anomaly_detector().detect(
             test_name=body.test_name,
             data_points=pairs,
             unit=body.unit,
+            reference_range_low=body.reference_range_low,
+            reference_range_high=body.reference_range_high,
         )
     except Exception as exc:  # noqa: BLE001
         logger.error("Anomaly detection failed for test=%s: %s", body.test_name, exc)

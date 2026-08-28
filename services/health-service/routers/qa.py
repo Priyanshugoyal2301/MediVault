@@ -1,34 +1,31 @@
 """
 health-service/routers/qa.py
 
-Q&A proxy: forwards user questions to the ai-service /qa endpoint,
-injecting owner_id from the authenticated user header.
-
-The health-service is the public-facing service that the frontend talks to.
-The ai-service is internal-only. This proxy ensures that:
-  1. owner_id is always derived from the authenticated user (not user input).
-  2. The user's own report_values are fetched and injected into the request
-     so the ai-service retriever can include user-specific data.
+Q&A proxy: loads owner-scoped report values, then forwards to ai-service /qa.
+owner_id always comes from the X-User-ID header (injected by the BFF).
 """
 
 from __future__ import annotations
 
 import uuid
-from typing import Optional
+from typing import Annotated, Optional
 
-from fastapi import APIRouter, Header, HTTPException
+import httpx
+from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from packages.shared_utils import get_logger
+
+from ..core.config import Settings, get_settings
+from ..db.models import ReportValue
+from ..db.session import get_db
 
 logger = get_logger(__name__)
 
 router = APIRouter(prefix="/qa", tags=["qa"])
 
-
-# ---------------------------------------------------------------------------
-# Schemas
-# ---------------------------------------------------------------------------
 
 class QARequest(BaseModel):
     session_id: Optional[str] = None
@@ -50,74 +47,118 @@ class QAResponse(BaseModel):
     safety_triggered: bool
 
 
-# ---------------------------------------------------------------------------
-# Endpoint
-# ---------------------------------------------------------------------------
+def _get_owner_id(x_user_id: Annotated[str | None, Header()] = None) -> uuid.UUID:
+    if x_user_id is None:
+        raise HTTPException(status_code=401, detail="Missing X-User-ID header")
+    try:
+        return uuid.UUID(x_user_id)
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Invalid X-User-ID")
+
+
+async def _load_user_report_values(
+    db: AsyncSession,
+    owner_id: uuid.UUID,
+    limit: int = 50,
+) -> list[dict]:
+    result = await db.execute(
+        select(ReportValue)
+        .where(ReportValue.owner_id == owner_id)
+        .order_by(ReportValue.created_at.desc())
+        .limit(limit)
+    )
+    rows = list(result.scalars().all())
+    return [
+        {
+            "test_name": r.test_name,
+            "value_numeric": float(r.value_numeric) if r.value_numeric is not None else None,
+            "value_text": r.value_text,
+            "unit": r.unit,
+            "date_of_test": r.date_of_test.isoformat() if r.date_of_test else None,
+            "panel": r.panel,
+            "explanation_en": getattr(r, "explanation_en", None),
+        }
+        for r in rows
+    ]
+
 
 @router.post("", response_model=QAResponse)
 async def proxy_qa(
     body: QARequest,
-    x_user_id: str = Header(..., alias="X-User-Id"),
+    owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
+    db: Annotated[AsyncSession, Depends(get_db)],
+    settings: Annotated[Settings, Depends(get_settings)],
 ) -> QAResponse:
-    """Proxy Q&A requests to the ai-service.
-
-    In production, this would:
-      1. Fetch the user's report_values from the DB (owner-scoped).
-      2. Forward the question + report_values to ai-service /qa.
-      3. Store the Q&A exchange in qa_sessions / qa_messages.
-      4. Return the response.
-
-    For MVP unit testing, this endpoint validates the contract and headers.
-    """
-    if not x_user_id:
-        raise HTTPException(status_code=401, detail="Missing X-User-Id header")
-
     session_id = body.session_id or str(uuid.uuid4())
+    user_values = await _load_user_report_values(db, owner_id)
 
-    # In production: httpx.AsyncClient call to ai-service
-    # For now, import and call directly (monolith-mode for MVP)
+    headers = {"X-User-Id": str(owner_id)}
+    if settings.internal_service_key:
+        headers["X-Internal-Key"] = settings.internal_service_key
+
+    payload = {
+        "session_id": session_id,
+        "question": body.question,
+        "locale": body.locale,
+        "user_report_values": user_values,
+    }
+
     try:
-        from services.ai_service.safety import check_safety
-        from services.ai_service.rag.retriever import retrieve
-        from services.ai_service.rag.synthesizer import synthesize
-
-        # Step 1: Safety check (MUST be first)
-        safety_result = check_safety(body.question)
-
-        if safety_result.triggered:
-            logger.info("Safety triggered via health-service proxy")
-            return QAResponse(
-                session_id=session_id,
-                answer=safety_result.emergency_message_en or "",
-                answer_hi=safety_result.emergency_message_hi or "",
-                citations=[],
-                safety_triggered=True,
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(
+                f"{settings.ai_service_url.rstrip('/')}/qa",
+                json=payload,
+                headers=headers,
             )
+        if response.status_code >= 400:
+            logger.error("AI QA failed status=%s", response.status_code)
+            raise HTTPException(status_code=503, detail="AI service unavailable")
+        data = response.json()
+    except httpx.HTTPError as exc:
+        logger.error("AI QA transport error: %s", type(exc).__name__)
+        # Fallback: in-process call for local monolith-style demos
+        try:
+            return await _local_qa_fallback(body, session_id, user_values)
+        except Exception:
+            raise HTTPException(status_code=503, detail="AI service unavailable") from exc
 
-        # Step 2: Retrieve (no user report_values in MVP test mode)
-        chunks = retrieve(query=body.question, user_report_values=None, top_k=5)
+    return QAResponse(
+        session_id=data.get("session_id", session_id),
+        answer=data["answer"],
+        answer_hi=data["answer_hi"],
+        citations=[CitationOut(**c) for c in data.get("citations", [])],
+        safety_triggered=bool(data.get("safety_triggered")),
+    )
 
-        # Step 3: Synthesize
-        result = synthesize(question=body.question, chunks=chunks, locale=body.locale)
 
-        citations_out = [
-            CitationOut(index=c["index"], source=c["source"], url=c.get("url"))
-            for c in result["citations"]
-        ]
+async def _local_qa_fallback(
+    body: QARequest,
+    session_id: str,
+    user_values: list[dict],
+) -> QAResponse:
+    from services.ai_service.rag.retriever import retrieve
+    from services.ai_service.rag.synthesizer import synthesize
+    from services.ai_service.safety import check_safety
 
+    safety_result = check_safety(body.question)
+    if safety_result.triggered:
         return QAResponse(
             session_id=session_id,
-            answer=result["answer_en"],
-            answer_hi=result["answer_hi"],
-            citations=citations_out,
-            safety_triggered=False,
+            answer=safety_result.emergency_message_en or "",
+            answer_hi=safety_result.emergency_message_hi or "",
+            citations=[],
+            safety_triggered=True,
         )
 
-    except ImportError:
-        # If ai-service modules aren't available (separate deployment),
-        # this would be an httpx call instead.
-        logger.warning("ai-service modules not available — proxy requires httpx in production")
-        raise HTTPException(
-            status_code=503,
-            detail="AI service unavailable",
-        )
+    chunks = retrieve(query=body.question, user_report_values=user_values, top_k=5)
+    result = synthesize(question=body.question, chunks=chunks, locale=body.locale)
+    return QAResponse(
+        session_id=session_id,
+        answer=result["answer_en"],
+        answer_hi=result["answer_hi"],
+        citations=[
+            CitationOut(index=c["index"], source=c["source"], url=c.get("url"))
+            for c in result["citations"]
+        ],
+        safety_triggered=False,
+    )

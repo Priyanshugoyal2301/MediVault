@@ -34,6 +34,27 @@ _ALLOWED_MIME_TYPES = {
 }
 _MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024  # 20 MB
 
+# Magic-byte sniffing — do not trust Content-Type alone
+_MAGIC_SIGNATURES: list[tuple[bytes, str]] = [
+    (b"%PDF", "application/pdf"),
+    (b"\xff\xd8\xff", "image/jpeg"),
+    (b"\x89PNG\r\n\x1a\n", "image/png"),
+    (b"II*\x00", "image/tiff"),
+    (b"MM\x00*", "image/tiff"),
+    (b"RIFF", "image/webp"),  # refined below for WEBP
+]
+
+
+def _sniff_mime(file_bytes: bytes) -> str | None:
+    if len(file_bytes) >= 12 and file_bytes[:4] == b"RIFF" and file_bytes[8:12] == b"WEBP":
+        return "image/webp"
+    for magic, mime in _MAGIC_SIGNATURES:
+        if mime == "image/webp":
+            continue
+        if file_bytes.startswith(magic):
+            return mime
+    return None
+
 
 # ---------------------------------------------------------------------------
 # Response schemas
@@ -106,6 +127,13 @@ async def _trigger_parse(
     from ..db.session import get_db  # local import avoids circular at module level
 
     try:
+        headers = {}
+        # internal_service_key passed via closure from settings at schedule time
+        from ..core.config import get_settings as _gs
+        _key = (_gs().internal_service_key or "").strip()
+        if _key:
+            headers["X-Internal-Key"] = _key
+
         async with httpx.AsyncClient(timeout=120.0) as client:
             response = await client.post(
                 f"{ai_service_url}/parse",
@@ -116,6 +144,7 @@ async def _trigger_parse(
                     "mime_type": mime_type,
                     "locale": locale,
                 },
+                headers=headers,
             )
             response.raise_for_status()
             parse_data = response.json()
@@ -207,15 +236,24 @@ async def upload_report(
     Upload a medical report (PDF or image). Returns 202 immediately;
     OCR + parsing runs as a background task.
     """
-    if file.content_type not in _ALLOWED_MIME_TYPES:
-        raise HTTPException(
-            status_code=415,
-            detail=f"Unsupported file type. Allowed: {', '.join(_ALLOWED_MIME_TYPES)}",
-        )
-
     file_bytes = await file.read()
     if len(file_bytes) > _MAX_FILE_SIZE_BYTES:
         raise HTTPException(status_code=413, detail="File too large (max 20 MB)")
+
+    sniffed = _sniff_mime(file_bytes)
+    declared = file.content_type or ""
+    if sniffed is None or sniffed not in _ALLOWED_MIME_TYPES:
+        raise HTTPException(
+            status_code=415,
+            detail="Unsupported or unrecognized file type (magic-byte check failed)",
+        )
+    if declared and declared not in _ALLOWED_MIME_TYPES:
+        raise HTTPException(
+            status_code=415,
+            detail=f"Unsupported Content-Type. Allowed: {', '.join(sorted(_ALLOWED_MIME_TYPES))}",
+        )
+    # Prefer sniffed type over spoofable Content-Type
+    mime_type = sniffed
 
     storage_path = await storage.save(file_bytes, file.filename or "report", str(owner_id))
 
@@ -224,7 +262,7 @@ async def upload_report(
         owner_id=owner_id,
         original_filename=file.filename or "report",
         storage_path=storage_path,
-        mime_type=file.content_type,
+        mime_type=mime_type,
     )
 
     logger.info("Report uploaded: report_id=%s owner_id=%s", report.id, owner_id)
@@ -234,8 +272,8 @@ async def upload_report(
         report_id=str(report.id),
         owner_id=str(owner_id),
         storage_path=storage_path,
-        mime_type=file.content_type,
-        locale="en-IN",  # TODO: read from user profile in health-service
+        mime_type=mime_type,
+        locale="en-IN",
         ai_service_url=settings.ai_service_url,
         db_url=settings.async_db_url,
     )
@@ -296,8 +334,217 @@ async def get_report(
                 reference_range_high=float(v.reference_range_high) if v.reference_range_high is not None else None,
                 reference_range_text=v.reference_range_text,
                 date_of_test=v.date_of_test.isoformat() if v.date_of_test else None,
+                explanation_en=getattr(v, "explanation_en", None),
+                explanation_hi=getattr(v, "explanation_hi", None),
             )
             for v in values
+        ],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Demo seed — deterministic hackathon path (no OCR / Tesseract required)
+# ---------------------------------------------------------------------------
+
+_DEMO_PANELS: dict[str, list[dict]] = {
+    "cbc": [
+        {
+            "test_name": "Haemoglobin",
+            "panel": "CBC",
+            "value_numeric": 10.5,
+            "unit": "g/dL",
+            "reference_range_low": 12.0,
+            "reference_range_high": 15.5,
+            "reference_range_text": "12.0 - 15.5",
+            "date_of_test": "2025-02-10",
+            "explanation_en": (
+                "Haemoglobin carries oxygen in red blood cells. Haemoglobin is 10.5 g/dL, "
+                "which is below the typical reference range (reference range: 12.0 - 15.5). "
+                "A haemoglobin level below the reference range is commonly associated with anaemia, "
+                "which can have several causes including iron or vitamin deficiency. "
+                "This is worth discussing with your doctor."
+            ),
+            "explanation_hi": (
+                "हीमोग्लोबिन लाल रक्त कोशिकाओं में ऑक्सीजन ले जाता है। हीमोग्लोबिन का परिणाम 10.5 g/dL है, "
+                "जो सामान्य संदर्भ सीमा से कम है। कृपया अपने डॉक्टर से चर्चा करें।"
+            ),
+        },
+        {
+            "test_name": "Total Leucocyte Count (WBC)",
+            "panel": "CBC",
+            "value_numeric": 7200,
+            "unit": "cells/µL",
+            "reference_range_low": 4000,
+            "reference_range_high": 11000,
+            "reference_range_text": "4000 - 11000",
+            "date_of_test": "2025-02-10",
+            "explanation_en": (
+                "White blood cells help the body respond to infection. "
+                "Total Leucocyte Count (WBC) is 7200 cells/µL (reference range: 4000 - 11000). "
+                "This result is within the typical reference range on the report."
+            ),
+            "explanation_hi": "डब्ल्यूबीसी का परिणाम संदर्भ सीमा के भीतर है।",
+        },
+        {
+            "test_name": "Platelet Count",
+            "panel": "CBC",
+            "value_numeric": 240000,
+            "unit": "/µL",
+            "reference_range_low": 150000,
+            "reference_range_high": 400000,
+            "reference_range_text": "150000 - 400000",
+            "date_of_test": "2025-02-10",
+            "explanation_en": (
+                "Platelets help blood clot. Platelet Count is 240000 /µL "
+                "(reference range: 150000 - 400000), within the typical reference range."
+            ),
+            "explanation_hi": "प्लेटलेट काउंट सामान्य सीमा में है।",
+        },
+    ],
+    "lipid": [
+        {
+            "test_name": "LDL Cholesterol",
+            "panel": "Lipid",
+            "value_numeric": 165,
+            "unit": "mg/dL",
+            "reference_range_low": 0,
+            "reference_range_high": 130,
+            "reference_range_text": "< 130",
+            "date_of_test": "2025-01-15",
+            "explanation_en": (
+                "LDL Cholesterol is 165 mg/dL, which is above the typical reference range "
+                "(reference range: < 130). Elevated LDL is commonly discussed with a doctor "
+                "in the context of long-term heart health. This is not a diagnosis."
+            ),
+            "explanation_hi": "एलडीएल कोलेस्ट्रॉल संदर्भ सीमा से अधिक है। कृपया डॉक्टर से चर्चा करें।",
+        },
+        {
+            "test_name": "HDL Cholesterol",
+            "panel": "Lipid",
+            "value_numeric": 45,
+            "unit": "mg/dL",
+            "reference_range_low": 40,
+            "reference_range_high": 60,
+            "reference_range_text": "40 - 60",
+            "date_of_test": "2025-01-15",
+            "explanation_en": "HDL Cholesterol is 45 mg/dL within the typical reference range on this report.",
+            "explanation_hi": "एचडीएल कोलेस्ट्रॉल सामान्य सीमा में है।",
+        },
+        {
+            "test_name": "Triglycerides",
+            "panel": "Lipid",
+            "value_numeric": 180,
+            "unit": "mg/dL",
+            "reference_range_low": 0,
+            "reference_range_high": 150,
+            "reference_range_text": "< 150",
+            "date_of_test": "2025-01-15",
+            "explanation_en": (
+                "Triglycerides is 180 mg/dL, above the typical reference range on this report. "
+                "Discuss lifestyle and clinical context with your doctor."
+            ),
+            "explanation_hi": "ट्राइग्लीसराइड स्तर संदर्भ सीमा से अधिक है।",
+        },
+    ],
+}
+
+# Extra historical LDL points so statistical monitor / z-score has a visible trend
+_DEMO_LDL_HISTORY = [
+    {"test_name": "LDL Cholesterol", "date_of_test": "2023-11-10", "value_numeric": 125, "unit": "mg/dL"},
+    {"test_name": "LDL Cholesterol", "date_of_test": "2024-04-15", "value_numeric": 138, "unit": "mg/dL"},
+    {"test_name": "LDL Cholesterol", "date_of_test": "2024-09-05", "value_numeric": 152, "unit": "mg/dL"},
+    {"test_name": "LDL Cholesterol", "date_of_test": "2025-01-15", "value_numeric": 165, "unit": "mg/dL"},
+]
+
+
+@router.post("/demo/seed", status_code=201, response_model=ReportDetailOut)
+async def seed_demo_report(
+    owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
+    db: Annotated[AsyncSession, Depends(get_db)],
+    panel: str = "cbc",
+):
+    """
+    Deterministic demo seed for hackathon judging — no OCR required.
+    Creates a completed report + values + timeline events for the authenticated user.
+    """
+    from datetime import date
+
+    panel_key = panel.lower().strip()
+    if panel_key not in _DEMO_PANELS:
+        raise HTTPException(status_code=400, detail="panel must be one of: cbc, lipid")
+
+    values = _DEMO_PANELS[panel_key]
+    repo = ReportRepository(db)
+    timeline_repo = TimelineRepository(db)
+
+    report = await repo.create_report(
+        owner_id=owner_id,
+        original_filename=f"demo_{panel_key}_panel.txt",
+        storage_path=f"demo://{panel_key}/{owner_id}",
+        mime_type="text/plain",
+    )
+    await repo.set_parsing_status(report.id, owner_id, "complete")
+
+    await repo.save_report_values(
+        owner_id=owner_id,
+        report_id=report.id,
+        parsed_values=values,
+    )
+
+    timeline_events = []
+    for v in values:
+        timeline_events.append(
+            {
+                "test_name": v["test_name"],
+                "date_of_test": date.fromisoformat(v["date_of_test"]),
+                "value_numeric": v.get("value_numeric"),
+                "value_text": v.get("value_text"),
+                "unit": v.get("unit"),
+            }
+        )
+    if panel_key == "lipid":
+        # Richer history for anomaly demo (avoid duplicating the latest point)
+        for h in _DEMO_LDL_HISTORY[:-1]:
+            timeline_events.append(
+                {
+                    "test_name": h["test_name"],
+                    "date_of_test": date.fromisoformat(h["date_of_test"]),
+                    "value_numeric": h["value_numeric"],
+                    "value_text": None,
+                    "unit": h["unit"],
+                }
+            )
+
+    await timeline_repo.bulk_create_events(
+        owner_id=owner_id,
+        source_report_id=report.id,
+        events=timeline_events,
+    )
+    await db.commit()
+
+    stored = await repo.get_values_for_report(report.id, owner_id)
+    logger.info("Demo seed created: report_id=%s panel=%s", report.id, panel_key)
+    return ReportDetailOut(
+        id=str(report.id),
+        original_filename=report.original_filename,
+        parsed_status="complete",
+        uploaded_at=report.uploaded_at.isoformat(),
+        values=[
+            ReportValueOut(
+                id=str(v.id),
+                test_name=v.test_name,
+                panel=v.panel,
+                value_numeric=float(v.value_numeric) if v.value_numeric is not None else None,
+                value_text=v.value_text,
+                unit=v.unit,
+                reference_range_low=float(v.reference_range_low) if v.reference_range_low is not None else None,
+                reference_range_high=float(v.reference_range_high) if v.reference_range_high is not None else None,
+                reference_range_text=v.reference_range_text,
+                date_of_test=v.date_of_test.isoformat() if v.date_of_test else None,
+                explanation_en=getattr(v, "explanation_en", None),
+                explanation_hi=getattr(v, "explanation_hi", None),
+            )
+            for v in stored
         ],
     )
 

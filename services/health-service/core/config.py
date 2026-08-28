@@ -24,7 +24,10 @@ class Settings(BaseSettings):
     storage_s3_access_key: str = ""
     storage_s3_secret_key: str = ""
 
-    ai_service_url: str = "http://ai-service:8003"
+    ai_service_url: str = "http://localhost:8003"
+
+    # Shared with ai-service for service-to-service calls
+    internal_service_key: str = ""
 
     @property
     def async_db_url(self) -> str:

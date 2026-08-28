@@ -38,7 +38,8 @@ def _p(panel: str, name: str, raw: str) -> PanelPattern:
 # Common sub-patterns
 _NUM = r"(\d+(?:[.,]\d+)?)"   # numeric value (allows comma as decimal separator)
 _UNIT = r"([\w/%µμ]+(?:/[\w]+)*)"  # unit like g/dL, %, IU/L, mmol/L
-_SEP = r"[\s:|\t]+"              # separator between label and value
+# Separators seen on Indian printouts: colon, pipe, equals, dots, tabs
+_SEP = r"[\s:|=\t.]+"
 _REF = r"(?:" + r"[\s(\[]+" + _NUM + r"\s*[-–to]+\s*" + _NUM + r")?"  # optional ref range
 
 
@@ -60,10 +61,19 @@ def _build(panel: str, name: str, aliases: list[str]) -> PanelPattern:
 # ---------------------------------------------------------------------------
 _CBC = "CBC"
 CBC_PATTERNS: list[PanelPattern] = [
-    _build(_CBC, "Haemoglobin",      ["haemoglobin", "hemoglobin", "hb", "hgb"]),
-    _build(_CBC, "WBC",              ["wbc", "white blood cell", "white blood cells", "leukocytes", "total wbc count", "total leucocyte count", "tlc"]),
+    _build(_CBC, "Haemoglobin",      [
+        "haemoglobin (hb)", "hemoglobin (hb)", "haemoglobin", "hemoglobin",
+        "hb.", "hgb", "hb",
+    ]),
+    _build(_CBC, "WBC",              [
+        "total leucocyte count", "total leukocyte count", "total wbc count",
+        "white blood cells", "white blood cell", "leukocytes", "leucocytes",
+        "wbc", "tlc",
+    ]),
     _build(_CBC, "RBC",              ["rbc", "red blood cell", "red blood cells", "erythrocytes", "total rbc count"]),
-    _build(_CBC, "Platelets",        ["platelets", "platelet count", "plt", "thrombocytes"]),
+    _build(_CBC, "Platelets",        [
+        "platelet count", "plt. count", "plt count", "platelets", "plt", "thrombocytes",
+    ]),
     _build(_CBC, "Hematocrit",       ["hematocrit", "haematocrit", "pcv", "packed cell volume"]),
     _build(_CBC, "MCV",              ["mcv", "mean corpuscular volume"]),
     _build(_CBC, "MCH",              ["mch", "mean corpuscular haemoglobin", "mean corpuscular hemoglobin"]),
@@ -80,12 +90,19 @@ CBC_PATTERNS: list[PanelPattern] = [
 # ---------------------------------------------------------------------------
 _LIP = "Lipid Profile"
 LIPID_PATTERNS: list[PanelPattern] = [
-    _build(_LIP, "Total Cholesterol",  ["total cholesterol", "cholesterol", "serum cholesterol"]),
-    _build(_LIP, "LDL Cholesterol",    ["ldl cholesterol", "ldl-c", "ldl", "low density lipoprotein"]),
-    _build(_LIP, "HDL Cholesterol",    ["hdl cholesterol", "hdl-c", "hdl", "high density lipoprotein"]),
+    _build(_LIP, "Total Cholesterol",  [
+        "serum cholesterol", "cholesterol total", "total cholesterol", "cholesterol",
+    ]),
+    _build(_LIP, "LDL Cholesterol",    [
+        "ldl cholesterol", "ldl-c", "low density lipoprotein", "ldl",
+    ]),
+    _build(_LIP, "HDL Cholesterol",    [
+        "h.d.l. cholesterol", "hdl cholesterol", "hdl-c",
+        "high density lipoprotein", "hdl",
+    ]),
     _build(_LIP, "Triglycerides",      ["triglycerides", "triglyceride", "tg", "trigs"]),
     _build(_LIP, "VLDL Cholesterol",   ["vldl cholesterol", "vldl-c", "vldl", "very low density lipoprotein"]),
-    _build(_LIP, "Non-HDL Cholesterol",["non-hdl cholesterol", "non hdl", "non-hdl"]),
+    _build(_LIP, "Non-HDL Cholesterol",["non-hdl cholesterol", "non hdl cholesterol", "non hdl", "non-hdl", "non hdl"]),
     _build(_LIP, "TC/HDL Ratio",       ["tc/hdl", "cholesterol/hdl ratio", "total cholesterol/hdl"]),
 ]
 
@@ -94,7 +111,10 @@ LIPID_PATTERNS: list[PanelPattern] = [
 # ---------------------------------------------------------------------------
 _THY = "Thyroid"
 THYROID_PATTERNS: list[PanelPattern] = [
-    _build(_THY, "TSH",     ["tsh", "thyroid stimulating hormone", "thyrotropin"]),
+    _build(_THY, "TSH",     [
+        "tsh(ultrasensitive)", "tsh (ultrasensitive)", "thyroid stimulating hormone",
+        "thyrotropin", "tsh",
+    ]),
     _build(_THY, "T3",      ["t3", "triiodothyronine", "total t3", "serum t3"]),
     _build(_THY, "T4",      ["t4", "thyroxine", "total t4", "serum t4"]),
     _build(_THY, "Free T3", ["free t3", "ft3", "free triiodothyronine"]),
@@ -106,8 +126,15 @@ THYROID_PATTERNS: list[PanelPattern] = [
 # ---------------------------------------------------------------------------
 _A1C = "HbA1c"
 HBA1C_PATTERNS: list[PanelPattern] = [
-    _build(_A1C, "HbA1c",             ["hba1c", "hb a1c", "glycated haemoglobin", "glycated hemoglobin", "glycosylated haemoglobin", "glycosylated hemoglobin", "a1c"]),
-    _build(_A1C, "eAG (Est. Avg Glucose)", ["eag", "estimated average glucose"]),
+    _build(_A1C, "HbA1c", [
+        "glycosylated hemoglobin (hba1c)", "glycosylated haemoglobin (hba1c)",
+        "glycated haemoglobin", "glycated hemoglobin",
+        "glycosylated haemoglobin", "glycosylated hemoglobin",
+        "hb a1c", "hba1c", "a1c",
+    ]),
+    _build(_A1C, "eAG (Est. Avg Glucose)", [
+        "estimated average glucose (eag)", "estimated average glucose", "eag",
+    ]),
 ]
 
 # ---------------------------------------------------------------------------

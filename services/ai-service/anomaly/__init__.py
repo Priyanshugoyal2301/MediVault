@@ -1,1 +1,1 @@
-# anomaly package — Z-score + IsolationForest trend/anomaly detection
+# anomaly package — Z-score trend + statistical personal-series monitor

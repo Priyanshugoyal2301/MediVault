@@ -30,7 +30,20 @@ logger = get_logger(__name__)
 
 CHUNK_WORD_TARGET = 300
 CHUNK_WORD_OVERLAP = 50
-KNOWLEDGE_BASE_DIR = Path(__file__).resolve().parents[3] / "data" / "knowledge-base"
+def _resolve_knowledge_base_dir() -> Path:
+    """Prefer repo-root data/knowledge-base; fall back to CWD for alternate launches."""
+    candidates = [
+        Path(__file__).resolve().parents[3] / "data" / "knowledge-base",
+        Path.cwd() / "data" / "knowledge-base",
+        Path(__file__).resolve().parents[2] / "data" / "knowledge-base",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
+
+
+KNOWLEDGE_BASE_DIR = _resolve_knowledge_base_dir()
 
 
 # ---------------------------------------------------------------------------
@@ -94,15 +107,16 @@ def load_documents() -> list[dict]:
     Returns a list of dicts ready for embedding + DB insertion:
         [{"source_title", "source_url", "source_licence", "chunk_text", "chunk_index"}, ...]
     """
-    if not KNOWLEDGE_BASE_DIR.exists():
-        logger.warning("Knowledge base directory not found: %s", KNOWLEDGE_BASE_DIR)
+    kb_dir = _resolve_knowledge_base_dir()
+    if not kb_dir.exists():
+        logger.warning("Knowledge base directory not found: %s", kb_dir)
         return []
 
     documents: list[dict] = []
-    txt_files = sorted(KNOWLEDGE_BASE_DIR.glob("*.txt"))
+    txt_files = sorted(kb_dir.glob("*.txt"))
 
     if not txt_files:
-        logger.warning("No .txt files found in %s", KNOWLEDGE_BASE_DIR)
+        logger.warning("No .txt files found in %s", kb_dir)
         return []
 
     for filepath in txt_files:

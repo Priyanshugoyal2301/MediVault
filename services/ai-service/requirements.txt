@@ -7,6 +7,11 @@ Pillow==10.3.0
 python-multipart==0.0.9
 pymupdf==1.24.3
 pydantic-settings==2.3.0
+# Phase 1 Unlimited-OCR package config
+PyYAML==6.0.1
+# Optional heavy deps for UNLIMITED_OCR_BACKEND=local (not required for default deploy):
+# torch
+# transformers
 # ML / anomaly detection (Feature 2)
 scikit-learn==1.5.0
 numpy==1.26.4

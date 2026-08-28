@@ -6,13 +6,26 @@ structurally enforced at the query layer per 02_ARCHITECTURE.md §4.
 """
 
 import uuid
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..base_repository import ScopedRepository
 from ..models import Report, ReportValue
+
+
+def _coerce_date(value: object) -> date | None:
+    if value is None:
+        return None
+    if isinstance(value, date) and not isinstance(value, datetime):
+        return value
+    if isinstance(value, str):
+        try:
+            return date.fromisoformat(value)
+        except ValueError:
+            return None
+    return None
 
 
 class ReportRepository(ScopedRepository[Report]):
@@ -68,7 +81,9 @@ class ReportRepository(ScopedRepository[Report]):
                 reference_range_low=v.get("reference_range_low"),
                 reference_range_high=v.get("reference_range_high"),
                 reference_range_text=v.get("reference_range_text"),
-                date_of_test=v.get("date_of_test"),
+                date_of_test=_coerce_date(v.get("date_of_test")),
+                explanation_en=v.get("explanation_en"),
+                explanation_hi=v.get("explanation_hi"),
                 created_at=datetime.now(UTC),
             )
             for v in parsed_values

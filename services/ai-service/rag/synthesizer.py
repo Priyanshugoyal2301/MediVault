@@ -130,6 +130,7 @@ def synthesize(
         idx = source_to_idx.get(chunk.source, citation_idx)
         # Summarise the chunk content (first 2–3 sentences)
         sentences = _extract_key_sentences(chunk.text, max_sentences=3)
+        sentences = _sanitize_tone(sentences)
         body_parts.append(f"{sentences} [{idx}]")
 
     body_en = "\n\n".join(body_parts) if body_parts else ""
@@ -187,6 +188,28 @@ def _extract_key_sentences(text: str, max_sentences: int = 3) -> str:
         if len(s.strip()) > 20 and not s.strip().startswith("|")
     ]
     return " ".join(meaningful[:max_sentences])
+
+
+def _sanitize_tone(text: str) -> str:
+    """Rewrite diagnostic-sounding substrings that leak from KB into answers.
+
+    Plan C: tone-violation rate was driven by cited KB phrasing, not retrieval.
+    Keep meaning; avoid 'you have' / 'diagnosed with' in user-facing synthesis.
+    """
+    import re
+
+    replacements = [
+        (r"\byou have been diagnosed with\b", "a clinician may have identified"),
+        (r"\balready diagnosed with\b", "already living with"),
+        (r"\bdiagnosed with\b", "associated with"),
+        (r"\byou have a medical condition\b", "a medical condition may be present"),
+        (r"\bmean you have\b", "mean there may be"),
+        (r"\byou have\b", "there may be"),
+    ]
+    out = text
+    for pattern, repl in replacements:
+        out = re.sub(pattern, repl, out, flags=re.IGNORECASE)
+    return out
 
 
 def _translate_body_to_hindi(body_en: str) -> str:

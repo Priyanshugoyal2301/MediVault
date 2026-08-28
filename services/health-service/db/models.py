@@ -11,7 +11,7 @@ import uuid
 from datetime import date, datetime
 from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, Date, DateTime, ForeignKey, Numeric, String
+from sqlalchemy import CheckConstraint, Date, DateTime, ForeignKey, Numeric, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -66,6 +66,8 @@ class ReportValue(Base):
     reference_range_high: Mapped[Decimal | None] = mapped_column(Numeric(10, 4), nullable=True)
     reference_range_text: Mapped[str | None] = mapped_column(String(200), nullable=True)
     date_of_test: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    explanation_en: Mapped[str | None] = mapped_column(Text(), nullable=True)
+    explanation_hi: Mapped[str | None] = mapped_column(Text(), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
 

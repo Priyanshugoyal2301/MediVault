@@ -9,9 +9,14 @@ from fastapi import FastAPI
 
 from packages.shared_utils import get_logger
 
-from .routers.qa import router as qa_router
-from .routers.reports import router as reports_router
-from .routers.timeline import router as timeline_router
+try:
+    from .routers.qa import router as qa_router
+    from .routers.reports import router as reports_router
+    from .routers.timeline import router as timeline_router
+except ImportError:  # flat layout (Docker / `cd services/health-service`)
+    from routers.qa import router as qa_router
+    from routers.reports import router as reports_router
+    from routers.timeline import router as timeline_router
 
 logger = get_logger(__name__)
 

@@ -25,9 +25,10 @@ from pydantic import BaseModel, Field
 
 from packages.shared_utils import get_logger
 
-from ..safety import check_safety
-from ..rag.retriever import retrieve, RetrievedChunk
+from ..core.registry import get_retriever
+from ..rag.retriever import RetrievedChunk
 from ..rag.synthesizer import synthesize
+from ..safety import check_safety
 
 logger = get_logger(__name__)
 
@@ -96,12 +97,22 @@ async def ask_question(
             safety_triggered=True,
         )
 
-    # ----- STEP 2: Retrieve relevant chunks -----
-    chunks = retrieve(
+    # ----- STEP 2: Retrieve relevant chunks (Retriever interface → BM25 default) -----
+    retrieved = get_retriever().retrieve(
         query=body.question,
         user_report_values=body.user_report_values,
         top_k=5,
     )
+    chunks = [
+        RetrievedChunk(
+            text=c.text,
+            source=c.source,
+            source_url=c.source_url,
+            score=c.score,
+            is_user_data=c.is_user_data,
+        )
+        for c in retrieved
+    ]
 
     # ----- STEP 3: Synthesize answer -----
     result = synthesize(
