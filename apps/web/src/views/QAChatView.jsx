@@ -1,245 +1,200 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Send, ShieldAlert, Sparkles, BookOpen, AlertTriangle, ExternalLink, Bot, User } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Send, ShieldAlert, BookOpen, Bot, User } from 'lucide-react';
+import { askQuestion } from '../api';
 
-export default function QAChatView({ locale, initialMessages }) {
+export default function QAChatView({ locale, token, initialMessages }) {
   const [messages, setMessages] = useState(initialMessages);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const [activeCitation, setActiveCitation] = useState(null);
   const messagesEndRef = useRef(null);
   const isHi = locale === 'hi-IN';
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  // Deterministic Safety Layer Red-Flag patterns (runs in frontend for instant feedback)
-  const RED_FLAGS = [
-    { pattern: /chest\s+pain.*breath|heart\s+attack|seene.*dard/i, category: 'cardiac_emergency' },
-    { pattern: /blood\s+in\s+(stool|urine|feces)|vomiting\s+blood|khoon.*peshab/i, category: 'gastrointestinal_bleeding' },
-    { pattern: /sudden(ly)?\s+vision\s+loss|lost\s+vision|achanak.*dikhai/i, category: 'sudden_vision_loss' },
-    { pattern: /slurred\s+speech|stroke|face\s+droop/i, category: 'stroke_symptoms' },
-    { pattern: /kill\s+myself|suicid|self-harm|marna/i, category: 'suicidal_ideation' },
+  const SUGGESTIONS = [
+    'What does high LDL mean?',
+    'What was my LDL?',
+    'I have chest pain and trouble breathing',
   ];
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    if (!inputText.trim()) return;
+    if (!inputText.trim() || isTyping) return;
 
-    const userMsg = {
-      id: Date.now(),
-      role: 'user',
-      content: inputText,
-    };
-
+    const userMsg = { id: Date.now(), role: 'user', content: inputText };
     setMessages((prev) => [...prev, userMsg]);
-    const currentInput = inputText;
+    const question = inputText;
     setInputText('');
     setIsTyping(true);
 
-    // Check Safety Layer deterministically
-    const triggeredRule = RED_FLAGS.find((rf) => rf.pattern.test(currentInput));
-
-    setTimeout(() => {
-      if (triggeredRule) {
-        // Return verbatim safety message (Feature 3 Requirement: never reword or suppress)
-        const safetyMsg = {
-          id: Date.now() + 1,
-          role: 'safety',
-          category: triggeredRule.category,
-          content_en:
-            "Your message mentions symptoms that could indicate a medical emergency. " +
-            "Please call emergency services (112 in India, 911 in the US, 999 in the UK) " +
-            "or go to your nearest emergency room immediately. Do not wait for an online response.",
-          content_hi:
-            "आपके संदेश में ऐसे लक्षणों का उल्लेख है जो चिकित्सा आपातकाल का संकेत हो सकते हैं। " +
-            "कृपया तुरंत आपातकालीन सेवाओं को कॉल करें (भारत में 112) या अपने निकटतम आपातकालीन कक्ष में जाएं। " +
-            "ऑनलाइन उत्तर की प्रतीक्षा न करें।",
-          safety_triggered: true,
-        };
-        setMessages((prev) => [...prev, safetyMsg]);
+    try {
+      const data = await askQuestion(token, question, locale, sessionId);
+      setSessionId(data.session_id);
+      if (data.safety_triggered) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now() + 1,
+            role: 'safety',
+            content_en: data.answer,
+            content_hi: data.answer_hi,
+            safety_triggered: true,
+            citations: [],
+          },
+        ]);
       } else {
-        // Normal RAG answer with citations
-        let answerEn = "";
-        let answerHi = "";
-        let citations = [];
-
-        if (currentInput.toLowerCase().includes('ldl') || currentInput.toLowerCase().includes('cholesterol')) {
-          answerEn = "Based on available medical guidelines: LDL (Low-Density Lipoprotein) is commonly referred to as 'bad' cholesterol because elevated levels contribute to arterial plaque buildup [1]. Your recent test showed an LDL level of 165 mg/dL [2].";
-          answerHi = "उपलब्ध चिकित्सा दिशानिर्देशों के आधार पर: एलडीएल कोलेस्ट्रॉल को आमतौर पर 'खराब' कोलेस्ट्रॉल कहा जाता है क्योंकि उच्च स्तर धमनियों में पट्टिका संचय में योगदान देता है [1]। आपका हालिया परीक्षण 165 mg/dL का एलडीएल स्तर दर्शाता है [2]।";
-          citations = [
-            { index: 1, source: "NHS Guidelines — High Cholesterol", url: "https://www.nhs.uk/conditions/high-cholesterol/" },
-            { index: 2, source: "Your report from 2025-01-15", url: null },
-          ];
-        } else if (currentInput.toLowerCase().includes('haemoglobin') || currentInput.toLowerCase().includes('hb')) {
-          answerEn = "Based on WHO reference guidelines: Haemoglobin carries oxygen in red blood cells. The normal range for adult women is 12.0–15.5 g/dL [1]. Your latest recorded Haemoglobin value is 10.5 g/dL [2], which is below the standard reference threshold.";
-          answerHi = "डब्ल्यूएचओ संदर्भ दिशानिर्देशों के आधार पर: हीमोग्लोबिन लाल रक्त कोशिकाओं में ऑक्सीजन ले जाता है। वयस्क महिलाओं के लिए सामान्य सीमा 12.0–15.5 g/dL है [1]। आपका नवीनतम रिकॉर्ड किया गया हीमोग्लोबिन मान 10.5 g/dL है [2]।";
-          citations = [
-            { index: 1, source: "WHO Guidelines — Haemoglobin Concentrations", url: "https://www.who.int/publications/i/item/9789241549554" },
-            { index: 2, source: "Your report from 2025-02-10", url: null },
-          ];
-        } else {
-          answerEn = "Based on curated medical knowledge: Regular monitoring of lab metrics provides valuable context for your long-term health timeline [1]. Please discuss any specific values or trends with your healthcare provider.";
-          answerHi = "चिकित्सा ज्ञान के आधार पर: लैब मेट्रिक्स की नियमित निगरानी आपकी दीर्घकालिक स्वास्थ्य समयरेखा के लिए मूल्यवान संदर्भ प्रदान करती है [1]। कृपया किसी भी विशिष्ट मान की चर्चा अपने डॉक्टर से करें।";
-          citations = [
-            { index: 1, source: "ICMR Reference Values for Indians", url: "https://www.icmr.gov.in" },
-          ];
-        }
-
-        const botMsg = {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now() + 1,
+            role: 'assistant',
+            content_en: data.answer,
+            content_hi: data.answer_hi,
+            citations: data.citations || [],
+            safety_triggered: false,
+          },
+        ]);
+      }
+    } catch (err) {
+      setMessages((prev) => [
+        ...prev,
+        {
           id: Date.now() + 1,
           role: 'assistant',
-          content_en: answerEn,
-          content_hi: answerHi,
-          citations: citations,
+          content_en: `Sorry — Q&A failed: ${err.message}`,
+          content_hi: `क्षमा करें — प्रश्न विफल: ${err.message}`,
+          citations: [],
           safety_triggered: false,
-        };
-        setMessages((prev) => [...prev, botMsg]);
-      }
+        },
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 450);
+    }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      {/* Top Banner */}
-      <div className="card" style={{ background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div>
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sparkles size={20} color="var(--primary)" />
-            {isHi ? 'साक्ष्य-आधारित स्वास्थ्य Q&A (RAG)' : 'Evidence-Grounded Health Q&A (RAG Engine)'}
-          </h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem' }}>
-            {isHi
-              ? 'प्रतिक्रियाएं आपके अपने रिपोर्ट डेटा एवं सहकर्मी-समीक्षित दिशानिर्देशों (WHO, NHS, ICMR) से उद्धृत हैं।'
-              : 'Every response is grounded in curated clinical guidelines (WHO, NHS, ICMR) + your own report history.'}
-          </p>
-        </div>
-        <span className="badge normal">
-          <ShieldAlert size={12} /> {isHi ? 'सुरक्षा परत सक्रिय' : 'Safety Layer Active'}
-        </span>
-      </div>
+    <div className="card" style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 180px)', minHeight: 480, padding: 0 }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {messages.map((msg) => {
+          if (msg.role === 'user') {
+            return (
+              <div key={msg.id} style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
+                <div style={{ maxWidth: '75%', background: 'var(--primary-gradient)', color: '#fff', padding: '0.85rem 1rem', borderRadius: 12 }}>
+                  {msg.content}
+                </div>
+                <User size={20} color="var(--text-muted)" aria-hidden="true" />
+              </div>
+            );
+          }
 
-      {/* Main Chat Interface */}
-      <div className="chat-container">
-        <div className="chat-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <Bot size={20} color="var(--primary)" />
-            <span style={{ fontWeight: 600, color: '#fff', fontSize: '0.95rem' }}>
-              MediVault AI Assistant
-            </span>
-          </div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-subtle)' }}>
-            Deterministic Red-Flag Guardrail: ON (&lt;100ms)
-          </span>
-        </div>
+          const text = isHi ? (msg.content_hi || msg.content_en) : (msg.content_en || msg.content_hi);
+          const isSafety = msg.role === 'safety' || msg.safety_triggered;
 
-        <div className="chat-messages">
-          {messages.map((msg) => (
-            <div key={msg.id} className={`message-bubble ${msg.role}`}>
-              {msg.role === 'safety' ? (
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, marginBottom: '0.5rem', color: '#f87171' }}>
-                    <AlertTriangle size={18} />
-                    <span>{isHi ? 'आपातकालीन चेतावनी (Emergency Safety Alert)' : 'Emergency Safety Alert (Verbatim)'}</span>
+          return (
+            <div key={msg.id} style={{ display: 'flex', gap: '0.5rem' }}>
+              {isSafety ? <ShieldAlert size={20} color="#f87171" /> : <Bot size={20} color="var(--primary)" />}
+              <div
+                style={{
+                  maxWidth: '85%',
+                  background: isSafety ? 'rgba(248,113,113,0.12)' : 'rgba(255,255,255,0.04)',
+                  border: `1px solid ${isSafety ? 'rgba(248,113,113,0.4)' : 'var(--bg-card-border)'}`,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 12,
+                  color: '#e2e8f0',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.55,
+                }}
+              >
+                <p>{text}</p>
+                {!!msg.citations?.length && (
+                  <div style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {msg.citations.map((c) => (
+                      <button
+                        key={`${msg.id}-${c.index}`}
+                        type="button"
+                        className="btn btn-secondary"
+                        style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem' }}
+                        onClick={() => setActiveCitation(c)}
+                      >
+                        <BookOpen size={12} /> [{c.index}] {c.source}
+                      </button>
+                    ))}
                   </div>
-                  <p>{isHi ? msg.content_hi : msg.content_en}</p>
-                </div>
-              ) : msg.role === 'user' ? (
-                <div>{msg.content}</div>
-              ) : (
-                <div>
-                  <p>{isHi ? msg.content_hi : msg.content_en}</p>
-
-                  {/* Citations Chips */}
-                  {msg.citations && msg.citations.length > 0 && (
-                    <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                      <span style={{ fontSize: '0.75rem', color: 'var(--text-subtle)', fontWeight: 600 }}>
-                        {isHi ? 'उद्धृत स्रोत (Citations):' : 'Sources Cited:'}
-                      </span>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                        {msg.citations.map((c) => (
-                          <button
-                            key={c.index}
-                            onClick={() => setActiveCitation(c)}
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.3rem',
-                              padding: '2px 8px',
-                              borderRadius: '4px',
-                              background: 'rgba(6, 182, 212, 0.12)',
-                              border: '1px solid rgba(6, 182, 212, 0.25)',
-                              color: 'var(--primary)',
-                              fontSize: '0.75rem',
-                              fontWeight: 600,
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <BookOpen size={11} /> [{c.index}] {c.source}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          ))}
-
-          {isTyping && (
-            <div className="message-bubble assistant" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-subtle)' }}>
-              <Sparkles size={16} className="spin" />
-              <span>{isHi ? 'खोज एवं उत्तर निर्माण जारी है...' : 'Retrieving evidence & generating cited answer...'}</span>
-            </div>
-          )}
-
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Input Bar */}
-        <form onSubmit={handleSend} className="chat-input-bar">
-          <input
-            type="text"
-            className="chat-input"
-            placeholder={
-              isHi
-                ? 'अपनी रिपोर्ट या स्वास्थ्य के बारे में प्रश्न पूछें (उदा: "मेरा एलडीएल क्यों अधिक है?")...'
-                : 'Ask about your lab report or general health (e.g. "Why is my LDL high?")...'
-            }
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          />
-          <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem 1.25rem' }}>
-            <Send size={18} />
-          </button>
-        </form>
+          );
+        })}
+        {isTyping && (
+          <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Retrieving cited knowledge…</div>
+        )}
+        <div ref={messagesEndRef} />
       </div>
 
-      {/* Citation Modal Popup */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', padding: '0.75rem 1rem 0' }}>
+        {SUGGESTIONS.map((s) => (
+          <button
+            key={s}
+            type="button"
+            className="btn btn-secondary"
+            style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem' }}
+            disabled={isTyping}
+            onClick={() => setInputText(s)}
+          >
+            {s}
+          </button>
+        ))}
+      </div>
+
+      <form onSubmit={handleSend} style={{ display: 'flex', gap: '0.75rem', padding: '1rem', borderTop: '1px solid var(--bg-card-border)' }}>
+        <label htmlFor="qa-input" className="sr-only" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>
+          Ask a health question
+        </label>
+        <input
+          id="qa-input"
+          className="chat-input"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder={isHi ? 'अपनी रिपोर्ट के बारे में पूछें…' : 'Ask about your labs or guidelines…'}
+          disabled={isTyping}
+        />
+        <button type="submit" className="btn btn-primary" disabled={isTyping || !inputText.trim()} aria-label="Send message">
+          <Send size={18} />
+        </button>
+      </form>
+
       {activeCitation && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          <div className="card" style={{ maxWidth: 500, width: '100%' }}>
-            <div className="card-title">
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <BookOpen size={18} color="var(--primary)" />
-                Citation Details [{activeCitation.index}]
-              </span>
-              <button onClick={() => setActiveCitation(null)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.2rem' }}>×</button>
-            </div>
-            <h4 style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.5rem' }}>{activeCitation.source}</h4>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              This information was retrieved from curated clinical reference documents and matched against your user health record.
-            </p>
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Citation details"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.55)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 50,
+          }}
+          onClick={() => setActiveCitation(null)}
+          onKeyDown={(e) => e.key === 'Escape' && setActiveCitation(null)}
+        >
+          <div className="card" style={{ maxWidth: 420, width: '90%' }} onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ color: '#fff', marginBottom: '0.5rem' }}>Citation [{activeCitation.index}]</h3>
+            <p style={{ color: 'var(--text-muted)' }}>{activeCitation.source}</p>
             {activeCitation.url && (
-              <a href={activeCitation.url} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ width: '100%', fontSize: '0.85rem' }}>
-                View Original Guideline Source <ExternalLink size={14} />
+              <a href={activeCitation.url} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)' }}>
+                Open source
               </a>
             )}
+            <button type="button" className="btn btn-secondary" style={{ marginTop: '1rem' }} onClick={() => setActiveCitation(null)}>
+              Close
+            </button>
           </div>
         </div>
       )}
