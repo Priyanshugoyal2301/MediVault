@@ -1,0 +1,12 @@
+{"id": "q1", "question": "What does a high hemoglobin mean?", "expected_keywords": ["haemoglobin", "hemoglobin", "cbc"], "expected_sources": ["cbc"], "kind": "medical"}
+{"id": "q2", "question": "LDL cholesterol is high what should I know?", "expected_keywords": ["ldl", "cholesterol", "lipid"], "expected_sources": ["lipid"], "kind": "medical"}
+{"id": "q3", "question": "Explain HbA1c", "expected_keywords": ["hba1c", "glucose", "a1c"], "expected_sources": ["hba1c"], "kind": "abbreviation"}
+{"id": "q4", "question": "TSH thyroid stimulating hormone elevated", "expected_keywords": ["tsh", "thyroid"], "expected_sources": ["thyroid"], "kind": "synonym"}
+{"id": "q5", "question": "wbc white blood cell count low meaning", "expected_keywords": ["wbc", "white", "leucocyte", "leukocyte"], "expected_sources": ["cbc"], "kind": "synonym"}
+{"id": "q6", "question": "triglicerides high in blood report", "expected_keywords": ["triglyceride", "lipid"], "expected_sources": ["lipid"], "kind": "misspelled"}
+{"id": "q7", "question": "I had a lipid panel last month and my doctor mentioned non-hdl — what is non hdl cholesterol?", "expected_keywords": ["non-hdl", "non hdl", "cholesterol", "lipid"], "expected_sources": ["lipid"], "kind": "long"}
+{"id": "q8", "question": "platelets PLT count information", "expected_keywords": ["platelet"], "expected_sources": ["cbc"], "kind": "abbreviation"}
+{"id": "q9", "question": "free t4 vs total t4 thyroid labs", "expected_keywords": ["t4", "thyroid", "free"], "expected_sources": ["thyroid"], "kind": "contextual"}
+{"id": "q10", "question": "general tips for reading lab reports safely", "expected_keywords": ["doctor", "lab", "report", "guid"], "expected_sources": ["general"], "kind": "contextual"}
+{"id": "q11", "question": "HGB low symptoms education", "expected_keywords": ["haemoglobin", "hemoglobin", "anemia", "anaemia"], "expected_sources": ["cbc"], "kind": "abbreviation"}
+{"id": "q12", "question": "hdl good cholesterol role", "expected_keywords": ["hdl", "cholesterol"], "expected_sources": ["lipid"], "kind": "synonym"}

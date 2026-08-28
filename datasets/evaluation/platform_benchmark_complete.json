@@ -1,0 +1,1475 @@
+{
+  "generated_at": "2026-08-11T22:27:01",
+  "platform": {
+    "python": "3.12.10",
+    "system": "Windows",
+    "machine": "AMD64",
+    "cpu": {
+      "cpu_count": 32,
+      "system_ram_gb": 31.18,
+      "process_rss_mb": 50.12
+    },
+    "gpu": {
+      "available": true,
+      "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+      "device_count": 1
+    }
+  },
+  "artifact_sizes_mb": {
+    "ocr": null,
+    "normalizer": 15.026,
+    "retrieval": 0.538,
+    "risk": 0.437,
+    "forecast": 0.988,
+    "health_score": 0.175,
+    "anomaly": 1.368,
+    "image_quality": 0.796
+  },
+  "default_path_latency_ms": {
+    "quality_passthrough_ms": 20.833,
+    "normalizer_alias_ms": 156.403,
+    "risk_unavailable_ms": 1.252,
+    "forecast_unavailable_ms": 1.06,
+    "health_unavailable_ms": 1.245,
+    "anomaly_statistical_ms": 9.164,
+    "retriever_bm25_ms": 9.904,
+    "parser_legacy_ms": 0.989
+  },
+  "components": {
+    "ocr": {
+      "eval_path": "datasets/evaluation/ocr_phase1_latest.json",
+      "present": true,
+      "metrics": {
+        "experiment": "phase1_unlimited_ocr_vs_legacy",
+        "tolerance": 0.051,
+        "legacy": {
+          "field_precision": 0.95,
+          "field_recall": 1.0,
+          "field_f1": 0.96875,
+          "exact_match": 0.875,
+          "missing_field_rate": 0.0,
+          "false_positive_rate": 0.05,
+          "ocr_accuracy": 1.0,
+          "table_accuracy": 1.0,
+          "latency_ms": 36.7956,
+          "avg_processing_time_ms": 4.5994,
+          "memory_mib": 0.0,
+          "cpu_seconds": 0.0,
+          "gpu_memory_mib": 0.0,
+          "precision": 0.95,
+          "recall": 1.0,
+          "f1": 0.96875,
+          "accuracy": 0.875,
+          "model_size_bytes": 0,
+          "inference_time_ms": 4.5994,
+          "parser": "legacy_regex",
+          "n_samples": 8
+        },
+        "unlimited_ocr_postprocess": {
+          "field_precision": 0.15625,
+          "field_recall": 0.15625,
+          "field_f1": 0.15625,
+          "exact_match": 0.125,
+          "missing_field_rate": 0.84375,
+          "false_positive_rate": 0.59375,
+          "ocr_accuracy": 1.0,
+          "table_accuracy": 0.15625,
+          "latency_ms": 36.7956,
+          "avg_processing_time_ms": 4.5994,
+          "memory_mib": 0.0,
+          "cpu_seconds": 0.0,
+          "gpu_memory_mib": 0.0,
+          "precision": 0.15625,
+          "recall": 0.15625,
+          "f1": 0.15625,
+          "accuracy": 0.125,
+          "model_size_bytes": 0,
+          "inference_time_ms": 4.5994,
+          "parser": "unlimited_ocr_postprocess",
+          "n_samples": 8
+        },
+        "per_sample_legacy": [
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 4.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "cbc_colon_easy"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 4.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "cbc_table_pipes"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 5.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "lipid_alias_heavy"
+          },
+          {
+            "field_precision": 0.6,
+            "field_recall": 1.0,
+            "field_f1": 0.75,
+            "tp": 3.0,
+            "fp": 2.0,
+            "fn": 0.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.4,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "thyroid_messy"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 2.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "hba1c_alias"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 3.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "cbc_hb_dot_alias"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 4.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "lipid_spaced_dots"
+          },
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 4.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "mixed_panel_noise"
+          }
+        ],
+        "per_sample_unlimited": [
+          {
+            "field_precision": 1.0,
+            "field_recall": 1.0,
+            "field_f1": 1.0,
+            "tp": 4.0,
+            "fp": 0.0,
+            "fn": 0.0,
+            "exact_match": 1.0,
+            "missing_field_rate": 0.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 1.0,
+            "sample_id": "cbc_colon_easy"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 4.0,
+            "fn": 4.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 1.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "cbc_table_pipes"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 3.0,
+            "fn": 5.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 1.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "lipid_alias_heavy"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 0.0,
+            "fn": 3.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "thyroid_messy"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 2.0,
+            "fn": 2.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 1.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "hba1c_alias"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 1.0,
+            "fn": 3.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 1.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "cbc_hb_dot_alias"
+          },
+          {
+            "field_precision": 0.25,
+            "field_recall": 0.25,
+            "field_f1": 0.25,
+            "tp": 1.0,
+            "fp": 3.0,
+            "fn": 3.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 0.75,
+            "false_positive_rate": 0.75,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.25,
+            "sample_id": "lipid_spaced_dots"
+          },
+          {
+            "field_precision": 0.0,
+            "field_recall": 0.0,
+            "field_f1": 0.0,
+            "tp": 0.0,
+            "fp": 0.0,
+            "fn": 4.0,
+            "exact_match": 0.0,
+            "missing_field_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "ocr_accuracy": 1.0,
+            "table_accuracy": 0.0,
+            "sample_id": "mixed_panel_noise"
+          }
+        ],
+        "notes": "Unlimited metrics here evaluate Medical JSON post-processing on the same fixture text (simulating VLM-decoded document text). Full baidu/Unlimited-OCR weights require UNLIMITED_OCR_ENDPOINT or local transformers load."
+      }
+    },
+    "ocr_1a": {
+      "eval_path": "datasets/evaluation/ocr_phase1a_bench.json",
+      "present": true,
+      "metrics": {
+        "config_load_ms": 3.109,
+        "readiness_check_ms": 0.005,
+        "preprocess_png_ms": 975.68,
+        "fallback_recovery_ms": 24.434,
+        "fallback_values": 1,
+        "readiness": {
+          "ready": false,
+          "mode": "auto-unready",
+          "reason": "auto backend with no UNLIMITED_OCR_ENDPOINT; requests will fall back to legacy (local weights never auto-selected)",
+          "config_summary": {
+            "backend": "auto",
+            "http_endpoint_configured": false,
+            "http_timeout_s": 120,
+            "allow_local_weights": false,
+            "allow_local_download": false,
+            "treat_empty_lab_as_failure": true,
+            "hf_model_id": "baidu/Unlimited-OCR"
+          }
+        },
+        "notes": "No VLM weights loaded; measures startup/config/preprocess/fallback only"
+      }
+    },
+    "normalizer": {
+      "eval_path": "datasets/evaluation/normalizer_phase2_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "medical_test_normalizer",
+        "backend": "char_tfidf",
+        "n_eval": 942,
+        "n_known": 937,
+        "rule_based": {
+          "top1_accuracy": 0.6926360725720384,
+          "precision": 0.6926360725720384,
+          "recall": 0.6926360725720384,
+          "f1": 0.6926360725720384,
+          "support": 937,
+          "latency": {
+            "mean_ms": 0.3324643546753149,
+            "p50_ms": 0.3256000345572829,
+            "p95_ms": 0.5891999462619424,
+            "max_ms": 2.5134000461548567
+          }
+        },
+        "ml_normalizer": {
+          "top1_accuracy": 0.9957310565635006,
+          "top3_accuracy": 1.0,
+          "precision": 0.9957310565635006,
+          "recall": 0.9957310565635006,
+          "f1": 0.9957310565635006,
+          "support": 937,
+          "unknown_term_accuracy": 0.9989384288747346,
+          "loinc_mapping_accuracy": 0.9957310565635006,
+          "latency": {
+            "mean_ms": 2.60192282177061,
+            "p50_ms": 0.07309997454285622,
+            "p95_ms": 9.515699930489063,
+            "max_ms": 10.712499963119626
+          },
+          "confusion": {
+            "errors": [
+              {
+                "true": "TC/HDL Ratio",
+                "pred": "HDL Cholesterol",
+                "count": 4
+              }
+            ],
+            "total_mismatches": 4
+          }
+        },
+        "notes": [
+          "Rule path uses AliasNormalizer (service default when flag off).",
+          "ML path = alias exact OR char_tfidf/ModernBERT/ClinicalBERT NN.",
+          "Default active_backend=char_tfidf keeps deploy offline-safe."
+        ]
+      }
+    },
+    "retrieval": {
+      "eval_path": "datasets/evaluation/retrieval_phase3_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "semantic_medical_retriever",
+        "embedding_backend": "char_tfidf",
+        "vector_store": "numpy",
+        "index_chunks": 13,
+        "n_queries": 12,
+        "bm25": {
+          "keyword_hit_rate": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "precision@5": 0.225,
+          "mrr": 0.8055555555555555,
+          "ndcg@5": 0.8551549589285763,
+          "latency_ms_mean": 0.6733666717385253,
+          "latency_ms_p95": 0.8609999204054475
+        },
+        "semantic": {
+          "keyword_hit_rate": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "precision@5": 0.20000000000000004,
+          "mrr": 0.9583333333333334,
+          "ndcg@5": 0.9692441461309548,
+          "latency_ms_mean": 0.8745499750754485,
+          "latency_ms_p95": 1.0100000072270632
+        },
+        "notes": [
+          "Gold labels are panel stems (cbc/lipid/thyroid/hba1c/general).",
+          "Default semantic embeddings are offline char_tfidf unless RETRIEVAL_ALLOW_HF=1.",
+          "Primary architecture config: BGE-small; fallback MiniLM."
+        ]
+      }
+    },
+    "risk": {
+      "eval_path": "datasets/evaluation/risk_phase4_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "disease_risk_predictor",
+        "backend": "xgboost",
+        "n_eval": 250,
+        "macro_roc_auc": {
+          "rule_based": 0.9615830476501681,
+          "ml": 0.9844817222477287
+        },
+        "latency_ms": {
+          "rule_mean": 0.00781960105523467,
+          "ml_mean": 2.668881681933999
+        },
+        "per_disease": {
+          "type2_diabetes": {
+            "rule_based": {
+              "accuracy": 0.816,
+              "precision": 0.55,
+              "recall": 0.9821428571428571,
+              "sensitivity": 0.9821428571428571,
+              "specificity": 0.7680412371134021,
+              "f1": 0.7051282051282052,
+              "tp": 55.0,
+              "tn": 149.0,
+              "fp": 45.0,
+              "fn": 1.0,
+              "roc_auc": 0.9661266568483063,
+              "pr_auc": 0.9265423035389562,
+              "ece": 0.24464
+            },
+            "ml": {
+              "accuracy": 0.972,
+              "precision": 1.0,
+              "recall": 0.875,
+              "sensitivity": 0.875,
+              "specificity": 1.0,
+              "f1": 0.9333333333333333,
+              "tp": 49.0,
+              "tn": 194.0,
+              "fp": 0.0,
+              "fn": 7.0,
+              "roc_auc": 0.9965942562592047,
+              "pr_auc": 0.972728991323126,
+              "ece": 0.03034354483289644,
+              "confusion": {
+                "tp": 49,
+                "tn": 194,
+                "fp": 0,
+                "fn": 7
+              },
+              "roc_curve": [
+                {
+                  "threshold": 0.0,
+                  "tpr": 1.0,
+                  "fpr": 1.0
+                },
+                {
+                  "threshold": 0.1,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.020618556701030927
+                },
+                {
+                  "threshold": 0.2,
+                  "tpr": 0.9285714285714286,
+                  "fpr": 0.010309278350515464
+                },
+                {
+                  "threshold": 0.30000000000000004,
+                  "tpr": 0.8928571428571429,
+                  "fpr": 0.010309278350515464
+                },
+                {
+                  "threshold": 0.4,
+                  "tpr": 0.8928571428571429,
+                  "fpr": 0.005154639175257732
+                },
+                {
+                  "threshold": 0.5,
+                  "tpr": 0.875,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.6000000000000001,
+                  "tpr": 0.875,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.7000000000000001,
+                  "tpr": 0.875,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.8,
+                  "tpr": 0.8214285714285714,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.9,
+                  "tpr": 0.7142857142857143,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 1.0,
+                  "tpr": 0.0,
+                  "fpr": 0.0
+                }
+              ],
+              "feature_importance": [
+                [
+                  "hba1c",
+                  0.4942461848258972
+                ],
+                [
+                  "fasting_glucose",
+                  0.25437697768211365
+                ],
+                [
+                  "bmi",
+                  0.0470057912170887
+                ],
+                [
+                  "tsh",
+                  0.024877557530999184
+                ],
+                [
+                  "creatinine",
+                  0.020450159907341003
+                ],
+                [
+                  "alt",
+                  0.020173363387584686
+                ],
+                [
+                  "platelets",
+                  0.019611088559031487
+                ],
+                [
+                  "egfr",
+                  0.01523645594716072
+                ]
+              ]
+            }
+          },
+          "anemia": {
+            "rule_based": {
+              "accuracy": 0.824,
+              "precision": 0.5666666666666667,
+              "recall": 0.9107142857142857,
+              "sensitivity": 0.9107142857142857,
+              "specificity": 0.7989690721649485,
+              "f1": 0.6986301369863013,
+              "tp": 51.0,
+              "tn": 155.0,
+              "fp": 39.0,
+              "fn": 5.0,
+              "roc_auc": 0.9044550810014728,
+              "pr_auc": 0.7748442629127522,
+              "ece": 0.12527999999999995
+            },
+            "ml": {
+              "accuracy": 0.568,
+              "precision": 0.3395061728395062,
+              "recall": 0.9821428571428571,
+              "sensitivity": 0.9821428571428571,
+              "specificity": 0.4484536082474227,
+              "f1": 0.5045871559633027,
+              "tp": 55.0,
+              "tn": 87.0,
+              "fp": 107.0,
+              "fn": 1.0,
+              "roc_auc": 0.928019145802651,
+              "pr_auc": 0.7649932531720605,
+              "ece": 0.4873146429588088,
+              "confusion": {
+                "tp": 55,
+                "tn": 87,
+                "fp": 107,
+                "fn": 1
+              },
+              "roc_curve": [
+                {
+                  "threshold": 0.0,
+                  "tpr": 1.0,
+                  "fpr": 1.0
+                },
+                {
+                  "threshold": 0.1,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.9175257731958762
+                },
+                {
+                  "threshold": 0.2,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.9175257731958762
+                },
+                {
+                  "threshold": 0.30000000000000004,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.9072164948453608
+                },
+                {
+                  "threshold": 0.4,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.8556701030927835
+                },
+                {
+                  "threshold": 0.5,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.5515463917525774
+                },
+                {
+                  "threshold": 0.6000000000000001,
+                  "tpr": 0.9821428571428571,
+                  "fpr": 0.4536082474226804
+                },
+                {
+                  "threshold": 0.7000000000000001,
+                  "tpr": 0.9642857142857143,
+                  "fpr": 0.4536082474226804
+                },
+                {
+                  "threshold": 0.8,
+                  "tpr": 0.9642857142857143,
+                  "fpr": 0.44329896907216493
+                },
+                {
+                  "threshold": 0.9,
+                  "tpr": 0.9464285714285714,
+                  "fpr": 0.31958762886597936
+                },
+                {
+                  "threshold": 1.0,
+                  "tpr": 0.0,
+                  "fpr": 0.0
+                }
+              ],
+              "feature_importance": [
+                [
+                  "hemoglobin",
+                  0.4752042293548584
+                ],
+                [
+                  "rbc",
+                  0.15406545996665955
+                ],
+                [
+                  "hba1c",
+                  0.03647216036915779
+                ],
+                [
+                  "bmi",
+                  0.02854173444211483
+                ],
+                [
+                  "diastolic_bp",
+                  0.024709656834602356
+                ],
+                [
+                  "sex_female",
+                  0.02465810254216194
+                ],
+                [
+                  "total_cholesterol",
+                  0.017807023599743843
+                ],
+                [
+                  "systolic_bp",
+                  0.016958005726337433
+                ]
+              ]
+            }
+          },
+          "ckd": {
+            "rule_based": {
+              "accuracy": 0.984,
+              "precision": 0.9491525423728814,
+              "recall": 0.9824561403508771,
+              "sensitivity": 0.9824561403508771,
+              "specificity": 0.9844559585492227,
+              "f1": 0.9655172413793103,
+              "tp": 56.0,
+              "tn": 190.0,
+              "fp": 3.0,
+              "fn": 1.0,
+              "roc_auc": 0.9865466775747659,
+              "pr_auc": 0.9443246903801492,
+              "ece": 0.15280000000000005
+            },
+            "ml": {
+              "accuracy": 0.996,
+              "precision": 1.0,
+              "recall": 0.9824561403508771,
+              "sensitivity": 0.9824561403508771,
+              "specificity": 1.0,
+              "f1": 0.9911504424778761,
+              "tp": 56.0,
+              "tn": 193.0,
+              "fp": 0.0,
+              "fn": 1.0,
+              "roc_auc": 1.0,
+              "pr_auc": 0.9824561403508772,
+              "ece": 0.0072763412147760324,
+              "confusion": {
+                "tp": 56,
+                "tn": 193,
+                "fp": 0,
+                "fn": 1
+              },
+              "roc_curve": [
+                {
+                  "threshold": 0.0,
+                  "tpr": 1.0,
+                  "fpr": 1.0
+                },
+                {
+                  "threshold": 0.1,
+                  "tpr": 1.0,
+                  "fpr": 0.0051813471502590676
+                },
+                {
+                  "threshold": 0.2,
+                  "tpr": 1.0,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.30000000000000004,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.4,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.5,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.6000000000000001,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.7000000000000001,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.8,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.9,
+                  "tpr": 0.9824561403508771,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 1.0,
+                  "tpr": 0.0,
+                  "fpr": 0.0
+                }
+              ],
+              "feature_importance": [
+                [
+                  "creatinine",
+                  0.6574040651321411
+                ],
+                [
+                  "egfr",
+                  0.22177337110042572
+                ],
+                [
+                  "wbc",
+                  0.03770140931010246
+                ],
+                [
+                  "urea",
+                  0.027806080877780914
+                ],
+                [
+                  "tsh",
+                  0.00814466830343008
+                ],
+                [
+                  "platelets",
+                  0.006983012892305851
+                ],
+                [
+                  "free_t4",
+                  0.005442730616778135
+                ],
+                [
+                  "rbc",
+                  0.005179335363209248
+                ]
+              ]
+            }
+          },
+          "liver_dysfunction": {
+            "rule_based": {
+              "accuracy": 0.976,
+              "precision": 0.921875,
+              "recall": 0.9833333333333333,
+              "sensitivity": 0.9833333333333333,
+              "specificity": 0.9736842105263158,
+              "f1": 0.9516129032258064,
+              "tp": 59.0,
+              "tn": 185.0,
+              "fp": 5.0,
+              "fn": 1.0,
+              "roc_auc": 0.9815789473684211,
+              "pr_auc": 0.9028896813687651,
+              "ece": 0.15928
+            },
+            "ml": {
+              "accuracy": 0.988,
+              "precision": 1.0,
+              "recall": 0.95,
+              "sensitivity": 0.95,
+              "specificity": 1.0,
+              "f1": 0.9743589743589743,
+              "tp": 57.0,
+              "tn": 190.0,
+              "fp": 0.0,
+              "fn": 3.0,
+              "roc_auc": 0.9985964912280701,
+              "pr_auc": 0.9795935303152603,
+              "ece": 0.013246539622545246,
+              "confusion": {
+                "tp": 57,
+                "tn": 190,
+                "fp": 0,
+                "fn": 3
+              },
+              "roc_curve": [
+                {
+                  "threshold": 0.0,
+                  "tpr": 1.0,
+                  "fpr": 1.0
+                },
+                {
+                  "threshold": 0.1,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.2,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.30000000000000004,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.4,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.5,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.6000000000000001,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.7000000000000001,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.8,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.9,
+                  "tpr": 0.95,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 1.0,
+                  "tpr": 0.0,
+                  "fpr": 0.0
+                }
+              ],
+              "feature_importance": [
+                [
+                  "ast",
+                  0.4287955164909363
+                ],
+                [
+                  "alt",
+                  0.414764404296875
+                ],
+                [
+                  "tsh",
+                  0.0165560245513916
+                ],
+                [
+                  "rbc",
+                  0.012544735334813595
+                ],
+                [
+                  "hba1c",
+                  0.010956603102385998
+                ],
+                [
+                  "platelets",
+                  0.010601749643683434
+                ],
+                [
+                  "total_cholesterol",
+                  0.010218369774520397
+                ],
+                [
+                  "random_glucose",
+                  0.009356163442134857
+                ]
+              ]
+            }
+          },
+          "thyroid_dysfunction": {
+            "rule_based": {
+              "accuracy": 0.98,
+              "precision": 0.9743589743589743,
+              "recall": 0.9047619047619048,
+              "sensitivity": 0.9047619047619048,
+              "specificity": 0.9951923076923077,
+              "f1": 0.9382716049382716,
+              "tp": 38.0,
+              "tn": 207.0,
+              "fp": 1.0,
+              "fn": 4.0,
+              "roc_auc": 0.9692078754578755,
+              "pr_auc": 0.8803189398459476,
+              "ece": 0.15339999999999998
+            },
+            "ml": {
+              "accuracy": 0.984,
+              "precision": 0.975,
+              "recall": 0.9285714285714286,
+              "sensitivity": 0.9285714285714286,
+              "specificity": 0.9951923076923077,
+              "f1": 0.951219512195122,
+              "tp": 39.0,
+              "tn": 207.0,
+              "fp": 1.0,
+              "fn": 3.0,
+              "roc_auc": 0.999198717948718,
+              "pr_auc": 0.9722245546434227,
+              "ece": 0.022372455375269065,
+              "confusion": {
+                "tp": 39,
+                "tn": 207,
+                "fp": 1,
+                "fn": 3
+              },
+              "roc_curve": [
+                {
+                  "threshold": 0.0,
+                  "tpr": 1.0,
+                  "fpr": 1.0
+                },
+                {
+                  "threshold": 0.1,
+                  "tpr": 1.0,
+                  "fpr": 0.028846153846153848
+                },
+                {
+                  "threshold": 0.2,
+                  "tpr": 0.9761904761904762,
+                  "fpr": 0.009615384615384616
+                },
+                {
+                  "threshold": 0.30000000000000004,
+                  "tpr": 0.9523809523809523,
+                  "fpr": 0.009615384615384616
+                },
+                {
+                  "threshold": 0.4,
+                  "tpr": 0.9523809523809523,
+                  "fpr": 0.009615384615384616
+                },
+                {
+                  "threshold": 0.5,
+                  "tpr": 0.9285714285714286,
+                  "fpr": 0.004807692307692308
+                },
+                {
+                  "threshold": 0.6000000000000001,
+                  "tpr": 0.9285714285714286,
+                  "fpr": 0.004807692307692308
+                },
+                {
+                  "threshold": 0.7000000000000001,
+                  "tpr": 0.9047619047619048,
+                  "fpr": 0.004807692307692308
+                },
+                {
+                  "threshold": 0.8,
+                  "tpr": 0.9047619047619048,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 0.9,
+                  "tpr": 0.8809523809523809,
+                  "fpr": 0.0
+                },
+                {
+                  "threshold": 1.0,
+                  "tpr": 0.0,
+                  "fpr": 0.0
+                }
+              ],
+              "feature_importance": [
+                [
+                  "tsh",
+                  0.42802485823631287
+                ],
+                [
+                  "free_t4",
+                  0.14666223526000977
+                ],
+                [
+                  "egfr",
+                  0.08485092222690582
+                ],
+                [
+                  "hba1c",
+                  0.06433964520692825
+                ],
+                [
+                  "platelets",
+                  0.02698970027267933
+                ],
+                [
+                  "hemoglobin",
+                  0.02348850853741169
+                ],
+                [
+                  "total_cholesterol",
+                  0.021556958556175232
+                ],
+                [
+                  "ast_alt_ratio",
+                  0.018653154373168945
+                ]
+              ]
+            }
+          }
+        },
+        "safety": {
+          "disclaimer_required": true,
+          "diagnosis_forbidden": true
+        },
+        "notes": [
+          "Synthetic educational data only \u2014 not MIMIC/NHANES weights.",
+          "Primary architecture XGBoost when installed; else LightGBM/sklearn_gb.",
+          "Outputs are risk probabilities, never diagnoses."
+        ]
+      }
+    },
+    "forecast": {
+      "eval_path": "datasets/evaluation/forecast_phase5_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "biomarker_forecaster",
+        "backend": "lightgbm",
+        "horizon_days": 180,
+        "n_patients_eval": 40,
+        "macro_mae": 4.589474512834373,
+        "macro_rmse": 17.210410110703833,
+        "latency_ms_per_pred_mean": 0.9290746188260537,
+        "e2e_forecast_ms": 13.3552000625059,
+        "per_biomarker": {
+          "hba1c": {
+            "n": 128,
+            "mae": 0.1391388557492624,
+            "rmse": 0.20881729977122643,
+            "mape": 2.451277560233869,
+            "r2": 0.8032957329812715,
+            "pi_coverage": 0.828125,
+            "calibration_error": 0.025477443230490882,
+            "trend_accuracy": 0.3984375
+          },
+          "fasting_glucose": {
+            "n": 129,
+            "mae": 4.3444205570320555,
+            "rmse": 13.586849624919209,
+            "mape": 3.5036499799491687,
+            "r2": 0.39831697645446285,
+            "pi_coverage": 0.751937984496124,
+            "calibration_error": 1.9043607430465663,
+            "trend_accuracy": 0.3798449612403101
+          },
+          "random_glucose": {
+            "n": 126,
+            "mae": 4.424455109265702,
+            "rmse": 6.144136971598184,
+            "mape": 3.8120298758193747,
+            "r2": 0.8961019934761121,
+            "pi_coverage": 0.753968253968254,
+            "calibration_error": 1.1752606029769725,
+            "trend_accuracy": 0.40476190476190477
+          },
+          "egfr": {
+            "n": 128,
+            "mae": 3.9319363398353535,
+            "rmse": 8.066555050238211,
+            "mape": 4.422445184336377,
+            "r2": 0.7827283889729436,
+            "pi_coverage": 0.765625,
+            "calibration_error": 2.0687103515530785,
+            "trend_accuracy": 0.4375
+          },
+          "alt": {
+            "n": 131,
+            "mae": 1.8397078273044276,
+            "rmse": 2.7943804323743637,
+            "mape": 13.838887221536215,
+            "r2": 0.8956803236426565,
+            "pi_coverage": 0.9389312977099237,
+            "calibration_error": 0.7712144029557917,
+            "trend_accuracy": 0.37404580152671757
+          },
+          "ast": {
+            "n": 126,
+            "mae": 1.94672040979666,
+            "rmse": 2.848854470829159,
+            "mape": 9.522693679900353,
+            "r2": 0.8812803128187696,
+            "pi_coverage": 0.9682539682539683,
+            "calibration_error": 0.9738109089317859,
+            "trend_accuracy": 0.4523809523809524
+          },
+          "total_cholesterol": {
+            "n": 133,
+            "mae": 6.156446099919655,
+            "rmse": 8.271722133947081,
+            "mape": 3.2237419076222316,
+            "r2": 0.8885239022210306,
+            "pi_coverage": 0.9097744360902256,
+            "calibration_error": 1.1353342724089739,
+            "trend_accuracy": 0.3533834586466165
+          },
+          "hdl": {
+            "n": 135,
+            "mae": 3.257804790988524,
+            "rmse": 12.80534881679919,
+            "mape": 5.501440367731784,
+            "r2": 0.3481243091078706,
+            "pi_coverage": 0.837037037037037,
+            "calibration_error": 1.5382538641946435,
+            "trend_accuracy": 0.4
+          },
+          "tsh": {
+            "n": 138,
+            "mae": 0.20689749528727328,
+            "rmse": 0.3155139203508003,
+            "mape": 11.047099290487834,
+            "r2": 0.8412966769438609,
+            "pi_coverage": 0.9637681159420289,
+            "calibration_error": 0.07474952612385359,
+            "trend_accuracy": 0.4927536231884058
+          },
+          "hemoglobin": {
+            "n": 134,
+            "mae": 0.3355071794511475,
+            "rmse": 0.4982054764727941,
+            "mape": 2.5603952562156826,
+            "r2": 0.78778748438953,
+            "pi_coverage": 0.8507462686567164,
+            "calibration_error": 0.1603340523763625,
+            "trend_accuracy": 0.373134328358209
+          },
+          "ldl": {
+            "n": 132,
+            "mae": 9.558778690991186,
+            "rmse": 35.91885864116201,
+            "mape": 25.043842846817704,
+            "r2": 0.2560409811892618,
+            "pi_coverage": 0.6742424242424242,
+            "calibration_error": 5.418404516728733,
+            "trend_accuracy": 0.3787878787878788
+          },
+          "triglycerides": {
+            "n": 134,
+            "mae": 23.475524981640444,
+            "rmse": 132.1849258413627,
+            "mape": 11.552654292410926,
+            "r2": 0.14031675798598586,
+            "pi_coverage": 0.7611940298507462,
+            "calibration_error": 12.764943079118643,
+            "trend_accuracy": 0.3805970149253731
+          },
+          "creatinine": {
+            "n": 138,
+            "mae": 0.04583032958515235,
+            "rmse": 0.09116275932488195,
+            "mape": 5.299629655261839,
+            "r2": 0.7093379853957301,
+            "pi_coverage": 0.8260869565217391,
+            "calibration_error": 0.015181622477896428,
+            "trend_accuracy": 0.5797101449275363
+          }
+        },
+        "notes": [
+          "Synthetic longitudinal data only.",
+          "Primary LightGBM; XGBoost fallback; linear baseline; LSTM/Transformer stubbed.",
+          "Forecasts are non-diagnostic."
+        ]
+      }
+    },
+    "health_score": {
+      "eval_path": "datasets/evaluation/health_score_phase6_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "personalized_health_score",
+        "backend": "xgboost",
+        "n_eval": 50,
+        "mae": 2.0013701155959667,
+        "rmse": 2.443231343937865,
+        "mape": 4.300383984777807,
+        "r2": 0.9909036240400039,
+        "calibration_error": 0.6701519128410002,
+        "feature_stability": 0.5689516129032259,
+        "batch_predict_ms": 6.197000038810074,
+        "latency_ms_per_row": 0.12394000077620149,
+        "e2e_score_explain_ms": 1253.1677999068052,
+        "shap_library_available": true,
+        "explanation_method_sample": "shap_tree",
+        "sample_score": 73.64729309082031,
+        "sample_band": "Good",
+        "sample_confidence": 0.8381818181818181,
+        "global_importance_top": [
+          [
+            "hba1c",
+            0.8080949785157037
+          ],
+          [
+            "ldl",
+            0.0912748561053539
+          ],
+          [
+            "egfr",
+            0.01733484561556088
+          ],
+          [
+            "forecast_worsening_proxy",
+            0.015285983146147729
+          ],
+          [
+            "total_cholesterol",
+            0.010139564618977595
+          ],
+          [
+            "risk_mean_proxy",
+            0.009705444369165005
+          ],
+          [
+            "hdl",
+            0.008547672402121212
+          ],
+          [
+            "triglycerides",
+            0.007460826247548814
+          ],
+          [
+            "risk_max_proxy",
+            0.006589022041565342
+          ],
+          [
+            "trend_penalty",
+            0.0045323108499950035
+          ]
+        ],
+        "notes": [
+          "Synthetic targets from heuristic formula + noise.",
+          "Primary XGBoost; LightGBM fallback; linear baseline.",
+          "SHAP TreeExplainer when installed; centered fallback otherwise.",
+          "Non-diagnostic health orientation score only."
+        ]
+      }
+    },
+    "anomaly": {
+      "eval_path": "datasets/evaluation/anomaly_phase7_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "lab_anomaly_detector",
+        "active_backend": "isolation_forest",
+        "n_eval": 100,
+        "n_pos": 20,
+        "comparison": {
+          "isolation_forest": {
+            "precision_at_20": 0.55,
+            "recall_at_20": 0.55,
+            "roc_auc": 0.9087500000000001,
+            "pr_auc": 0.7112153379679302,
+            "fpr_at_threshold": 0.0375,
+            "fit_ms": 202.72239996120334,
+            "infer_batch_ms": 7.978199981153011,
+            "latency_ms_per_row": 0.07978199981153011
+          },
+          "lof": {
+            "precision_at_20": 1.0,
+            "recall_at_20": 1.0,
+            "roc_auc": 0.9999999999999999,
+            "pr_auc": 0.95,
+            "fpr_at_threshold": 0.0,
+            "fit_ms": 1966.974399983883,
+            "infer_batch_ms": 21.38849999755621,
+            "latency_ms_per_row": 0.2138849999755621
+          },
+          "robust_z": {
+            "precision_at_20": 0.25,
+            "recall_at_20": 0.25,
+            "roc_auc": 0.633125,
+            "pr_auc": 0.25270819298437774,
+            "fpr_at_threshold": 0.75,
+            "fit_ms": 0.46039989683777094,
+            "infer_batch_ms": 0.07330009248107672,
+            "latency_ms_per_row": 0.0007330009248107672
+          }
+        },
+        "e2e_series_detect_ms": 8.706999942660332,
+        "sample_series": {
+          "is_anomaly": false,
+          "anomaly_probability": 0.0,
+          "category": "Low",
+          "method": "ml_anomaly:isolation_forest"
+        },
+        "notes": [
+          "Synthetic labels for ROC/PR only.",
+          "Primary Isolation Forest; LOF fallback; Robust Z baseline.",
+          "Non-diagnostic: 'Anomalous laboratory pattern' language only."
+        ]
+      }
+    },
+    "image_quality": {
+      "eval_path": "datasets/evaluation/image_quality_phase8_latest.json",
+      "present": true,
+      "metrics": {
+        "model": "document_image_quality",
+        "active_backend": "mobilenet_v3",
+        "available_backends": {
+          "opencv_rules": true,
+          "feature_ml": true,
+          "mobilenet_v3": true,
+          "efficientnet_lite0": true,
+          "torch": true
+        },
+        "n_eval": 60,
+        "comparison": {
+          "mobilenet_v3": {
+            "subset_accuracy": 0.9166666666666666,
+            "f1_macro": 0.952040816070827,
+            "precision_macro": 0.9285714282889499,
+            "recall_macro": 0.8441558439176559,
+            "ready_roc_auc": 1.0,
+            "ready_confusion": {
+              "tp": 15,
+              "tn": 45,
+              "fp": 0,
+              "fn": 0
+            },
+            "fit_ms": 4428.001199965365,
+            "infer_batch_ms": 16.739599988795817,
+            "latency_ms_per_image": 0.27899333314659697
+          },
+          "efficientnet_lite0": {
+            "subset_accuracy": 0.9166666666666666,
+            "f1_macro": 0.952040816070827,
+            "precision_macro": 0.9285714282889499,
+            "recall_macro": 0.8441558439176559,
+            "ready_roc_auc": 1.0,
+            "ready_confusion": {
+              "tp": 15,
+              "tn": 45,
+              "fp": 0,
+              "fn": 0
+            },
+            "fit_ms": 706.0355000430718,
+            "infer_batch_ms": 12.62759999372065,
+            "latency_ms_per_image": 0.21045999989534417
+          },
+          "opencv_rules": {
+            "subset_accuracy": 0.0,
+            "f1_macro": 0.2526884827261454,
+            "precision_macro": 0.20289269549064323,
+            "recall_macro": 0.32251082237875056,
+            "ready_roc_auc": 0.6370370370370371,
+            "ready_confusion": {
+              "tp": 0,
+              "tn": 45,
+              "fp": 0,
+              "fn": 15
+            },
+            "fit_ms": 0.002300017513334751,
+            "infer_batch_ms": 0.6597000174224377,
+            "latency_ms_per_image": 0.01099500029037396
+          }
+        },
+        "e2e_assess_ms": 27.084500063210726,
+        "sample_blur": {
+          "ok": false,
+          "quality_score": 21.921373283813644,
+          "category": "Unusable",
+          "problems": [
+            "Blurry"
+          ],
+          "recommendation": "Please upload a clearer image"
+        },
+        "notes": [
+          "Synthetic degraded lab pages only.",
+          "Primary MobileNetV3-Small (or feature proxy if torch missing).",
+          "Fallback EfficientNet-B0/Lite0-compatible; baseline OpenCV rules.",
+          "DocLayNet/PubLayNet/RVL-CDIP optional offline paths only."
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Default feature flags are OFF \u2014 latency figures are production-safe paths.",
+    "Phase metrics come from prior offline synthetic/real-fixture evaluations.",
+    "GPU optional; most models train/infer on CPU."
+  ]
+}

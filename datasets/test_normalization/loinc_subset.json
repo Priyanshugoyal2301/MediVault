@@ -1,0 +1,167 @@
+[
+  {
+    "canonical": "Haemoglobin",
+    "loinc": "718-7",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "WBC",
+    "loinc": "6690-2",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "RBC",
+    "loinc": "789-8",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Platelets",
+    "loinc": "777-3",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Hematocrit",
+    "loinc": "4544-3",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "MCV",
+    "loinc": "787-2",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "MCH",
+    "loinc": "785-6",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "MCHC",
+    "loinc": "786-4",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Neutrophils",
+    "loinc": "770-8",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Lymphocytes",
+    "loinc": "736-9",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Monocytes",
+    "loinc": "5905-5",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Eosinophils",
+    "loinc": "711-2",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Basophils",
+    "loinc": "704-7",
+    "panel": "CBC"
+  },
+  {
+    "canonical": "Total Cholesterol",
+    "loinc": "2093-3",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "LDL Cholesterol",
+    "loinc": "2089-1",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "HDL Cholesterol",
+    "loinc": "2085-9",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "Triglycerides",
+    "loinc": "2571-8",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "VLDL Cholesterol",
+    "loinc": "13457-7",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "Non-HDL Cholesterol",
+    "loinc": "43396-1",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "TC/HDL Ratio",
+    "loinc": "9830-1",
+    "panel": "Lipid Profile"
+  },
+  {
+    "canonical": "TSH",
+    "loinc": "3016-3",
+    "panel": "Thyroid"
+  },
+  {
+    "canonical": "T3",
+    "loinc": "3053-6",
+    "panel": "Thyroid"
+  },
+  {
+    "canonical": "T4",
+    "loinc": "3026-2",
+    "panel": "Thyroid"
+  },
+  {
+    "canonical": "Free T3",
+    "loinc": "3051-0",
+    "panel": "Thyroid"
+  },
+  {
+    "canonical": "Free T4",
+    "loinc": "3024-7",
+    "panel": "Thyroid"
+  },
+  {
+    "canonical": "HbA1c",
+    "loinc": "4548-4",
+    "panel": "HbA1c"
+  },
+  {
+    "canonical": "eAG (Est. Avg Glucose)",
+    "loinc": "27353-2",
+    "panel": "HbA1c"
+  },
+  {
+    "canonical": "Alanine Aminotransferase",
+    "loinc": "1742-6",
+    "panel": "LFT"
+  },
+  {
+    "canonical": "Aspartate Aminotransferase",
+    "loinc": "1920-8",
+    "panel": "LFT"
+  },
+  {
+    "canonical": "Alkaline Phosphatase",
+    "loinc": "6768-6",
+    "panel": "LFT"
+  },
+  {
+    "canonical": "Bilirubin Total",
+    "loinc": "1975-2",
+    "panel": "LFT"
+  },
+  {
+    "canonical": "Creatinine",
+    "loinc": "2160-0",
+    "panel": "RFT"
+  },
+  {
+    "canonical": "Urea",
+    "loinc": "3094-0",
+    "panel": "RFT"
+  }
+]

@@ -1,0 +1,1155 @@
+{"raw": "hb", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hgb", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "haemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hemoglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "haemoglobin (hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hemoglobin (hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hb.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hgb.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hb blood", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "haemglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hemoglobon", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "hb-blood", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "serum hemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "vocabulary"}
+{"raw": "Haemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "canonical"}
+{"raw": "wbc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "tlc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "total leucocyte count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "total leukocyte count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "total wbc count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "white blood cells", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "white blood cell", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "leukocytes", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "leucocytes", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "white cell count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "twbc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "vocabulary"}
+{"raw": "WBC", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "canonical"}
+{"raw": "rbc", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "red blood cell", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "red blood cells", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "erythrocytes", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "total rbc count", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "red cell count", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "r.b.c.", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "vocabulary"}
+{"raw": "RBC", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "canonical"}
+{"raw": "plt", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "platelets", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "platelet count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "plt. count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "plt count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "thrombocytes", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "platelet", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "plts", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "vocabulary"}
+{"raw": "Platelets", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "canonical"}
+{"raw": "pcv", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "hematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "haematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "packed cell volume", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "hct", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "ht", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "vocabulary"}
+{"raw": "Hematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "canonical"}
+{"raw": "mcv", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "vocabulary"}
+{"raw": "mean corpuscular volume", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "vocabulary"}
+{"raw": "mean cell volume", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "vocabulary"}
+{"raw": "MCV", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "canonical"}
+{"raw": "mch", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "vocabulary"}
+{"raw": "mean corpuscular haemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "vocabulary"}
+{"raw": "mean corpuscular hemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "vocabulary"}
+{"raw": "mean cell haemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "vocabulary"}
+{"raw": "mean cell hemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "vocabulary"}
+{"raw": "MCH", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "canonical"}
+{"raw": "mchc", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "vocabulary"}
+{"raw": "mean corpuscular haemoglobin concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "vocabulary"}
+{"raw": "mean corpuscular hemoglobin concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "vocabulary"}
+{"raw": "MCHC", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "canonical"}
+{"raw": "neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "neutrophil", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "neut", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "segs", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "segmented neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "polymorphs", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "pmn", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "vocabulary"}
+{"raw": "Neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "canonical"}
+{"raw": "lymphocytes", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "vocabulary"}
+{"raw": "lymphocyte", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "vocabulary"}
+{"raw": "lymph", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "vocabulary"}
+{"raw": "lym", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "vocabulary"}
+{"raw": "Lymphocytes", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "canonical"}
+{"raw": "monocytes", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "vocabulary"}
+{"raw": "monocyte", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "vocabulary"}
+{"raw": "mono", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "vocabulary"}
+{"raw": "Monocytes", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "canonical"}
+{"raw": "eosinophils", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "vocabulary"}
+{"raw": "eosinophil", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "vocabulary"}
+{"raw": "eos", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "vocabulary"}
+{"raw": "Eosinophils", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "canonical"}
+{"raw": "basophils", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "vocabulary"}
+{"raw": "basophil", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "vocabulary"}
+{"raw": "baso", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "vocabulary"}
+{"raw": "Basophils", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "canonical"}
+{"raw": "total cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "cholesterol total", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "serum cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "tc", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "chol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "t.chol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "vocabulary"}
+{"raw": "Total Cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "canonical"}
+{"raw": "ldl", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "ldl cholesterol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "ldl-c", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "ldlc", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "low density lipoprotein", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "low-density lipoprotein", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "ldl chol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "vocabulary"}
+{"raw": "LDL Cholesterol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "canonical"}
+{"raw": "hdl", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "hdl cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "hdl-c", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "hdlc", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "high density lipoprotein", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "high-density lipoprotein", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "h.d.l. cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "hdl chol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "vocabulary"}
+{"raw": "HDL Cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "canonical"}
+{"raw": "triglycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "triglyceride", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "tg", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "trigs", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "tri glycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "t.g.", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "vocabulary"}
+{"raw": "Triglycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "canonical"}
+{"raw": "vldl", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "vocabulary"}
+{"raw": "vldl cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "vocabulary"}
+{"raw": "vldl-c", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "vocabulary"}
+{"raw": "very low density lipoprotein", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "vocabulary"}
+{"raw": "VLDL Cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "canonical"}
+{"raw": "non-hdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "non hdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "non-hdl cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "non hdl cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "nonhdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "non hdl chol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "vocabulary"}
+{"raw": "Non-HDL Cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "canonical"}
+{"raw": "tc/hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "cholesterol/hdl ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "total cholesterol/hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "tc hdl ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "chol/hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "tc/hdl ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "vocabulary"}
+{"raw": "TC/HDL Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "canonical"}
+{"raw": "tsh", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "thyroid stimulating hormone", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "thyrotropin", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "tsh (ultrasensitive)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "tsh(ultrasensitive)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "s.tsh", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "vocabulary"}
+{"raw": "TSH", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "canonical"}
+{"raw": "t3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "vocabulary"}
+{"raw": "triiodothyronine", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "vocabulary"}
+{"raw": "total t3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "vocabulary"}
+{"raw": "serum t3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "vocabulary"}
+{"raw": "t-3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "vocabulary"}
+{"raw": "T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "canonical"}
+{"raw": "t4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "vocabulary"}
+{"raw": "thyroxine", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "vocabulary"}
+{"raw": "total t4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "vocabulary"}
+{"raw": "serum t4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "vocabulary"}
+{"raw": "t-4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "vocabulary"}
+{"raw": "T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "canonical"}
+{"raw": "free t3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "vocabulary"}
+{"raw": "ft3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "vocabulary"}
+{"raw": "free triiodothyronine", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "vocabulary"}
+{"raw": "f.t3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "vocabulary"}
+{"raw": "Free T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "canonical"}
+{"raw": "free t4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "vocabulary"}
+{"raw": "ft4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "vocabulary"}
+{"raw": "free thyroxine", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "vocabulary"}
+{"raw": "f.t4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "vocabulary"}
+{"raw": "Free T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "canonical"}
+{"raw": "hba1c", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "a1c", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "hb a1c", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycosylated hemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycosylated haemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycated hemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycated haemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycosylated hemoglobin (hba1c)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycosylated haemoglobin (hba1c)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "glycohb", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "hb1ac", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "vocabulary"}
+{"raw": "HbA1c", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "canonical"}
+{"raw": "eag", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "estimated average glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "estimated average glucose (eag)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "est avg glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "estimated avg glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "eag (est. avg glucose)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "vocabulary"}
+{"raw": "eAG (Est. Avg Glucose)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "canonical"}
+{"raw": "alt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "vocabulary"}
+{"raw": "sgpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "vocabulary"}
+{"raw": "alanine aminotransferase", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "vocabulary"}
+{"raw": "serum gpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "vocabulary"}
+{"raw": "gpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "vocabulary"}
+{"raw": "Alanine Aminotransferase", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "canonical"}
+{"raw": "ast", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "vocabulary"}
+{"raw": "sgot", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "vocabulary"}
+{"raw": "aspartate aminotransferase", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "vocabulary"}
+{"raw": "serum got", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "vocabulary"}
+{"raw": "got", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "vocabulary"}
+{"raw": "Aspartate Aminotransferase", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "canonical"}
+{"raw": "alp", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "vocabulary"}
+{"raw": "alkaline phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "vocabulary"}
+{"raw": "alk phos", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "vocabulary"}
+{"raw": "alkp", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "vocabulary"}
+{"raw": "Alkaline Phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "canonical"}
+{"raw": "total bilirubin", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "vocabulary"}
+{"raw": "bilirubin total", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "vocabulary"}
+{"raw": "tbil", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "vocabulary"}
+{"raw": "bilirubin", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "vocabulary"}
+{"raw": "Bilirubin Total", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "canonical"}
+{"raw": "creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "vocabulary"}
+{"raw": "serum creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "vocabulary"}
+{"raw": "creat", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "vocabulary"}
+{"raw": "scr", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "vocabulary"}
+{"raw": "Creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "canonical"}
+{"raw": "urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "vocabulary"}
+{"raw": "blood urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "vocabulary"}
+{"raw": "bun urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "vocabulary"}
+{"raw": "serum urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "vocabulary"}
+{"raw": "Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "canonical"}
+{"raw": "HB", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HGB", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hgb", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hgb:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hgb (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMOGLOBIN", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hemoglobin:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hemoglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HAEMOGLOBIN", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Haemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "haemoglobin:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "haemoglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMOGLOBIN (BLOOD)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hemoglobin (Blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hemoglobin (blood):", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hemoglobin (blood) (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HAEMOGLOBIN (HB)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Haemoglobin (Hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "haemoglobin (hb):", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "haemoglobin  (hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "haemoglobin (hb) (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMOGLOBIN (HB)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hemoglobin (Hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hemoglobin (hb):", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hemoglobin  (hb)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "hemoglobin (hb) (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HB.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb.:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb. (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HGB.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hgb.", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hgb.:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hgb. (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HB BLOOD", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb Blood", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb blood:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb  blood", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "hb blood (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HAEMGLOBIN", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Haemglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "haemglobin:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "haemglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMOGLOBON", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hemoglobon", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hemoglobon:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hemoglobon (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HB-BLOOD", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb-Blood", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb-blood:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb-blood (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM HEMOGLOBIN", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Hemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum hemoglobin:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum hemoglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HAEMOGLOBIN", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Haemoglobin", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "Haemoglobin:", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Haemoglobin (blood)", "canonical": "Haemoglobin", "loinc": "718-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "WBC", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Wbc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "wbc:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "wbc (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TLC", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tlc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "tlc:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tlc (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL LEUCOCYTE COUNT", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Leucocyte Count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "total leucocyte count:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total leucocyte count (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL LEUKOCYTE COUNT", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Leukocyte Count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "total leukocyte count:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total leukocyte count (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL WBC COUNT", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Wbc Count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "total wbc count:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total  wbc  count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "total wbc count (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "WHITE BLOOD CELLS", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "White Blood Cells", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "white blood cells:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "white  blood  cells", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "white blood cells (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "WHITE BLOOD CELL", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "White Blood Cell", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "white blood cell:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "white  blood  cell", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "white blood cell (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LEUKOCYTES", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Leukocytes", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "leukocytes:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "leukocytes (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LEUCOCYTES", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Leucocytes", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "leucocytes:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "leucocytes (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "WHITE CELL COUNT", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "White Cell Count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "white cell count:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "white  cell  count", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "white cell count (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TWBC", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Twbc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "twbc:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "twbc (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "WBC", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Wbc", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "WBC:", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "WBC (blood)", "canonical": "WBC", "loinc": "6690-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "RBC", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Rbc", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "rbc:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "rbc (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "RED BLOOD CELL", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Red Blood Cell", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "red blood cell:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "red blood cell (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "RED BLOOD CELLS", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Red Blood Cells", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "red blood cells:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "red  blood  cells", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_space"}
+{"raw": "red blood cells (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ERYTHROCYTES", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Erythrocytes", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "erythrocytes:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "erythrocytes (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL RBC COUNT", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Rbc Count", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "total rbc count:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total  rbc  count", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_space"}
+{"raw": "total rbc count (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "RED CELL COUNT", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Red Cell Count", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "red cell count:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "red cell count (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "R.B.C.", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "R.B.C.", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "r.b.c.:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "r.b.c. (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "RBC", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Rbc", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "RBC:", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "RBC (blood)", "canonical": "RBC", "loinc": "789-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLT", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Plt", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "plt:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "plt (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLATELETS", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Platelets", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "platelets:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "platelets (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLATELET COUNT", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Platelet Count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "platelet count:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "platelet count (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLT. COUNT", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Plt. Count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "plt. count:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "plt.  count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_space"}
+{"raw": "plt. count (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLT COUNT", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Plt Count", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "plt count:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "plt count (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "THROMBOCYTES", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Thrombocytes", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "thrombocytes:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "thrombocytes (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLATELET", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Platelet", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "platelet:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "platelet (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLTS", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Plts", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "plts:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "plts (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PLATELETS", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Platelets", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "Platelets:", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Platelets (blood)", "canonical": "Platelets", "loinc": "777-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PCV", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Pcv", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "pcv:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "pcv (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMATOCRIT", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "hematocrit:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hematocrit (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HAEMATOCRIT", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Haematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "haematocrit:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "haematocrit (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PACKED CELL VOLUME", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Packed Cell Volume", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "packed cell volume:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "packed cell volume (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HCT", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hct", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "hct:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hct (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HT", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ht", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "ht:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ht (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HEMATOCRIT", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hematocrit", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "Hematocrit:", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Hematocrit (blood)", "canonical": "Hematocrit", "loinc": "4544-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCV", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mcv", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "mcv:", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mcv (blood)", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CORPUSCULAR VOLUME", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Corpuscular Volume", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean corpuscular volume:", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean  corpuscular  volume", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "mean corpuscular volume (blood)", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CELL VOLUME", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Cell Volume", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean cell volume:", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean cell volume (blood)", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCV", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mcv", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "MCV:", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "MCV (blood)", "canonical": "MCV", "loinc": "787-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCH", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mch", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "mch:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mch (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CORPUSCULAR HAEMOGLOBIN", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Corpuscular Haemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean corpuscular haemoglobin:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean corpuscular haemoglobin (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CORPUSCULAR HEMOGLOBIN", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Corpuscular Hemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean corpuscular hemoglobin:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean  corpuscular  hemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "mean corpuscular hemoglobin (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CELL HAEMOGLOBIN", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Cell Haemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean cell haemoglobin:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean  cell  haemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "mean cell haemoglobin (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CELL HEMOGLOBIN", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Cell Hemoglobin", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean cell hemoglobin:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean cell hemoglobin (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCH", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mch", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "MCH:", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "MCH (blood)", "canonical": "MCH", "loinc": "785-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCHC", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mchc", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "mchc:", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mchc (blood)", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CORPUSCULAR HAEMOGLOBIN CONCENTRATION", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Corpuscular Haemoglobin Concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean corpuscular haemoglobin concentration:", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean  corpuscular  haemoglobin  concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "mean corpuscular haemoglobin concentration (blood)", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MEAN CORPUSCULAR HEMOGLOBIN CONCENTRATION", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mean Corpuscular Hemoglobin Concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "mean corpuscular hemoglobin concentration:", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mean  corpuscular  hemoglobin  concentration", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "mean corpuscular hemoglobin concentration (blood)", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MCHC", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mchc", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "MCHC:", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "MCHC (blood)", "canonical": "MCHC", "loinc": "786-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NEUTROPHILS", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "neutrophils:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "neutrophils (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NEUTROPHIL", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Neutrophil", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "neutrophil:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "neutrophil (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NEUT", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Neut", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "neut:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "neut (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SEGS", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Segs", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "segs:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "segs (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SEGMENTED NEUTROPHILS", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Segmented Neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "segmented neutrophils:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "segmented  neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_space"}
+{"raw": "segmented neutrophils (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "POLYMORPHS", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Polymorphs", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "polymorphs:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "polymorphs (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "PMN", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Pmn", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "pmn:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "pmn (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NEUTROPHILS", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Neutrophils", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "Neutrophils:", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Neutrophils (blood)", "canonical": "Neutrophils", "loinc": "770-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LYMPHOCYTES", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Lymphocytes", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "lymphocytes:", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "lymphocytes (blood)", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LYMPHOCYTE", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Lymphocyte", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "lymphocyte:", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "lymphocyte (blood)", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LYMPH", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Lymph", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "lymph:", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "lymph (blood)", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LYM", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Lym", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "lym:", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "lym (blood)", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LYMPHOCYTES", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Lymphocytes", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "Lymphocytes:", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Lymphocytes (blood)", "canonical": "Lymphocytes", "loinc": "736-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MONOCYTES", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_case"}
+{"raw": "Monocytes", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_title"}
+{"raw": "monocytes:", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_punct"}
+{"raw": "monocytes (blood)", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MONOCYTE", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_case"}
+{"raw": "Monocyte", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_title"}
+{"raw": "monocyte:", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_punct"}
+{"raw": "monocyte (blood)", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MONO", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_case"}
+{"raw": "Mono", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_title"}
+{"raw": "mono:", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_punct"}
+{"raw": "mono (blood)", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "MONOCYTES", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_case"}
+{"raw": "Monocytes", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_title"}
+{"raw": "Monocytes:", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Monocytes (blood)", "canonical": "Monocytes", "loinc": "5905-5", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EOSINOPHILS", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eosinophils", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eosinophils:", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eosinophils (blood)", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EOSINOPHIL", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eosinophil", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eosinophil:", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eosinophil (blood)", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EOS", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eos", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eos:", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eos (blood)", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EOSINOPHILS", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eosinophils", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "Eosinophils:", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Eosinophils (blood)", "canonical": "Eosinophils", "loinc": "711-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BASOPHILS", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Basophils", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "basophils:", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "basophils (blood)", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BASOPHIL", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Basophil", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "basophil:", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "basophil (blood)", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BASO", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Baso", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "baso:", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "baso (blood)", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BASOPHILS", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Basophils", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "Basophils:", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Basophils (blood)", "canonical": "Basophils", "loinc": "704-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL CHOLESTEROL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "total cholesterol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total cholesterol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CHOLESTEROL TOTAL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Cholesterol Total", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "cholesterol total:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "cholesterol total (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM CHOLESTEROL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum cholesterol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum cholesterol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CHOLESTEROL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "cholesterol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "cholesterol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TC", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tc", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "tc:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tc (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CHOL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Chol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "chol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "chol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T.CHOL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "T.Chol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "t.chol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t.chol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL CHOLESTEROL", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Cholesterol", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "Total Cholesterol:", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Total Cholesterol (blood)", "canonical": "Total Cholesterol", "loinc": "2093-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDL", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldl", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "ldl:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ldl (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDL CHOLESTEROL", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldl Cholesterol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "ldl cholesterol:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ldl cholesterol (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDL-C", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldl-C", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "ldl-c:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ldl-c (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDLC", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldlc", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "ldlc:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ldlc (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LOW DENSITY LIPOPROTEIN", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Low Density Lipoprotein", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "low density lipoprotein:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "low density lipoprotein (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LOW-DENSITY LIPOPROTEIN", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Low-Density Lipoprotein", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "low-density lipoprotein:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "low-density  lipoprotein", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "low-density lipoprotein (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDL CHOL", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldl Chol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "ldl chol:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ldl chol (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "LDL CHOLESTEROL", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ldl Cholesterol", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "LDL Cholesterol:", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "LDL Cholesterol (blood)", "canonical": "LDL Cholesterol", "loinc": "2089-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDL", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdl", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "hdl:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hdl (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDL CHOLESTEROL", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdl Cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "hdl cholesterol:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hdl cholesterol (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDL-C", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdl-C", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "hdl-c:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hdl-c (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDLC", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdlc", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "hdlc:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hdlc (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HIGH DENSITY LIPOPROTEIN", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "High Density Lipoprotein", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "high density lipoprotein:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "high density lipoprotein (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HIGH-DENSITY LIPOPROTEIN", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "High-Density Lipoprotein", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "high-density lipoprotein:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "high-density lipoprotein (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "H.D.L. CHOLESTEROL", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "H.D.L. Cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "h.d.l. cholesterol:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "h.d.l. cholesterol (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDL CHOL", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdl Chol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "hdl chol:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hdl  chol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_space"}
+{"raw": "hdl chol (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HDL CHOLESTEROL", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hdl Cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_title"}
+{"raw": "HDL Cholesterol:", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_punct"}
+{"raw": "HDL  Cholesterol", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_space"}
+{"raw": "HDL Cholesterol (blood)", "canonical": "HDL Cholesterol", "loinc": "2085-9", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRIGLYCERIDES", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Triglycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "triglycerides:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "triglycerides (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRIGLYCERIDE", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Triglyceride", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "triglyceride:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "triglyceride (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TG", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tg", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "tg:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tg (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRIGS", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Trigs", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "trigs:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "trigs (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRI GLYCERIDES", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tri Glycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "tri glycerides:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tri  glycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_space"}
+{"raw": "tri glycerides (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T.G.", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "T.G.", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "t.g.:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t.g. (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRIGLYCERIDES", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Triglycerides", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "Triglycerides:", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Triglycerides (blood)", "canonical": "Triglycerides", "loinc": "2571-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "VLDL", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Vldl", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "vldl:", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "vldl (blood)", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "VLDL CHOLESTEROL", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Vldl Cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "vldl cholesterol:", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "vldl  cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "vldl cholesterol (blood)", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "VLDL-C", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Vldl-C", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "vldl-c:", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "vldl-c (blood)", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "VERY LOW DENSITY LIPOPROTEIN", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Very Low Density Lipoprotein", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "very low density lipoprotein:", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "very  low  density  lipoprotein", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "very low density lipoprotein (blood)", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "VLDL CHOLESTEROL", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Vldl Cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "VLDL Cholesterol:", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "VLDL  Cholesterol", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "VLDL Cholesterol (blood)", "canonical": "VLDL Cholesterol", "loinc": "13457-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON-HDL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non-Hdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "non-hdl:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "non-hdl (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON HDL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non Hdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "non hdl:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "non  hdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "non hdl (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON-HDL CHOLESTEROL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non-Hdl Cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "non-hdl cholesterol:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "non-hdl cholesterol (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON HDL CHOLESTEROL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non Hdl Cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "non hdl cholesterol:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "non  hdl  cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "non hdl cholesterol (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NONHDL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Nonhdl", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "nonhdl:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "nonhdl (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON HDL CHOL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non Hdl Chol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "non hdl chol:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "non  hdl  chol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "non hdl chol (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "NON-HDL CHOLESTEROL", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Non-Hdl Cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "Non-HDL Cholesterol:", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Non-HDL  Cholesterol", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "Non-HDL Cholesterol (blood)", "canonical": "Non-HDL Cholesterol", "loinc": "43396-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TC/HDL", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tc/Hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "tc/hdl:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tc/hdl (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CHOLESTEROL/HDL RATIO", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Cholesterol/Hdl Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "cholesterol/hdl ratio:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "cholesterol/hdl  ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "cholesterol/hdl ratio (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL CHOLESTEROL/HDL", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Cholesterol/Hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "total cholesterol/hdl:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total cholesterol/hdl (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TC HDL RATIO", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tc Hdl Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "tc hdl ratio:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tc hdl ratio (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CHOL/HDL", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Chol/Hdl", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "chol/hdl:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "chol/hdl (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TC/HDL RATIO", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tc/Hdl Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "tc/hdl ratio:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tc/hdl ratio (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TC/HDL RATIO", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tc/Hdl Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_title"}
+{"raw": "TC/HDL Ratio:", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_punct"}
+{"raw": "TC/HDL  Ratio", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_space"}
+{"raw": "TC/HDL Ratio (blood)", "canonical": "TC/HDL Ratio", "loinc": "9830-1", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TSH", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tsh", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "tsh:", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tsh (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "THYROID STIMULATING HORMONE", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Thyroid Stimulating Hormone", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "thyroid stimulating hormone:", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "thyroid stimulating hormone (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "THYROTROPIN", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Thyrotropin", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "thyrotropin:", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "thyrotropin (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TSH (ULTRASENSITIVE)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tsh (Ultrasensitive)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "tsh (ultrasensitive):", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tsh  (ultrasensitive)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_space"}
+{"raw": "tsh (ultrasensitive) (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TSH(ULTRASENSITIVE)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tsh(Ultrasensitive)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "tsh(ultrasensitive):", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tsh(ultrasensitive) (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "S.TSH", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "S.Tsh", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "s.tsh:", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "s.tsh (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TSH", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tsh", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_title"}
+{"raw": "TSH:", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_punct"}
+{"raw": "TSH (blood)", "canonical": "TSH", "loinc": "3016-3", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "t3:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t3 (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TRIIODOTHYRONINE", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Triiodothyronine", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "triiodothyronine:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "triiodothyronine (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "total t3:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total  t3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "total t3 (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum t3:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum t3 (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T-3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "T-3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "t-3:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t-3 (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "T3", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "T3:", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "T3 (blood)", "canonical": "T3", "loinc": "3053-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "t4:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t4 (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "THYROXINE", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Thyroxine", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "thyroxine:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "thyroxine (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "total t4:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total t4 (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum t4:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum t4 (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T-4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "T-4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "t-4:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "t-4 (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "T4", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "T4:", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "T4 (blood)", "canonical": "T4", "loinc": "3026-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "free t3:", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "free t3 (blood)", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FT3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ft3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "ft3:", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ft3 (blood)", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE TRIIODOTHYRONINE", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free Triiodothyronine", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "free triiodothyronine:", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "free triiodothyronine (blood)", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "F.T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "F.T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "f.t3:", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "f.t3 (blood)", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free T3", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "Free T3:", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Free T3 (blood)", "canonical": "Free T3", "loinc": "3051-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "free t4:", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "free  t4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "free t4 (blood)", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FT4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ft4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "ft4:", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ft4 (blood)", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE THYROXINE", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free Thyroxine", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "free thyroxine:", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "free  thyroxine", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "free thyroxine (blood)", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "F.T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "F.T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "f.t4:", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "f.t4 (blood)", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "FREE T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_case"}
+{"raw": "Free T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_title"}
+{"raw": "Free T4:", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Free  T4", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_space"}
+{"raw": "Free T4 (blood)", "canonical": "Free T4", "loinc": "3024-7", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HBA1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hba1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "hba1c:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hba1c (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "A1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "A1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "a1c:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "a1c (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HB A1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb A1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb a1c:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb  a1c", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "hb a1c (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCOSYLATED HEMOGLOBIN", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycosylated Hemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycosylated hemoglobin:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycosylated  hemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "glycosylated hemoglobin (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCOSYLATED HAEMOGLOBIN", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycosylated Haemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycosylated haemoglobin:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycosylated haemoglobin (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCATED HEMOGLOBIN", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycated Hemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycated hemoglobin:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycated hemoglobin (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCATED HAEMOGLOBIN", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycated Haemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycated haemoglobin:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycated  haemoglobin", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "glycated haemoglobin (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCOSYLATED HEMOGLOBIN (HBA1C)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycosylated Hemoglobin (Hba1C)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycosylated hemoglobin (hba1c):", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycosylated hemoglobin (hba1c) (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCOSYLATED HAEMOGLOBIN (HBA1C)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycosylated Haemoglobin (Hba1C)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycosylated haemoglobin (hba1c):", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycosylated  haemoglobin  (hba1c)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_space"}
+{"raw": "glycosylated haemoglobin (hba1c) (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GLYCOHB", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Glycohb", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "glycohb:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "glycohb (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HB1AC", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hb1Ac", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "hb1ac:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "hb1ac (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "HBA1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_case"}
+{"raw": "Hba1C", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_title"}
+{"raw": "HbA1c:", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_punct"}
+{"raw": "HbA1c (blood)", "canonical": "HbA1c", "loinc": "4548-4", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EAG", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eag", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eag:", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eag (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ESTIMATED AVERAGE GLUCOSE", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Estimated Average Glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "estimated average glucose:", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "estimated average glucose (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ESTIMATED AVERAGE GLUCOSE (EAG)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Estimated Average Glucose (Eag)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "estimated average glucose (eag):", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "estimated  average  glucose  (eag)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "estimated average glucose (eag) (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EST AVG GLUCOSE", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Est Avg Glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "est avg glucose:", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "est  avg  glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "est avg glucose (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ESTIMATED AVG GLUCOSE", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Estimated Avg Glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "estimated avg glucose:", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "estimated  avg  glucose", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "estimated avg glucose (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EAG (EST. AVG GLUCOSE)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eag (Est. Avg Glucose)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eag (est. avg glucose):", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eag (est. avg glucose) (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "EAG (EST. AVG GLUCOSE)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Eag (Est. Avg Glucose)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "eAG (Est. Avg Glucose):", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "eAG  (Est.  Avg  Glucose)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "eAG (Est. Avg Glucose) (blood)", "canonical": "eAG (Est. Avg Glucose)", "loinc": "27353-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALT", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alt:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alt (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SGPT", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Sgpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "sgpt:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "sgpt (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALANINE AMINOTRANSFERASE", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alanine Aminotransferase", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alanine aminotransferase:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alanine aminotransferase (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM GPT", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Gpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum gpt:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum gpt (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GPT", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Gpt", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "gpt:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "gpt (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALANINE AMINOTRANSFERASE", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alanine Aminotransferase", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "Alanine Aminotransferase:", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Alanine  Aminotransferase", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "Alanine Aminotransferase (blood)", "canonical": "Alanine Aminotransferase", "loinc": "1742-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "AST", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Ast", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "ast:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "ast (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SGOT", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Sgot", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "sgot:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "sgot (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ASPARTATE AMINOTRANSFERASE", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Aspartate Aminotransferase", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "aspartate aminotransferase:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "aspartate  aminotransferase", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_space"}
+{"raw": "aspartate aminotransferase (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM GOT", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Got", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum got:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum got (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "GOT", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Got", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "got:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "got (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ASPARTATE AMINOTRANSFERASE", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_case"}
+{"raw": "Aspartate Aminotransferase", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_title"}
+{"raw": "Aspartate Aminotransferase:", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Aspartate Aminotransferase (blood)", "canonical": "Aspartate Aminotransferase", "loinc": "1920-8", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALP", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alp", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alp:", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alp (blood)", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALKALINE PHOSPHATASE", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alkaline Phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alkaline phosphatase:", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alkaline  phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "alkaline phosphatase (blood)", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALK PHOS", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alk Phos", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alk phos:", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alk  phos", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "alk phos (blood)", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALKP", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alkp", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "alkp:", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "alkp (blood)", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "ALKALINE PHOSPHATASE", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_case"}
+{"raw": "Alkaline Phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_title"}
+{"raw": "Alkaline Phosphatase:", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Alkaline  Phosphatase", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_space"}
+{"raw": "Alkaline Phosphatase (blood)", "canonical": "Alkaline Phosphatase", "loinc": "6768-6", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TOTAL BILIRUBIN", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Total Bilirubin", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "total bilirubin:", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "total bilirubin (blood)", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BILIRUBIN TOTAL", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Bilirubin Total", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "bilirubin total:", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "bilirubin total (blood)", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "TBIL", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Tbil", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "tbil:", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "tbil (blood)", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BILIRUBIN", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Bilirubin", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "bilirubin:", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "bilirubin (blood)", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BILIRUBIN TOTAL", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_case"}
+{"raw": "Bilirubin Total", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_title"}
+{"raw": "Bilirubin Total:", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Bilirubin  Total", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_space"}
+{"raw": "Bilirubin Total (blood)", "canonical": "Bilirubin Total", "loinc": "1975-2", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CREATININE", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "creatinine:", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "creatinine (blood)", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM CREATININE", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum creatinine:", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum  creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_space"}
+{"raw": "serum creatinine (blood)", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CREAT", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Creat", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "creat:", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "creat (blood)", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SCR", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Scr", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "scr:", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "scr (blood)", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "CREATININE", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Creatinine", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "Creatinine:", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Creatinine (blood)", "canonical": "Creatinine", "loinc": "2160-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "UREA", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "urea:", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "urea (blood)", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BLOOD UREA", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Blood Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "blood urea:", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "blood  urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_space"}
+{"raw": "blood urea (blood)", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "BUN UREA", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Bun Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "bun urea:", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "bun urea (blood)", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "SERUM UREA", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Serum Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "serum urea:", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "serum urea (blood)", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_blood_suffix"}
+{"raw": "UREA", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_case"}
+{"raw": "Urea", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_title"}
+{"raw": "Urea:", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_punct"}
+{"raw": "Urea (blood)", "canonical": "Urea", "loinc": "3094-0", "unknown": false, "source": "synthetic_blood_suffix"}

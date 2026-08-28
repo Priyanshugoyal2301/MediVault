@@ -1,0 +1,184 @@
+{
+  "verdict": "PASS",
+  "n_pass": 13,
+  "n_total": 13,
+  "elapsed_chain_ms": 189.45970002096146,
+  "checks": [
+    {
+      "check": "all_ml_flags_default_off",
+      "pass": true,
+      "detail": "{\"USE_UNLIMITED_OCR\": false, \"USE_ML_NORMALIZER\": false, \"USE_RISK_MODEL\": false, \"USE_DISEASE_RISK_MODEL\": false, \"USE_FORECAST_MODEL\": false, \"USE_EMBEDDING_SEARCH\": false, \"USE_HEALTH_SCORE_MODEL\": false, \"USE_ANOMALY_MODEL\": false, \"USE_OUTLIER_MODEL\": false, \"USE_IMAGE_QUALITY_MODEL\": false}"
+    },
+    {
+      "check": "quality_passthrough_ok",
+      "pass": true,
+      "detail": "{'mime_type': 'application/pdf', 'bytes': 13, 'method': 'passthrough', 'category': 'Ready for OCR', 'recommendation': 'Proceed with OCR'}"
+    },
+    {
+      "check": "document_parser_loads",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "normalizer_alias",
+      "pass": true,
+      "detail": "Haemoglobin"
+    },
+    {
+      "check": "retriever_bm25_default",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "risk_default_unavailable",
+      "pass": true,
+      "detail": "unavailable"
+    },
+    {
+      "check": "forecast_default_unavailable",
+      "pass": true,
+      "detail": "unavailable"
+    },
+    {
+      "check": "health_default_unavailable",
+      "pass": true,
+      "detail": "unavailable"
+    },
+    {
+      "check": "anomaly_statistical_default",
+      "pass": true,
+      "detail": "statistical_monitor"
+    },
+    {
+      "check": "e2e_chain_latency_under_30s",
+      "pass": true,
+      "detail": "189.5ms"
+    },
+    {
+      "check": "risk_flag_on_returns_result",
+      "pass": true,
+      "detail": "band=high method=disease_risk:xgboost"
+    },
+    {
+      "check": "routers_importable",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "reproducibility_all_packages",
+      "pass": true,
+      "detail": "8/8"
+    }
+  ],
+  "reproducibility": {
+    "n_packages": 8,
+    "n_pass": 8,
+    "all_pass": true,
+    "packages": [
+      {
+        "id": "ocr",
+        "phase": "1/1A",
+        "path": "models/ocr",
+        "flag": "USE_UNLIMITED_OCR",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": false,
+        "model_card_docs": true,
+        "has_artifacts_dir": false,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "normalizer",
+        "phase": "2",
+        "path": "models/normalizer",
+        "flag": "USE_ML_NORMALIZER",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "retrieval",
+        "phase": "3",
+        "path": "models/retrieval",
+        "flag": "USE_EMBEDDING_SEARCH",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": false,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "risk_prediction",
+        "phase": "4",
+        "path": "models/risk_prediction",
+        "flag": "USE_RISK_MODEL",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "forecasting",
+        "phase": "5",
+        "path": "models/forecasting",
+        "flag": "USE_FORECAST_MODEL",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "health_score",
+        "phase": "6",
+        "path": "models/health_score",
+        "flag": "USE_HEALTH_SCORE_MODEL",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "anomaly_detection",
+        "phase": "7",
+        "path": "models/anomaly_detection",
+        "flag": "USE_ANOMALY_MODEL",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      },
+      {
+        "id": "image_quality",
+        "phase": "8",
+        "path": "models/image_quality",
+        "flag": "USE_IMAGE_QUALITY_MODEL",
+        "missing_files": [],
+        "has_config_loader": true,
+        "has_seed_in_config": true,
+        "model_card_docs": true,
+        "has_artifacts_dir": true,
+        "dataset_docs_present": true,
+        "reproducibility_pass": true
+      }
+    ]
+  }
+}

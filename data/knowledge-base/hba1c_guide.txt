@@ -22,7 +22,7 @@ HbA1c is reported as a percentage or in mmol/mol (IFCC units):
 | 5.7–6.4% | 39–47 | Pre-diabetes (increased risk) |
 | 6.5% or above | 48 or above | Diabetes |
 
-For people already diagnosed with diabetes, the target HbA1c is typically below 7.0% (53 mmol/mol), though your doctor may set a different target based on your individual situation.
+For people already living with diabetes, the target HbA1c is typically below 7.0% (53 mmol/mol), though your doctor may set a different target based on your individual situation.
 
 ---
 

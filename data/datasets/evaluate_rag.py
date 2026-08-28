@@ -1,28 +1,31 @@
 """
 data/datasets/evaluate_rag.py
 
-Evaluation script for the RAG Q&A component (Feature 3).
+Honest evaluation harness for template RAG (Plan B).
 
-Evaluates 50 labeled Q&A pairs against the knowledge base:
-  1. Retrieval Precision@5 (percentage of retrieved chunks relevant to question)
-  2. Citation Correctness (percentage of citations pointing to valid supporting sources)
-  3. Hallucination Rate (percentage of answers making claims not in retrieved chunks)
+Default retriever: BM25 + intent (matches production demo path).
+Optional: --use-dense / --use-minilm for hybrid BM25+MiniLM bake-off.
 
-Logs evaluation metrics to stdout and updates docs/DEV_LOG.md.
+Reports:
+  1. Hit@5 — ≥1 retrieved chunk contains an expected keyword (NOT classical Precision@5)
+  2. citation_present — synthesizer emitted citations when chunks exist
+  3. tone_violation_rate — substring “you have” / “diagnosed with”
+
+Never cite results as “MiniLM Precision@5” unless dense MiniLM was actually used
+and you clearly name the metric Hit@5.
 """
 
 from __future__ import annotations
 
-import json
+import argparse
 import sys
 from pathlib import Path
 
-# Ensure project root is on sys.path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-# Install HyphenatedModuleFinder for import resolution
 import importlib.util
+
 
 class _HyphenatedFinder:
     _DIRS = {"services": ROOT / "services", "packages": ROOT / "packages"}
@@ -58,16 +61,12 @@ class _HyphenatedFinder:
             return importlib.util.spec_from_file_location(fullname, str(py))
         return None
 
+
 if not any(type(f).__name__ == "_HyphenatedFinder" for f in sys.meta_path):
     sys.meta_path.insert(0, _HyphenatedFinder)
 
 
-# ---------------------------------------------------------------------------
-# 50 Labeled Evaluation Q&A Pairs
-# ---------------------------------------------------------------------------
-
 LABELED_QA_PAIRS = [
-    # CBC Panel (15 questions)
     {"question": "What is normal haemoglobin range for men?", "expected_keywords": ["13.0", "17.0", "g/dL", "men"], "panel": "CBC"},
     {"question": "What causes low haemoglobin?", "expected_keywords": ["anaemia", "iron deficiency", "blood loss", "b12"], "panel": "CBC"},
     {"question": "What is normal white blood cell count?", "expected_keywords": ["4,000", "11,000", "cells", "leucocyte"], "panel": "CBC"},
@@ -83,8 +82,6 @@ LABELED_QA_PAIRS = [
     {"question": "What is normal PCV range for women?", "expected_keywords": ["34.9", "44.5", "percentage", "volume"], "panel": "CBC"},
     {"question": "What are monocytes responsible for?", "expected_keywords": ["chronic", "tuberculosis", "monocytes"], "panel": "CBC"},
     {"question": "What is polycythaemia?", "expected_keywords": ["high rbc", "dehydration", "altitude", "smoking"], "panel": "CBC"},
-
-    # Lipid Profile (12 questions)
     {"question": "What is desirable total cholesterol?", "expected_keywords": ["below 200", "mg/dL", "desirable"], "panel": "Lipid"},
     {"question": "Why is LDL called bad cholesterol?", "expected_keywords": ["plaque", "arteries", "atherosclerosis", "heart attack"], "panel": "Lipid"},
     {"question": "What is optimal LDL level?", "expected_keywords": ["below 100", "mg/dL", "optimal"], "panel": "Lipid"},
@@ -97,8 +94,6 @@ LABELED_QA_PAIRS = [
     {"question": "How does exercise affect lipid levels?", "expected_keywords": ["raise hdl", "lower triglycerides", "exercise"], "panel": "Lipid"},
     {"question": "What are lifestyle changes for high LDL?", "expected_keywords": ["saturated fats", "fibre", "statins", "diet"], "panel": "Lipid"},
     {"question": "What cholesterol level is considered very high LDL?", "expected_keywords": ["190", "very high", "mg/dL"], "panel": "Lipid"},
-
-    # Thyroid Function (12 questions)
     {"question": "What is normal TSH level?", "expected_keywords": ["0.4", "4.0", "mIU/L", "pituitary"], "panel": "Thyroid"},
     {"question": "What does high TSH indicate?", "expected_keywords": ["hypothyroidism", "underactive", "tsh"], "panel": "Thyroid"},
     {"question": "What does low TSH indicate?", "expected_keywords": ["hyperthyroidism", "overactive", "tsh"], "panel": "Thyroid"},
@@ -111,8 +106,6 @@ LABELED_QA_PAIRS = [
     {"question": "Why is TSH high when thyroid is low?", "expected_keywords": ["pituitary", "stimulate", "underactive"], "panel": "Thyroid"},
     {"question": "What is iodine deficiency role in thyroid?", "expected_keywords": ["iodine", "hypothyroidism", "india"], "panel": "Thyroid"},
     {"question": "What is the difference between Total T4 and Free T4?", "expected_keywords": ["bound", "binding proteins", "free"], "panel": "Thyroid"},
-
-    # HbA1c / Diabetes (11 questions)
     {"question": "What is normal HbA1c percentage?", "expected_keywords": ["below 5.7%", "normal", "glycated"], "panel": "HbA1c"},
     {"question": "What HbA1c range indicates pre-diabetes?", "expected_keywords": ["5.7", "6.4%", "pre-diabetes"], "panel": "HbA1c"},
     {"question": "What HbA1c level diagnoses diabetes?", "expected_keywords": ["6.5%", "diabetes", "glycated"], "panel": "HbA1c"},
@@ -127,108 +120,114 @@ LABELED_QA_PAIRS = [
 ]
 
 
-# ---------------------------------------------------------------------------
-# Evaluation Runner
-# ---------------------------------------------------------------------------
-
 def run_evaluation() -> dict:
-    """Run RAG evaluation against the 50 labeled Q&A pairs."""
     from services.ai_service.rag.ingester import load_documents
     from services.ai_service.rag.retriever import load_knowledge_base, retrieve
     from services.ai_service.rag.synthesizer import synthesize
 
-    # Load and chunk documents
+    parser = argparse.ArgumentParser(description="MediVault RAG eval (Plan B)")
+    parser.add_argument(
+        "--use-dense",
+        "--use-minilm",
+        action="store_true",
+        dest="use_dense",
+        help="Bake-off: hybrid BM25 + MiniLM (requires sentence-transformers)",
+    )
+    args, _unknown = parser.parse_known_args()
+
     docs = load_documents()
+    retriever_name = "bm25+intent"
+    mode = "bm25"
 
-    # Pre-embed chunks using lightweight hash vectorizer (for fast reproducible eval)
-    import hashlib
-    def _mock_embed(text: str) -> list[float]:
-        h = hashlib.md5(text.encode()).hexdigest()
-        return [float(int(h[i:i+2], 16)) / 255.0 for i in range(0, 384 * 2 // 128 * 2, 2)] * (384 // 8)
+    if args.use_dense:
+        try:
+            from services.ai_service.rag.embedder import embed_text
 
-    for d in docs:
-        d["embedding"] = _mock_embed(d["chunk_text"])
+            for d in docs:
+                d["embedding"] = embed_text(d["chunk_text"])
+            mode = "hybrid"
+            retriever_name = "hybrid-bm25+minilm"
+        except Exception as exc:  # noqa: BLE001
+            print(f"[warn] dense unavailable ({exc}); falling back to BM25")
+            for d in docs:
+                d.pop("embedding", None)
+            mode = "bm25"
+            retriever_name = "bm25+intent-fallback"
 
-    # Stub embedder in sys.modules if sentence-transformers is missing
-    try:
-        import sentence_transformers
-    except ImportError:
-        import types
-        fake_embedder = types.ModuleType("services.ai_service.rag.embedder")
-        fake_embedder.embed_text = _mock_embed
-        fake_embedder.embed_batch = lambda texts: [_mock_embed(t) for t in texts]
-        fake_embedder.get_embedding_dim = lambda: 384
-        sys.modules["services.ai_service.rag.embedder"] = fake_embedder
-
-        from services.ai_service.rag import retriever
-        retriever.embed_text = _mock_embed
-
-    load_knowledge_base(docs)
+    load_knowledge_base(docs, mode=mode)
 
     total_questions = len(LABELED_QA_PAIRS)
-    precision_hits = 0
-    citation_correct_count = 0
-    hallucination_count = 0
+    hit_at_5_count = 0
+    citation_present_count = 0
+    tone_violation_count = 0
+    mrr_sum = 0.0
 
-    print(f"=" * 60)
+    print("=" * 60)
     print(f"RAG Evaluation Suite — {total_questions} Labeled Questions")
-    print(f"=" * 60)
+    print(f"Retriever: {retriever_name}")
+    print("Metrics: Hit@5, MRR, citation_present, tone_violation")
+    print("=" * 60)
 
-    for i, qa in enumerate(LABELED_QA_PAIRS, 1):
+    for qa in LABELED_QA_PAIRS:
         q_text = qa["question"]
         expected_kw = qa["expected_keywords"]
-
-        # Step 1: Retrieve top 5
         chunks = retrieve(q_text, top_k=5)
 
-        # Evaluate Precision@5 (does at least 1 retrieved chunk contain expected keywords?)
-        retrieved_text = " ".join([c.text.lower() for c in chunks])
-        hit = any(kw.lower() in retrieved_text for kw in expected_kw)
+        retrieved_texts = [c.text.lower() for c in chunks]
+        hit = False
+        first_rank = None
+        for rank, text in enumerate(retrieved_texts, start=1):
+            if any(kw.lower() in text for kw in expected_kw):
+                hit = True
+                if first_rank is None:
+                    first_rank = rank
         if hit:
-            precision_hits += 1
+            hit_at_5_count += 1
+            mrr_sum += 1.0 / float(first_rank or 1)
 
-        # Step 2: Synthesize answer
         synth_result = synthesize(q_text, chunks)
         answer_text = synth_result["answer_en"].lower()
         citations = synth_result["citations"]
 
-        # Evaluate Citation Correctness (are citations present when chunks retrieved?)
         if chunks and len(citations) > 0:
-            citation_correct_count += 1
+            citation_present_count += 1
 
-        # Evaluate Hallucination (does answer contain ungrounded claims?)
-        # Simple heuristic: answer states specific numbers not in retrieved chunks or templates
-        has_hallucination = False
         if "you have" in answer_text or "diagnosed with" in answer_text:
-            has_hallucination = True  # Violates tone rules
+            tone_violation_count += 1
 
-        if has_hallucination:
-            hallucination_count += 1
-
-    precision_at_5 = round(precision_hits / total_questions, 4)
-    citation_correctness = round(citation_correct_count / total_questions, 4)
-    hallucination_rate = round(hallucination_count / total_questions, 4)
+    hit_at_5 = round(hit_at_5_count / total_questions, 4)
+    mrr = round(mrr_sum / total_questions, 4)
+    citation_present_rate = round(citation_present_count / total_questions, 4)
+    tone_violation_rate = round(tone_violation_count / total_questions, 4)
 
     metrics = {
         "total_questions": total_questions,
-        "precision_at_5": precision_at_5,
-        "citation_correctness": citation_correctness,
-        "hallucination_rate": hallucination_rate,
-        "precision_hits": precision_hits,
-        "citation_correct_count": citation_correct_count,
-        "hallucination_count": hallucination_count,
+        "retriever": retriever_name,
+        "hit_at_5": hit_at_5,
+        "mrr": mrr,
+        "citation_present_rate": citation_present_rate,
+        "tone_violation_rate": tone_violation_rate,
+        "precision_at_5": hit_at_5,  # deprecated alias
+        "citation_correctness": citation_present_rate,
+        "hallucination_rate": tone_violation_rate,
+        "precision_hits": hit_at_5_count,
+        "citation_correct_count": citation_present_count,
+        "hallucination_count": tone_violation_count,
     }
 
     print("\n" + "=" * 60)
     print("EVALUATION RESULTS:")
+    print(f"  - Retriever:              {retriever_name}")
     print(f"  - Questions Evaluated:    {total_questions}")
-    print(f"  - Retrieval Precision@5:  {precision_at_5 * 100:.1f}% ({precision_hits}/{total_questions})")
-    print(f"  - Citation Correctness:   {citation_correctness * 100:.1f}% ({citation_correct_count}/{total_questions})")
-    print(f"  - Hallucination Rate:     {hallucination_rate * 100:.1f}% ({hallucination_count}/{total_questions})")
+    print(f"  - Hit@5 (keyword):        {hit_at_5 * 100:.1f}% ({hit_at_5_count}/{total_questions})")
+    print(f"  - MRR:                    {mrr:.4f}")
+    print(f"  - Citation present:       {citation_present_rate * 100:.1f}%")
+    print(f"  - Tone violation rate:    {tone_violation_rate * 100:.1f}%")
+    print("Do not report these as MiniLM Precision@5.")
     print("=" * 60)
 
     return metrics
 
 
 if __name__ == "__main__":
-    metrics = run_evaluation()
+    run_evaluation()

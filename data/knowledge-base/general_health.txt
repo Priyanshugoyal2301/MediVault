@@ -16,7 +16,7 @@ A reference range (also called a normal range) is the set of values that is cons
 
 Key points about reference ranges:
 - Different laboratories may have slightly different reference ranges depending on the equipment and methods they use.
-- Your result falling slightly outside the reference range does not necessarily mean you have a medical condition — it means further evaluation may be warranted.
+- Your result falling slightly outside the reference range does not necessarily mean a medical condition is present — it means further evaluation may be warranted.
 - Reference ranges may vary by age, sex, and sometimes ethnicity.
 - The reference ranges printed on your lab report are the ones most relevant to interpret your specific results.
 

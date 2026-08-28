@@ -1,0 +1,22 @@
+{
+  "config_load_ms": 3.109,
+  "readiness_check_ms": 0.005,
+  "preprocess_png_ms": 975.68,
+  "fallback_recovery_ms": 24.434,
+  "fallback_values": 1,
+  "readiness": {
+    "ready": false,
+    "mode": "auto-unready",
+    "reason": "auto backend with no UNLIMITED_OCR_ENDPOINT; requests will fall back to legacy (local weights never auto-selected)",
+    "config_summary": {
+      "backend": "auto",
+      "http_endpoint_configured": false,
+      "http_timeout_s": 120,
+      "allow_local_weights": false,
+      "allow_local_download": false,
+      "treat_empty_lab_as_failure": true,
+      "hf_model_id": "baidu/Unlimited-OCR"
+    }
+  },
+  "notes": "No VLM weights loaded; measures startup/config/preprocess/fallback only"
+}
