@@ -1,10 +1,8 @@
 version: "3.9"
 
-# =============================================================================
-# MediVault AI — docker-compose (local dev)
-# Each service has its own Dockerfile. Real config (ports, volumes, env vars)
-# is filled in as each service is built. Stubs only at scaffold stage.
-# =============================================================================
+# MediVault local stack.
+# Public entrypoints for a hackathon demo: api (:8000) + web (run via Vite).
+# Health/AI bind to localhost only so spoofed X-User-ID cannot hit them from LAN.
 
 services:
 
@@ -16,7 +14,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-medivault_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_ME}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -27,56 +25,70 @@ services:
 
   auth-service:
     build:
-      context: ./services/auth-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: services/auth-service/Dockerfile
     restart: unless-stopped
     env_file: .env
+    environment:
+      POSTGRES_HOST: postgres
     ports:
-      - "8001:8001"
+      - "127.0.0.1:8001:8001"
     depends_on:
       postgres:
         condition: service_healthy
-    # Volumes and command filled in when service is built
 
   health-service:
     build:
-      context: ./services/health-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: services/health-service/Dockerfile
     restart: unless-stopped
     env_file: .env
+    environment:
+      POSTGRES_HOST: postgres
+      AI_SERVICE_URL: http://ai-service:8003
+      STORAGE_LOCAL_PATH: /data/uploads
     ports:
-      - "8002:8002"
+      - "127.0.0.1:8002:8002"
+    volumes:
+      - uploads_data:/data/uploads
     depends_on:
       postgres:
         condition: service_healthy
-    # Volumes and command filled in when service is built
+      ai-service:
+        condition: service_started
 
   ai-service:
     build:
-      context: ./services/ai-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: services/ai-service/Dockerfile
     restart: unless-stopped
     env_file: .env
+    environment:
+      STORAGE_LOCAL_PATH: /data/uploads
     ports:
-      - "8003:8003"
+      - "127.0.0.1:8003:8003"
+    volumes:
+      - uploads_data:/data/uploads
     depends_on:
       postgres:
         condition: service_healthy
-    # Volumes and command filled in when service is built
 
   api:
     build:
-      context: ./apps/api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/api/Dockerfile
     restart: unless-stopped
     env_file: .env
+    environment:
+      AUTH_SERVICE_URL: http://auth-service:8001
+      HEALTH_SERVICE_URL: http://health-service:8002
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
     ports:
       - "8000:8000"
     depends_on:
       - auth-service
       - health-service
-      - ai-service
-    # Volumes and command filled in when service is built
 
 volumes:
   postgres_data:
+  uploads_data:

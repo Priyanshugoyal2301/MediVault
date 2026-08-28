@@ -60,3 +60,21 @@ data/knowledge-base/*.pdf
 *.bin
 *.pt
 *.safetensors
+models/**/artifacts/
+datasets/**/*.csv
+datasets/**/*.parquet
+datasets/**/*.pkl
+datasets/**/*.zip
+!datasets/**/.gitkeep
+!datasets/**/README.md
+datasets/evaluation/*_latest.json
+
+# Plan C generated eval output
+data/datasets/plan_c/results_latest.json
+
+# ML / HF caches (if created in-repo)
+.cache/
+.huggingface/
+
+# Research site deploy metadata
+apps/research-site/.vercel

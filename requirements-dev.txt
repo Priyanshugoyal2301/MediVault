@@ -1,0 +1,13 @@
+# MediVault — development and test dependencies
+# Install from repo root: pip install -r requirements-dev.txt
+#
+# Aggregates all service runtime deps plus pytest tooling so auth/BFF/health/AI
+# unit and phase tests run in one venv (includes python-jose for auth tests).
+
+-r services/auth-service/requirements.txt
+-r services/health-service/requirements.txt
+-r services/ai-service/requirements.txt
+-r apps/api/requirements.txt
+
+pytest==8.3.3
+pytest-asyncio==0.24.0
