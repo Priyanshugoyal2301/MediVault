@@ -10,9 +10,10 @@ Test groups:
      - Computes correct out-of-range streak
 
   B. Model (model.py)
-     - zscore_fallback used for < 5 data points
-     - IsolationForest path used for >= 5 points (sklearn not required in fallback path)
+     - zscore_fallback used for < 3 data points
+     - statistical_monitor used for >= 3 points (no sklearn)
      - Normalised anomaly score stays in [-1, +1]
+     - Injected spike triggers causal_z / pct_delta
 
   C. Detector (detector.py)
      - End-to-end DetectionResult contains all expected fields
@@ -95,11 +96,17 @@ class TestModelScorer:
     def _pts(self, values: list[float]) -> list[tuple[date, float]]:
         return [(date(2024, 1, i + 1), v) for i, v in enumerate(values)]
 
-    def test_zscore_fallback_used_for_small_dataset(self):
+    def test_zscore_fallback_used_for_tiny_dataset(self):
         from services.ai_service.anomaly.model import score_anomaly  # type: ignore
-        pts = self._pts([12.0, 13.0, 14.0])  # only 3 points < MIN_SAMPLES_FOR_MODEL(5)
+        pts = self._pts([12.0, 13.0])  # < 3 → fallback
         result = score_anomaly(pts, z_score=0.1)
         assert result.method == "zscore_fallback"
+
+    def test_statistical_monitor_for_enough_points(self):
+        from services.ai_service.anomaly.model import score_anomaly  # type: ignore
+        pts = self._pts([13.5] * 6)
+        result = score_anomaly(pts, z_score=0.0)
+        assert result.method == "statistical_monitor"
 
     def test_anomaly_score_in_valid_range(self):
         from services.ai_service.anomaly.model import score_anomaly  # type: ignore
@@ -107,22 +114,35 @@ class TestModelScorer:
         result = score_anomaly(pts, z_score=0.0)
         assert -1.0 <= result.anomaly_score <= 1.0
 
+    def test_injected_spike_flags_anomaly(self):
+        from services.ai_service.anomaly.model import score_anomaly  # type: ignore
+        pts = self._pts([13.5, 13.4, 13.6, 13.5, 13.3, 9.0])
+        result = score_anomaly(pts)
+        assert result.is_anomaly is True
+        assert result.method == "statistical_monitor"
+        assert len(result.triggers) >= 1
+
+    def test_stable_series_not_flagged(self):
+        from services.ai_service.anomaly.model import score_anomaly  # type: ignore
+        pts = self._pts([13.5, 13.4, 13.6, 13.5, 13.5, 13.4])
+        result = score_anomaly(pts)
+        assert result.is_anomaly is False
+
     def test_large_zscore_flags_anomaly_in_fallback(self):
         from services.ai_service.anomaly.model import score_anomaly  # type: ignore
-        # |z| = 3 → should flag as anomaly in fallback path
-        pts = self._pts([12.0, 13.0, 14.0])
+        pts = self._pts([12.0, 13.0])
         result = score_anomaly(pts, z_score=3.0)
         assert result.is_anomaly is True
 
     def test_small_zscore_does_not_flag_anomaly_in_fallback(self):
         from services.ai_service.anomaly.model import score_anomaly  # type: ignore
-        pts = self._pts([12.0, 13.0, 14.0])
+        pts = self._pts([12.0, 13.0])
         result = score_anomaly(pts, z_score=0.5)
         assert result.is_anomaly is False
 
     def test_none_z_score_returns_neutral_score(self):
         from services.ai_service.anomaly.model import score_anomaly  # type: ignore
-        pts = self._pts([13.0, 13.5])  # < 5 points, z_score=None
+        pts = self._pts([13.0, 13.5])
         result = score_anomaly(pts, z_score=None)
         assert result.anomaly_score == 0.0
         assert result.is_anomaly is False
@@ -215,8 +235,9 @@ class TestDetector:
             mock_score.return_value = ModelAnomalyResult(
                 anomaly_score=-0.8,
                 is_anomaly=True,
-                method="isolation_forest",
+                method="statistical_monitor",
                 data_points_used=5,
+                triggers=("causal_z",),
             )
             result = detect("Haemoglobin", self._pts([13.5] * 5))
 

@@ -2,45 +2,27 @@
 tests/unit/health-service/test_qa.py
 
 Tests for the health-service Q&A proxy endpoint.
-
-Validates:
-  - POST /qa returns 200 with valid header and question
-  - Missing X-User-Id returns 401/422
-  - Safety layer triggers through the proxy
-  - Response schema matches QAResponse
 """
 
 from __future__ import annotations
 
-import os
 import sys
 import types
-from unittest.mock import MagicMock
+from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
 
-# ---------------------------------------------------------------------------
-# Environment + module stubs (same pattern as test_timeline.py)
-# ---------------------------------------------------------------------------
-
 @pytest.fixture(autouse=True)
 def _stub_env_and_db(monkeypatch):
-    """Set required env vars and stub DB modules."""
     monkeypatch.setenv("POSTGRES_PASSWORD", "testpassword")
     monkeypatch.setenv("POSTGRES_HOST", "localhost")
     monkeypatch.setenv("POSTGRES_DB", "medivault_test")
+    monkeypatch.setenv("AI_SERVICE_URL", "http://127.0.0.1:9")  # force local fallback
 
-    # Stub asyncpg and db.session to avoid real DB connections
     if "asyncpg" not in sys.modules:
         monkeypatch.setitem(sys.modules, "asyncpg", types.ModuleType("asyncpg"))
 
-    db_session = types.ModuleType("services.health_service.db.session")
-    db_session.get_db = MagicMock()
-    db_session.engine = MagicMock()
-    monkeypatch.setitem(sys.modules, "services.health_service.db.session", db_session)
-
-    # Stub the RAG embedder to avoid loading sentence-transformers
     fake_embedder = types.ModuleType("services.ai_service.rag.embedder")
     fake_embedder.embed_text = lambda text: [0.1] * 384
     fake_embedder.embed_batch = lambda texts: [[0.1] * 384 for _ in texts]
@@ -50,22 +32,27 @@ def _stub_env_and_db(monkeypatch):
 
 @pytest.fixture
 def client(_stub_env_and_db):
-    """Create a TestClient for the health-service."""
     from fastapi.testclient import TestClient
     from services.health_service.main import app
-    return TestClient(app)
+    from services.health_service.db.session import get_db
+
+    async def _fake_db():
+        session = MagicMock()
+        result = MagicMock()
+        result.scalars.return_value.all.return_value = []
+        session.execute = AsyncMock(return_value=result)
+        yield session
+
+    app.dependency_overrides[get_db] = _fake_db
+    with TestClient(app) as c:
+        yield c
+    app.dependency_overrides.clear()
 
 
 VALID_HEADERS = {"X-User-Id": "00000000-0000-0000-0000-000000000001"}
 
 
-# ---------------------------------------------------------------------------
-# Endpoint tests
-# ---------------------------------------------------------------------------
-
 class TestQAEndpoint:
-    """POST /qa endpoint tests."""
-
     def test_qa_returns_200_with_valid_request(self, client):
         response = client.post(
             "/qa",
@@ -80,13 +67,12 @@ class TestQAEndpoint:
         assert "citations" in data
         assert "safety_triggered" in data
 
-    def test_qa_missing_header_returns_422(self, client):
+    def test_qa_missing_header_returns_401_or_422(self, client):
         response = client.post(
             "/qa",
             json={"question": "What is cholesterol?"},
-            # No X-User-Id header
         )
-        assert response.status_code == 422
+        assert response.status_code in (401, 422)
 
     def test_qa_safety_trigger_through_proxy(self, client):
         response = client.post(
