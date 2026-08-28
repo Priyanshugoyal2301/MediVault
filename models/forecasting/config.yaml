@@ -1,0 +1,23 @@
+# Biomarker Forecasting — Phase 5
+
+model_name: biomarker_forecaster
+version: "5.0.0"
+
+primary_architecture: lightgbm
+fallback_architecture: xgboost
+baseline_architecture: linear_regression
+future_architectures:
+  - temporal_transformer
+  - lstm
+
+# auto: lightgbm → xgboost → sklearn_gb
+active_backend: auto
+default_horizon_days: 180
+seed: 42
+min_history_points: 2
+pi_z: 1.645
+
+paths:
+  train_data: ../../datasets/forecasting
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/forecast_phase5_latest.json

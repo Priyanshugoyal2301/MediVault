@@ -1,0 +1,22 @@
+# Disease Risk Prediction — Phase 4
+
+model_name: disease_risk_predictor
+version: "4.0.0"
+
+primary_architecture: xgboost
+fallback_architecture: lightgbm
+baseline_architecture: logistic_regression
+
+# auto prefers xgboost → lightgbm → sklearn HistGradientBoosting
+active_backend: auto
+seed: 42
+min_confidence: 0.45
+
+thresholds:
+  low: 0.33
+  moderate: 0.66
+
+paths:
+  train_data: ../../datasets/risk_prediction
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/risk_phase4_latest.json

@@ -1,0 +1,18 @@
+﻿# Personalized Health Score — Phase 6
+
+model_name: personalized_health_score
+version: "6.0.0"
+
+primary_architecture: xgboost
+fallback_architecture: lightgbm
+baseline_architecture: linear_regression
+
+# auto: xgboost → lightgbm → sklearn_gb
+active_backend: auto
+seed: 42
+top_k_explain: 8
+
+paths:
+  train_data: ../../datasets/health_score
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/health_score_phase6_latest.json
