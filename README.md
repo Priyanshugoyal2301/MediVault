@@ -124,36 +124,40 @@ cp .env.example .env
 docker-compose up -d postgres
 ```
 
+If port **5432** is already in use locally, set `POSTGRES_PUBLISH_PORT=5433` in `.env` (and `POSTGRES_PORT=5433` for host-run services).
+
 ### 5. Run database migrations
 
+From the **repo root** (loads `.env` automatically):
+
 ```bash
-cd infra/migrations
-alembic upgrade head
-cd ../..
+alembic -c infra/migrations/alembic.ini upgrade head
 ```
 
 ---
 
 ## Running Services
 
-Each service is a separate FastAPI app. Prefer launching from the **repo root** with `PYTHONPATH=.` so imports resolve:
+Each service is a separate FastAPI app. From the **repo root**, use the bootstrap wrapper (handles hyphenated `services/*-service` imports and BFF `app_dir`):
 
 ```powershell
-$env:PYTHONPATH="."
-uvicorn services.auth_service.main:app --reload --port 8001
-uvicorn services.health_service.main:app --reload --port 8002
-uvicorn services.ai_service.main:app --reload --port 8003
-# BFF (public entry for the web app)
-cd apps/api; uvicorn main:app --reload --port 8000
+python scripts/run_service.py services.auth_service.main:app 8001
+python scripts/run_service.py services.health_service.main:app 8002
+python scripts/run_service.py services.ai_service.main:app 8003
+python scripts/run_service.py apps.api.main:app 8000
 # Frontend
 cd apps/web; npm install; npm run dev
 ```
 
+If default ports conflict (e.g. **8001** taken), override `AUTH_SERVICE_URL` / `HEALTH_SERVICE_URL` / `AI_SERVICE_URL` in `.env` and pass matching ports to `run_service.py`.
+
 Docker Compose starts postgres + services (health/AI bound to localhost only). Judge script: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
+
+Use `--build` after Dockerfile changes (e.g. AI `packages/ml-interfaces`); otherwise `docker-compose up` is sufficient if images are current.
 
 ---
 

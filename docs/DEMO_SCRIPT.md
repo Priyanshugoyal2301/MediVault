@@ -9,18 +9,19 @@
 ```powershell
 # From repo root, with .env configured
 docker-compose up -d postgres
-cd infra/migrations; alembic upgrade head; cd ../..
+alembic -c infra/migrations/alembic.ini upgrade head
 
-$env:PYTHONPATH="."
 $env:MEDIVAULT_FAST_KB="1"   # fast KB embeddings — no HuggingFace download
 
-# Terminals:
-uvicorn services.auth_service.main:app --port 8001
-uvicorn services.health_service.main:app --port 8002
-uvicorn services.ai_service.main:app --port 8003
-cd apps/api; uvicorn main:app --port 8000
+# Terminals (repo root):
+python scripts/run_service.py services.auth_service.main:app 8001
+python scripts/run_service.py services.health_service.main:app 8002
+python scripts/run_service.py services.ai_service.main:app 8003
+python scripts/run_service.py apps.api.main:app 8000
 cd apps/web; npm run dev
 ```
+
+**Port conflicts:** set `POSTGRES_PUBLISH_PORT=5433` + `POSTGRES_PORT=5433` if 5432 is busy; remap auth to e.g. `8011` and set `AUTH_SERVICE_URL=http://127.0.0.1:8011`. For preflight with overrides: `$env:MEDIVAULT_AUTH_PORT=8011; $env:MEDIVAULT_WEB_PORT=3002`. Docker stack: `docker-compose up --build` (rebuild after AI Dockerfile changes).
 
 **Automated:**
 
