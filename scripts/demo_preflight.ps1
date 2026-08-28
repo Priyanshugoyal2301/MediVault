@@ -1,8 +1,16 @@
 # MediVault demo preflight — run before judges arrive.
 # Usage (from repo root):  powershell -File scripts/demo_preflight.ps1
+# Optional port overrides when defaults conflict:
+#   $env:MEDIVAULT_AUTH_PORT=8011; $env:MEDIVAULT_WEB_PORT=3002
 
 $ErrorActionPreference = "Continue"
 $failed = 0
+
+$authPort = if ($env:MEDIVAULT_AUTH_PORT) { $env:MEDIVAULT_AUTH_PORT } else { 8001 }
+$healthPort = if ($env:MEDIVAULT_HEALTH_PORT) { $env:MEDIVAULT_HEALTH_PORT } else { 8002 }
+$aiPort = if ($env:MEDIVAULT_AI_PORT) { $env:MEDIVAULT_AI_PORT } else { 8003 }
+$bffPort = if ($env:MEDIVAULT_BFF_PORT) { $env:MEDIVAULT_BFF_PORT } else { 8000 }
+$webPort = if ($env:MEDIVAULT_WEB_PORT) { $env:MEDIVAULT_WEB_PORT } else { 3000 }
 
 function Check-Url($name, $url, $expectKb = $false) {
   try {
@@ -32,22 +40,22 @@ if (-not (Test-Path ".env")) {
   Write-Host "[OK]   .env present" -ForegroundColor Green
 }
 
-Check-Url "postgres (indirect)" "http://127.0.0.1:8001/health"
-Check-Url "auth-service" "http://127.0.0.1:8001/health"
-Check-Url "health-service" "http://127.0.0.1:8002/health"
-Check-Url "ai-service + KB" "http://127.0.0.1:8003/health" $true
-Check-Url "api-gateway" "http://127.0.0.1:8000/health"
+Check-Url "postgres (indirect)" "http://127.0.0.1:$authPort/health"
+Check-Url "auth-service" "http://127.0.0.1:$authPort/health"
+Check-Url "health-service" "http://127.0.0.1:$healthPort/health"
+Check-Url "ai-service + KB" "http://127.0.0.1:$aiPort/health" $true
+Check-Url "api-gateway" "http://127.0.0.1:$bffPort/health"
 
 try {
-  $web = Invoke-WebRequest -Uri "http://127.0.0.1:3000" -TimeoutSec 5 -UseBasicParsing
+  $web = Invoke-WebRequest -Uri "http://127.0.0.1:$webPort" -TimeoutSec 5 -UseBasicParsing
   if ($web.StatusCode -ge 200 -and $web.StatusCode -lt 500) {
-    Write-Host "[OK]   web :3000" -ForegroundColor Green
+    Write-Host "[OK]   web :$webPort" -ForegroundColor Green
   } else {
-    Write-Host "[FAIL] web :3000 status $($web.StatusCode)" -ForegroundColor Red
+    Write-Host "[FAIL] web :$webPort status $($web.StatusCode)" -ForegroundColor Red
     $failed++
   }
 } catch {
-  Write-Host "[FAIL] web :3000 unreachable (npm run dev?)" -ForegroundColor Red
+  Write-Host "[FAIL] web :$webPort unreachable (npm run dev?)" -ForegroundColor Red
   $failed++
 }
 

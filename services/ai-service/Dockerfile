@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY packages/shared-utils /app/packages/shared_utils
 COPY packages/shared-types /app/packages/shared_types
+COPY packages/ml-interfaces /app/packages/ml_interfaces
 COPY services/ai-service /app/services/ai_service
 COPY data/knowledge-base /app/data/knowledge-base
 RUN printf '' > /app/packages/__init__.py && printf '' > /app/services/__init__.py

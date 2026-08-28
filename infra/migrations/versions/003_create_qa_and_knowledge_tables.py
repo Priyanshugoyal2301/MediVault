@@ -39,11 +39,6 @@ def upgrade() -> None:
         sa.Column("chunk_text", sa.Text(), nullable=False),
         sa.Column("chunk_index", sa.Integer(), nullable=False),
         sa.Column(
-            "embedding",
-            # pgvector vector type: 384 dimensions (all-MiniLM-L6-v2)
-            sa.Column("embedding", sa.LargeBinary(), nullable=True),
-        ),
-        sa.Column(
             "created_at",
             sa.TIMESTAMP(timezone=True),
             nullable=False,
@@ -51,15 +46,10 @@ def upgrade() -> None:
         ),
         sa.PrimaryKeyConstraint("id"),
     )
-    # Use raw SQL for the vector column since SQLAlchemy doesn't natively
-    # support pgvector types in migration scripts.
+    # pgvector embedding column (384-dim; all-MiniLM-L6-v2) added via raw SQL
     op.execute(
         "ALTER TABLE knowledge_documents ADD COLUMN IF NOT EXISTS "
         "embedding vector(384)"
-    )
-    # Drop the placeholder LargeBinary column if it was created
-    op.execute(
-        "ALTER TABLE knowledge_documents DROP COLUMN IF EXISTS embedding_1"
     )
 
     op.create_index(

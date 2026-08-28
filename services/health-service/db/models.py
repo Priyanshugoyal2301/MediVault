@@ -20,6 +20,15 @@ class Base(DeclarativeBase):
     pass
 
 
+class User(Base):
+    """Stub for auth-owned ``users`` table — FK resolution only (not written here)."""
+
+    __tablename__ = "users"
+    __table_args__ = {"extend_existing": True}
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+
+
 class Report(Base):
     __tablename__ = "reports"
     __table_args__ = (

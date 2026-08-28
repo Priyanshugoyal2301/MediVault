@@ -7,9 +7,19 @@ Runs in offline mode (emit SQL) or online mode (direct connection).
 
 import os
 from logging.config import fileConfig
+from pathlib import Path
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
+
+# Load repo-root .env when running `alembic -c infra/migrations/alembic.ini upgrade head`
+try:
+    from dotenv import load_dotenv
+
+    _repo_root = Path(__file__).resolve().parents[2]
+    load_dotenv(_repo_root / ".env")
+except ImportError:
+    pass
 
 # ---------------------------------------------------------------------------
 # Alembic Config object
