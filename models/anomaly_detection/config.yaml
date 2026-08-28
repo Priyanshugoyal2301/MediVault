@@ -1,0 +1,21 @@
+# Lab Anomaly Detection — Phase 7
+
+model_name: lab_anomaly_detector
+version: "7.0.0"
+
+primary_architecture: isolation_forest
+fallback_architecture: lof
+baseline_architecture: robust_z
+future_architectures:
+  - autoencoder
+  - one_class_svm
+
+active_backend: auto
+contamination: 0.08
+score_threshold: 0.55
+seed: 42
+
+paths:
+  train_data: ../../datasets/anomaly_detection
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/anomaly_phase7_latest.json

@@ -1,0 +1,25 @@
+﻿# models/anomaly/config.yaml — scaffold hyperparameters (no live effect)
+model_name: anomaly
+version: 0.0.0-scaffold
+framework: none
+input: TBD
+output: TBD
+paths:
+  train_data: ../../datasets/
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/anomaly_latest.json
+train:
+  seed: 42
+  epochs: 0
+  batch_size: 0
+  learning_rate: 0.0
+eval:
+  metrics:
+    - precision
+    - recall
+    - f1
+    - accuracy
+    - latency_ms
+    - model_size_bytes
+    - memory_mib
+    - inference_time_ms
