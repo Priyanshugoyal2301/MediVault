@@ -10,7 +10,10 @@ from fastapi import FastAPI
 
 from packages.shared_utils import get_logger
 
-from .routers.auth import router as auth_router
+try:
+    from .routers.auth import router as auth_router
+except ImportError:  # flat layout (Docker / `cd services/auth-service`)
+    from routers.auth import router as auth_router
 
 logger = get_logger(__name__)
 

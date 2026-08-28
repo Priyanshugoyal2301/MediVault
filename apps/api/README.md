@@ -2,35 +2,39 @@
 
 ## What this service owns
 
-Backend-for-Frontend layer. Receives all requests from the web client and routes them to the correct downstream service. No business logic lives here — just auth token validation, request forwarding, and response shaping for the client.
+Browser-facing Backend-for-Frontend:
+
+- Validate JWT (`Authorization: Bearer …`)
+- Strip any client `X-User-ID` and inject trusted identity from token `sub`
+- Proxy to auth-service and health-service
+- **Does not** expose AI-service routes
 
 ## Tech
 
-FastAPI (Python 3.11+)
+FastAPI + httpx + python-jose
 
-## API contract (routing map)
+## Routing map (actual)
 
-| Client route | Forwarded to |
+| Client route | Upstream |
 |---|---|
-| `POST /api/auth/register` | `auth-service POST /auth/register` |
-| `POST /api/auth/login` | `auth-service POST /auth/login` |
-| `GET /api/reports` | `health-service GET /reports` |
-| `POST /api/reports` | `health-service POST /reports` (triggers AI parsing job) |
-| `GET /api/timeline` | `health-service GET /timeline` |
-| `POST /api/qa` | `ai-service POST /qa` |
+| `POST /auth/register` | auth-service `/auth/register` |
+| `POST /auth/login` | auth-service `/auth/login` |
+| `GET /auth/me` | auth-service `/auth/me` |
+| `GET\|POST /reports…` | health-service (JWT required) |
+| `GET /timeline…` | health-service (JWT required) |
+| `POST /qa` | health-service (JWT required; health calls AI) |
 
-All endpoints (except `/api/auth/*`) require a valid JWT in the `Authorization` header — validated here before forwarding.
+There is **no** `/api` prefix. Vite proxies these paths to `:8000`.
 
 ## Running locally
 
 ```bash
+# From repo root: ensure .env has AUTH_SECRET_KEY matching auth-service
 cd apps/api
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
 
-Or via docker-compose from the repo root.
+## Health
 
-## Health check
-
-`GET /health` → `200 {"status": "ok"}`
+`GET /health` → gateway status + configured upstream URLs.
