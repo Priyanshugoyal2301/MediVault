@@ -1,0 +1,7 @@
+# Optional extras for ModernBERT / ClinicalBERT encoder backends
+# Not required for deployable char_tfidf path.
+# torch
+# transformers>=4.40
+scikit-learn>=1.5.0
+numpy>=1.26.0
+PyYAML>=6.0

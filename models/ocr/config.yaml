@@ -1,0 +1,64 @@
+﻿# models/ocr/config.yaml — Unlimited-OCR (Phase 1 / 1A hardened)
+model_name: unlimited-ocr
+version: "1.1.0-phase1a"
+framework: unlimited-ocr
+hf_model_id: baidu/Unlimited-OCR
+
+# Backend selection (env UNLIMITED_OCR_BACKEND):
+#   auto  — HTTP only when UNLIMITED_OCR_ENDPOINT set; NEVER auto-loads local weights
+#   http  — remote SGLang/vLLM only (requires endpoint)
+#   local — requires UNLIMITED_OCR_ALLOW_LOCAL_WEIGHTS=1; download requires ALLOW_LOCAL_DOWNLOAD=1
+#   stub  — offline CI only
+backend: auto
+
+http:
+  endpoint: ""
+  model: Unlimited-OCR
+  timeout_s: 120
+  ngram_size: 35
+  window_size_single: 128
+  window_size_multi: 1024
+  prompt_single: " document parsing."
+  prompt_multi: " Multi page parsing."
+
+local:
+  device: auto
+  base_size: 1024
+  image_size: 640
+  crop_mode: true
+  max_length: 32768
+  no_repeat_ngram_size: 35
+  ngram_window: 128
+  # Overridden by env; defaults deny accidental loads
+  allow_local_weights: false
+  allow_download: false
+
+preprocess:
+  target_dpi: 300
+  max_page_side: 2500
+  enable_deskew: true
+  enable_contrast: true
+  enable_denoise: true
+  enable_rotation: true
+
+paths:
+  train_data: ../../datasets/document_parsing
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/ocr_phase1_latest.json
+
+eval:
+  value_tolerance: 0.051
+  metrics:
+    - field_precision
+    - field_recall
+    - field_f1
+    - exact_match
+    - ocr_accuracy
+    - table_accuracy
+    - missing_field_rate
+    - false_positive_rate
+    - latency_ms
+    - memory_mib
+    - cpu_percent
+    - gpu_memory_mib
+    - avg_processing_time_ms

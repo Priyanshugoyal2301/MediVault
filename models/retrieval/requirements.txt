@@ -1,0 +1,3 @@
+# requirements extras — optional FAISS
+# pip install faiss-cpu
+# If missing, models/retrieval uses NumPy inner-product search automatically.

@@ -1,0 +1,29 @@
+﻿# models/retrieval — Semantic Medical Retrieval config (Phase 3)
+
+model_name: semantic_medical_retriever
+version: "3.0.0"
+
+primary_architecture: BAAI/bge-small-en-v1.5
+fallback_architecture: sentence-transformers/all-MiniLM-L6-v2
+offline_architecture: char_tfidf
+
+# auto tries BGE → MiniLM when RETRIEVAL_ALLOW_HF=1, else char_tfidf
+embedding_backend: auto
+vector_store: faiss  # faiss | numpy | memory (qdrant/chroma/milvus reserved)
+allow_hf_download: false
+default_top_k: 5
+device: cpu
+tfidf_dim: 256
+
+primary_model_id: BAAI/bge-small-en-v1.5
+fallback_model_id: sentence-transformers/all-MiniLM-L6-v2
+
+chunking:
+  target_words: 300
+  overlap_words: 50
+
+paths:
+  knowledge_base: ../../data/knowledge-base
+  train_data: ../../datasets/retrieval
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/retrieval_phase3_latest.json

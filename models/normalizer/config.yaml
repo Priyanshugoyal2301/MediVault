@@ -1,0 +1,39 @@
+﻿# Medical Test Normalizer — Phase 2
+
+model_name: medical_test_normalizer
+version: "2.0.0"
+framework: sklearn|transformers
+
+# Architecture policy (business logic stays backend-agnostic)
+primary_architecture: modernbert
+fallback_architecture: clinicalbert
+offline_architecture: char_tfidf
+
+# Deployable default: offline ML (char n-gram TF-IDF). Switch with NORMALIZER_BACKEND.
+# Set NORMALIZER_ALLOW_HF=1 to train/use ModernBERT / ClinicalBERT.
+active_backend: char_tfidf
+min_confidence: 0.55
+allow_hf_download: false
+device: cpu
+
+modernbert_model_id: answerdotai/ModernBERT-base
+clinicalbert_model_id: emilyalsentzer/Bio_ClinicalBERT
+
+paths:
+  train_data: ../../datasets/test_normalization
+  artifacts: ./artifacts
+  evaluation_out: ../../datasets/evaluation/normalizer_phase2_latest.json
+
+train:
+  seed: 42
+
+eval:
+  metrics:
+    - top1_accuracy
+    - top3_accuracy
+    - precision
+    - recall
+    - f1
+    - unknown_term_accuracy
+    - loinc_mapping_accuracy
+    - latency_ms
