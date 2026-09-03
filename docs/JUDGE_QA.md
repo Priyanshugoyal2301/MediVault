@@ -56,7 +56,7 @@ Evidence: `data/datasets/generate_synthetic_anomaly_data.py`
 **10. Can you show metrics?**  
 Short: Anomaly F1 on synthetic is directional only.  
 Tech: Do not oversell; prefer live LDL trend demo.  
-Evidence: `docs/DEV_LOG.md` (with correction note)
+Evidence: `docs/PRESENTATION_CLAIMS.md`, historical eval notes in `docs/PLAN_C_REPORT.md` / Plan B docs
 
 ### RAG / Embeddings
 
@@ -73,7 +73,7 @@ Evidence: `rag/bootstrap.py`, `rag/retriever.py`, `rag/bm25.py`
 **13. What is Precision@5 82%?**  
 Short: Retracted (was MD5 Hit@5 mislabeled). Current harness reports Hit@5/MRR on BM25.  
 Tech: `--use-dense` for hybrid bake-off; still Hit@5 ≠ classical P@5.  
-Evidence: `data/datasets/evaluate_rag.py`, DEV_LOG correction
+Evidence: `data/datasets/evaluate_rag.py`, `docs/PRESENTATION_CLAIMS.md`
 
 **14. How do citations work?**  
 Short: Synthesizer attaches sources for retrieved chunks.  
@@ -235,7 +235,7 @@ Tech: —
 **43. What’s next?**  
 Short: Durable queue, encrypt-at-rest, audit logs, real MiniLM eval, WCAG.  
 Tech: See PROJECT_STATE partial list.  
-Evidence: `00_PROJECT_STATE.md`
+Evidence: `docs/PRESENTATION_CLAIMS.md`, `README.md`
 
 **44. ABHA / hospital integration?**  
 Short: Out of MVP scope.  

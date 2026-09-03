@@ -1,7 +1,5 @@
 # Deployment — MediVault (ML-aware)
 
-Full ops checklist: [`deployment-checklist.md`](../deployment-checklist.md).
-
 ## Production defaults
 
 1. Copy `.env.example` → `.env`; keep **all** `USE_*` ML flags at **0**.  

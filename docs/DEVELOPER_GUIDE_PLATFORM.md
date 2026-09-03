@@ -34,12 +34,11 @@ Platform tools import `conftest` so `services.ai_service` resolves to hyphenated
 
 | File | Purpose |
 |------|---------|
-| `platform-summary.md` | Phase 9 summary |
-| `benchmark_complete.md` | Unified metrics |
+| `docs/benchmark_complete.md` | Unified metrics |
 | `validation/platform-validation.md` | Gate verdict |
 | `docs/MODEL_REGISTRY.md` | Model inventory |
-| `reproducibility-checklist.md` | Audit checklist |
-| `risk-register.md` / `known-limitations.md` | Risk ops |
+| `docs/KNOWN_LIMITATIONS.md` | Platform limits |
+| `docs/DEPLOYMENT.md` | Deploy notes |
 
 ## Do not
 

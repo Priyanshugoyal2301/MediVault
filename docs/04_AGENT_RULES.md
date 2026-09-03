@@ -14,11 +14,10 @@
 - Never keep two competing ways of doing the same thing (e.g. two auth middlewares, two report parsers) "just in case." Pick one, migrate everything to it, delete the other.
 - If a piece of code turns out to be a dead end (an approach that didn't work, an experiment that failed), remove it once you've confirmed it's not useful — don't let it linger and become confusing clutter for a future session (including future-you).
 
-## 3. Every change gets logged
+## 3. Document meaningful decisions
 
-- Maintain `DEV_LOG.md` in `/docs`. For every meaningful change (new feature, architectural decision, dataset choice, model swap, scope deviation, bug fix that changes behavior), add an entry using the format defined at the top of that file.
-- The log exists so any session (yours or a different one) can reconstruct *why* the code looks the way it does without re-reading every file. Write entries for a future reader who has no other context.
-- When you make a decision with a tradeoff (e.g. "chose pgvector over a dedicated vector DB for MVP simplicity"), log the reasoning, not just the outcome — so it can be revisited later without redoing the analysis.
+- Record architectural tradeoffs, dataset choices, and evaluation numbers in the relevant docs under `/docs` (for example `CONFIGURATION.md`, `FEATURE_FLAGS.md`, `MODEL_REGISTRY.md`, or a PR description) — not only in chat.
+- Prefer updating the README or targeted docs when user-facing behavior changes.
 
 ## 4. Scope and safety guardrails
 
@@ -30,9 +29,9 @@
 ## 5. Quality bar
 
 - Every new endpoint/function that touches user health data needs a test that checks it's scoped to the requesting user (no cross-user data leakage).
-- Every model or retrieval component you build or change needs its evaluation numbers recorded in `DEV_LOG.md`, per `03_MVP_SCOPE.md`'s evaluation requirements — "it seems to work" is not sufficient.
-- Prefer small, reviewable changes over large multi-feature commits, so the dev log stays traceable to specific diffs.
+- Every model or retrieval component you build or change needs evaluation numbers recorded under `validation/` or `docs/benchmark_*` — "it seems to work" is not sufficient.
+- Prefer small, reviewable changes over large multi-feature commits.
 
 ## 6. When in doubt
 
-- If a request is ambiguous about scope, architecture, or safety behavior, state your assumption and proceed — but log the assumption in `DEV_LOG.md` under "Open Questions" so it can be corrected later rather than silently baked in.
+- If a request is ambiguous about scope, architecture, or safety behavior, state your assumption explicitly in the PR or task notes before baking it into code.

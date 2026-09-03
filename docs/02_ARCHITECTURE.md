@@ -64,7 +64,8 @@
     02_ARCHITECTURE.md
     03_MVP_SCOPE.md
     04_AGENT_RULES.md
-    DEV_LOG.md
+    DEMO_SCRIPT.md
+    FEATURE_FLAGS.md
   /tests
     /unit
     /integration

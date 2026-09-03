@@ -2,8 +2,7 @@
 
 > **Definitive project knowledge base / institutional memory.**  
 > Prefer this document over any individual README if the two disagree; then reconcile docs with code.  
-> State snapshot companion: [`00_PROJECT_STATE.md`](00_PROJECT_STATE.md) (short; update every session).  
-> Append-only history: [`docs/DEV_LOG.md`](docs/DEV_LOG.md).  
+> Short overview: [`README.md`](README.md). Demo: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). Claims: [`docs/PRESENTATION_CLAIMS.md`](docs/PRESENTATION_CLAIMS.md).  
 > **Last full audit for this encyclopedia:** 2026-08-10.
 
 ---

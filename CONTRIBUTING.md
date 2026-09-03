@@ -27,10 +27,13 @@ git clone https://github.com/Priyanshugoyal2301/MediVault.git
 cd MediVault
 python -m venv .venv && source .venv/bin/activate   # macOS/Linux
 # OR: .venv\Scripts\activate                         # Windows
-pip install -r services/health-service/requirements.txt
+pip install -r requirements-dev.txt
 cp .env.example .env  # fill in required values
-docker-compose up -d db
+docker-compose up -d postgres
+alembic -c infra/migrations/alembic.ini upgrade head
 ```
+
+Start services with `python scripts/run_service.py …` as described in [README.md](README.md).
 
 ---
 
@@ -221,5 +224,5 @@ pre-commit run --all-files
 - [ ] No bare `import logging` (pre-commit hook)
 - [ ] New health-data tables have `owner_id NOT NULL`
 - [ ] AI output text passes tone rules (no diagnoses)
-- [ ] DEV_LOG entry added if making an architectural decision
-- [ ] `00_PROJECT_STATE.md` updated if checklist items changed
+- [ ] README / docs updated if user-facing behavior changed
+- [ ] ML flags left at default off unless intentionally enabling and evaluating

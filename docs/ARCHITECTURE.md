@@ -13,7 +13,7 @@
 - `docs/MODEL_REGISTRY.md` — full model inventory  
 - `docs/DATASET_REFERENCE.md` — datasets  
 - `docs/FEATURE_FLAGS.md` — flag matrix  
-- `benchmark_complete.md` — unified benchmarks  
-- `platform-summary.md` — Phase 9 status  
+- `docs/benchmark_complete.md` — unified benchmarks  
+- `docs/KNOWN_LIMITATIONS.md` — platform limits  
 - Sequence: Image → Quality → OCR → Normalize → Retrieve → Risk → Forecast → Score → Anomaly (`models/platform/e2e_validate.py`)  
 

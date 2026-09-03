@@ -5,7 +5,7 @@
 ### Added
 
 - Platform hardening (`models/platform/`): reproducibility audit, unified benchmark suite, e2e validation, optional MLflow/W&B experiment tracking (disabled by default).
-- Deliverables: `platform-summary.md`, `benchmark_complete.md`, `deployment-checklist.md`, `research-readiness.md`, `reproducibility-checklist.md`, `risk-register.md`, `known-limitations.md`.
+- Deliverables: `docs/benchmark_complete.md`, `docs/DEPLOYMENT.md`, `docs/KNOWN_LIMITATIONS.md`, platform tooling under `models/platform/`.
 - Docs: expanded `MODEL_REGISTRY.md`, `DATASET_REFERENCE.md`, `FEATURE_FLAGS.md`, `BENCHMARK_GUIDE.md`, `TROUBLESHOOTING.md`.
 - OCR `model_card.md` + `requirements.txt` (8/8 package audit pass).
 - Tests `tests/phase9/`; validation **PASS** `validation/platform-validation.md`.

@@ -41,6 +41,12 @@ Thumbs.db
 # Logs
 *.log
 logs/
+phase*_logs/
+*_logs/
+
+# Local ops / verification scratch (never commit)
+PUSH_READINESS.md
+POST_PUSH_VERIFICATION.md
 
 # Test artefacts
 .pytest_cache/

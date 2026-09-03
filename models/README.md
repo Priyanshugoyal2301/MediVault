@@ -35,4 +35,4 @@ python models/platform/benchmark_suite.py
 python models/platform/e2e_validate.py
 ```
 
-See [platform-summary.md](../platform-summary.md), [benchmark_complete.md](../benchmark_complete.md), [docs/MODEL_REGISTRY.md](../docs/MODEL_REGISTRY.md).
+See [docs/MODEL_REGISTRY.md](../docs/MODEL_REGISTRY.md), [docs/benchmark_complete.md](../docs/benchmark_complete.md), [docs/KNOWN_LIMITATIONS.md](../docs/KNOWN_LIMITATIONS.md).

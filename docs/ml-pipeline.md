@@ -86,7 +86,7 @@ python models/ocr/evaluate.py
 4. `/parse` calls `get_normalizer().normalize_test_name` after document parse.  
 5. Flag off → `AliasNormalizer` only (legacy never deleted).
 
-Details: `models/normalizer/README.md`, `docs/model-cards/medical-test-normalizer.md`, `phase2-summary.md`.
+Details: `models/normalizer/README.md`, `docs/model-cards/medical-test-normalizer.md`.
 
 
 ### 3.4 Anomaly / outlier
@@ -104,7 +104,7 @@ Details: `models/normalizer/README.md`, `docs/model-cards/medical-test-normalize
 4. Compare BM25 vs semantic via `python models/retrieval/evaluate.py`.  
 5. Flag off → pure BM25 forever (never deleted).
 
-Details: `models/retrieval/README.md`, `docs/model-cards/semantic-retriever.md`, `phase3-summary.md`.
+Details: `models/retrieval/README.md`, `docs/model-cards/semantic-retriever.md`.
 
 ### 3.6 Risk & health score (new surfaces)
 

@@ -1,243 +1,266 @@
 # MediVault AI
 
-> A hackathon prototype that turns scattered lab reports into an owner-scoped health vault with plain-language explanations, personal trend scoring, and citation-backed Q&A — designed not to issue diagnoses.
+A privacy-conscious health vault prototype: upload lab reports, get plain-language explanations (English + Hindi), track personal biomarker trends, and ask citation-backed questions — without issuing diagnoses.
 
-**Status:** Hackathon prototype — Features 1–3 backend + live web client behind a JWT BFF. See [`00_PROJECT_STATE.md`](00_PROJECT_STATE.md) and [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
+**Status:** Hackathon / research prototype. JWT-backed FastAPI microservices, React demo client, and an optional ML platform behind feature flags (all off by default).
 
----
-
-## Table of Contents
-
-1. [What MediVault Does](#what-medivault-does)
-2. [Architecture Overview](#architecture-overview)
-3. [Prerequisites](#prerequisites)
-4. [Setup — Local Development](#setup--local-development)
-5. [Running Services](#running-services)
-6. [API Reference](#api-reference)
-7. [Running Tests](#running-tests)
-8. [Project Structure](#project-structure)
-9. [Privacy & Safety Rules](#privacy--safety-rules)
+> Not medical device software. Not a substitute for clinical care.
 
 ---
 
-## What MediVault Does
+## Table of contents
 
-MediVault takes uploaded medical lab reports (PDFs, images), OCRs them, extracts structured health values (CBC, lipid panel, thyroid, HbA1c), explains them in plain language (English + Hindi), and tracks trends over time to flag unusual patterns. Product tone is non-diagnostic (templates + safety layer); educational KB text may name conditions and must be framed as guidelines, not a personal diagnosis.
-
-**It does NOT:**
-- Diagnose conditions
-- Replace a doctor's advice
-- Store data in the cloud by default (local storage in dev)
+1. [What it does](#what-it-does)
+2. [Key features](#key-features)
+3. [Architecture](#architecture)
+4. [Tech stack](#tech-stack)
+5. [Prerequisites](#prerequisites)
+6. [Quick start](#quick-start)
+7. [Running with Docker Compose](#running-with-docker-compose)
+8. [Demo path](#demo-path)
+9. [API overview](#api-overview)
+10. [ML feature flags](#ml-feature-flags)
+11. [Tests](#tests)
+12. [Project structure](#project-structure)
+13. [Documentation](#documentation)
+14. [Privacy & safety](#privacy--safety)
+15. [Contributing](#contributing)
+16. [License](#license)
 
 ---
 
-## Architecture Overview
+## What it does
+
+MediVault turns scattered lab PDFs/images into an **owner-scoped** vault:
+
+| Capability | Behavior |
+|------------|----------|
+| Upload & parse | Magic-byte MIME check, async OCR + structured extraction (CBC, lipid, thyroid, HbA1c) |
+| Demo seed | Deterministic CBC/Lipid panels for judging — no OCR required |
+| Explanations | Template bilingual copy; non-diagnostic tone |
+| Timeline | Chronological values per metric; personal-series statistical anomaly monitor |
+| Q&A | Safety-first layer, then BM25 + intent retrieval over a local knowledge base |
+| Auth | Register / login / JWT; browser never sends `X-User-ID` |
+
+**It does not:** diagnose conditions, replace a clinician, or (in default local setup) send PHI to cloud OCR APIs.
+
+---
+
+## Key features
+
+- **BFF security model** — Browser → API gateway (`apps/api`) validates JWT, strips client `X-User-ID`, injects trusted identity into health-service.
+- **Owner-scoped data access** — Repository layer requires `owner_id` on health queries.
+- **Local-first AI path** — Tesseract OCR, in-memory KB for live Q&A (`MEDIVAULT_FAST_KB=1`), statistical anomaly (z-score / CUSUM) by default.
+- **Optional ML platform** — OCR adapter, normalizer, retrieval, risk, forecast, health score, anomaly, image quality — enabled only via env flags with fallbacks.
+- **Research site** — Static institutional site in `apps/research-site/` (separate from the product SPA).
+
+---
+
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│  Client (browser)                                       │
-└────────────────────┬────────────────────────────────────┘
-                     │ HTTP (local demo) / TLS if you terminate it
-┌────────────────────▼────────────────────────────────────┐
-│  API Gateway  (apps/api/ — FastAPI BFF)                 │
-│  • JWT validation   • trusted X-User-ID injection       │
-└──────┬────────────────────┬─────────────────────────────┘
-       │                    │
-┌──────▼──────┐  ┌──────────▼──────┐     ┌────────────────┐
-│ Auth Service│  │ Health Service  │────▶│ AI Service     │
-│ /auth/*     │  │ /reports        │     │ /parse         │
-│ JWT, bcrypt │  │ /timeline /qa   │     │ /anomaly /qa   │
-└─────────────┘  └────────┬────────┘     └────────────────┘
-                           │ owner_id scoped
-                     ┌─────▼──────┐
-                     │ PostgreSQL  │
-                     │ (pgvector   │
-                     │  installed; │
-                     │  live Q&A   │
-                     │  uses in-   │
-                     │  memory KB) │
-                     └────────────┘
+Browser (apps/web :3000)
+        │  JWT
+        ▼
+API Gateway / BFF (apps/api :8000)
+   JWT verify · strip client X-User-ID · proxy
+        │                    │
+        ▼                    ▼
+ Auth (:8001)          Health (:8002) ──internal──▶ AI (:8003)
+ JWT + bcrypt          reports/timeline/qa         parse / anomaly / qa
+        │                    │
+        └────────┬───────────┘
+                 ▼
+          PostgreSQL + pgvector
 ```
 
-All health data queries are **owner-scoped** at the repository layer. Browser traffic must go through the BFF (`apps/api`), which validates the JWT and injects a trusted `X-User-ID` (client-supplied `X-User-ID` is stripped). AI endpoints are not exposed through the BFF. Live Q&A retrieval uses an in-memory knowledge base loaded at AI startup (`MEDIVAULT_FAST_KB=1` by default).
+AI ports are not exposed through the BFF. Health→AI calls use `INTERNAL_SERVICE_KEY` when set.
+
+---
+
+## Tech stack
+
+| Layer | Technology |
+|-------|------------|
+| API / services | Python 3.11+, FastAPI, Uvicorn, SQLAlchemy, asyncpg, Alembic |
+| Auth | python-jose (JWT), passlib/bcrypt |
+| Database | PostgreSQL 16 + pgvector (Docker image) |
+| OCR / vision | Tesseract, pdfplumber, Pillow |
+| Retrieval (default) | In-memory BM25 + intent |
+| Frontend | React 18, Vite 5 |
+| Orchestration | Docker Compose |
 
 ---
 
 ## Prerequisites
 
-| Tool | Version | Notes |
-|------|---------|-------|
-| Python | 3.11+ | [python.org](https://python.org) |
-| Docker & Docker Compose | 24+ | For PostgreSQL and service orchestration |
-| Tesseract OCR | 5.x | `sudo apt install tesseract-ocr tesseract-ocr-hin` or `brew install tesseract` |
-| Git | 2.x | |
-
-**Python packages** (per service — see each `requirements.txt`):
-
-```
-fastapi, uvicorn, sqlalchemy, asyncpg, alembic
-pydantic-settings, python-jose[cryptography], passlib[bcrypt]
-httpx, pdfplumber, pytesseract, Pillow
-scikit-learn, numpy  # ai-service only
-```
+| Tool | Notes |
+|------|--------|
+| Python 3.11+ | Virtualenv recommended |
+| Node.js 18+ | For `apps/web` (and optional research site) |
+| Docker & Docker Compose | Postgres (and optional full stack) |
+| Tesseract OCR | Needed for real uploads; demo seed works without it |
+| Git | |
 
 ---
 
-## Setup — Local Development
+## Quick start
 
-### 1. Clone & create virtual environment
+### 1. Clone and virtualenv
 
 ```bash
 git clone https://github.com/Priyanshugoyal2301/MediVault.git
 cd MediVault
 python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
 ```
 
 ### 2. Install dependencies
 
-Install per-service (or install all at once for development):
-
 ```bash
-# All services combined (development convenience)
-pip install -r services/auth-service/requirements.txt
-pip install -r services/health-service/requirements.txt
-pip install -r services/ai-service/requirements.txt
+pip install -r requirements-dev.txt
+# or per-service:
+# pip install -r services/auth-service/requirements.txt
+# pip install -r services/health-service/requirements.txt
+# pip install -r services/ai-service/requirements.txt
+# pip install -r apps/api/requirements.txt
 ```
 
-### 3. Configure environment
+### 3. Environment
 
 ```bash
 cp .env.example .env
-# Edit .env — required values:
-#   POSTGRES_PASSWORD=<your_local_password>
-#   AUTH_SECRET_KEY=<32+ char random string>
-#   INTERNAL_SERVICE_KEY=<shared health↔AI key>
 ```
 
-### 4. Start PostgreSQL
+Set at least:
+
+- `POSTGRES_PASSWORD`
+- `AUTH_SECRET_KEY` (32+ characters; shared by auth-service and BFF)
+- `INTERNAL_SERVICE_KEY` (shared by health-service and ai-service)
+
+Defaults (do not change unless ports conflict):
+
+| Service | Port |
+|---------|------|
+| BFF | 8000 |
+| Auth | 8001 |
+| Health | 8002 |
+| AI | 8003 |
+| Web | 3000 |
+| Postgres | 5432 |
+
+If **5432** is busy: set `POSTGRES_PUBLISH_PORT=5433` and `POSTGRES_PORT=5433` in `.env`.  
+If **8001** / **3000** are busy: remap in `.env` (`AUTH_SERVICE_URL`, etc.) and pass matching ports to `run_service.py`. Preflight overrides: `MEDIVAULT_AUTH_PORT`, `MEDIVAULT_WEB_PORT`, and related vars (see `scripts/demo_preflight.ps1`).
+
+### 4. Postgres + migrations
 
 ```bash
 docker-compose up -d postgres
-```
-
-If port **5432** is already in use locally, set `POSTGRES_PUBLISH_PORT=5433` in `.env` (and `POSTGRES_PORT=5433` for host-run services).
-
-### 5. Run database migrations
-
-From the **repo root** (loads `.env` automatically):
-
-```bash
 alembic -c infra/migrations/alembic.ini upgrade head
 ```
 
----
+### 5. Start services (repo root)
 
-## Running Services
-
-Each service is a separate FastAPI app. From the **repo root**, use the bootstrap wrapper (handles hyphenated `services/*-service` imports and BFF `app_dir`):
-
-```powershell
+```bash
 python scripts/run_service.py services.auth_service.main:app 8001
 python scripts/run_service.py services.health_service.main:app 8002
 python scripts/run_service.py services.ai_service.main:app 8003
 python scripts/run_service.py apps.api.main:app 8000
-# Frontend
-cd apps/web; npm install; npm run dev
 ```
 
-If default ports conflict (e.g. **8001** taken), override `AUTH_SERVICE_URL` / `HEALTH_SERVICE_URL` / `AI_SERVICE_URL` in `.env` and pass matching ports to `run_service.py`.
+`scripts/run_service.py` resolves hyphenated package paths and starts the BFF with the correct `app_dir`.
 
-Docker Compose starts postgres + services (health/AI bound to localhost only). Judge script: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
+### 6. Frontend
+
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 (Vite proxies `/auth`, `/reports`, `/timeline`, `/qa` to the BFF).
+
+### 7. Smoke checks
+
+```bash
+# Windows PowerShell (from repo root)
+powershell -File scripts/demo_preflight.ps1
+powershell -File scripts/smoke_demo.ps1
+```
+
+---
+
+## Running with Docker Compose
 
 ```bash
 docker-compose up --build
 ```
 
-Use `--build` after Dockerfile changes (e.g. AI `packages/ml-interfaces`); otherwise `docker-compose up` is sufficient if images are current.
+Starts postgres, auth, health, AI, and the BFF. Use `--build` after Dockerfile changes (for example AI packaging of `packages/ml-interfaces`). Run the web client separately with `npm run dev` in `apps/web`.
+
+Health and AI bind to localhost only in Compose.
 
 ---
 
-## API Reference
+## Demo path
 
-### Auth Service (`/auth`)
+Prefer the **LIPID Demo** seed (no OCR):
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/auth/register` | Register a new user (`email`, `password`, `locale`) |
-| `POST` | `/auth/login` | Login → returns JWT access token |
-| `GET` | `/auth/me` | Get authenticated user profile |
+1. Register / sign in in the web UI  
+2. Upload → **LIPID Demo**  
+3. Timeline → **LDL Cholesterol**  
+4. Q&A chips (guideline → personal → safety/emergency)
 
-**Authentication:** All non-auth endpoints require `Authorization: Bearer <token>` header.
-
----
-
-### Health Service (`/reports`, `/timeline`)
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/reports` | Upload a medical report (PDF/image). Returns 202 — async OCR+parse |
-| `POST` | `/reports/demo/seed?panel=cbc\|lipid` | Deterministic demo report (no OCR) for judging |
-| `GET` | `/reports` | List all reports for the authenticated user |
-| `GET` | `/reports/{id}` | Get a report with extracted values + bilingual explanations |
-| `DELETE` | `/reports/{id}` | Delete report + cascade (file, values, timeline events) |
-| `GET` | `/timeline` | Get health timeline summary (latest value per test name) |
-| `GET` | `/timeline/{test_name}` | Full chronological history for a specific lab metric |
-| `GET` | `/timeline/{test_name}/anomaly` | History + trend/anomaly analysis from AI service |
-| `POST` | `/qa` | Evidence Q&A (safety-first; injects owner lab values) |
+Full judge script: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). Talking points: [`docs/JUDGE_QA.md`](docs/JUDGE_QA.md), [`docs/PRESENTATION_CLAIMS.md`](docs/PRESENTATION_CLAIMS.md).
 
 ---
 
-### AI Service (`/parse`, `/anomaly`) — Internal only
+## API overview
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/parse` | OCR + parse + explain a report (called by health-service background task) |
-| `POST` | `/anomaly/detect` | Trend + anomaly detection for a lab metric time series |
+Public browser traffic should use the **BFF** (`http://127.0.0.1:8000`) with `Authorization: Bearer <token>`.
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `POST` | `/auth/register` | Create account |
+| `POST` | `/auth/login` | Obtain JWT |
+| `GET` | `/auth/me` | Current user |
+| `POST` | `/reports` | Upload report (async parse) |
+| `POST` | `/reports/demo/seed?panel=cbc\|lipid` | Deterministic demo data |
+| `GET` | `/reports` | List reports |
+| `GET` | `/reports/{id}` | Report + values + explanations |
+| `DELETE` | `/reports/{id}` | Delete report (cascade) |
+| `GET` | `/timeline` | Latest value per test |
+| `GET` | `/timeline/{test_name}` | History for a metric |
+| `GET` | `/timeline/{test_name}/anomaly` | History + trend/anomaly |
+| `POST` | `/qa` | Safety-first Q&A |
+
+Internal AI (not routed via BFF): `POST /parse`, `POST /anomaly/detect`, `POST /qa`.  
+Service READMEs and [`docs/API.md`](docs/API.md) cover ML registry-only surfaces.
 
 ---
 
-## Running Tests
+## ML feature flags
+
+All `USE_*` flags default to **0** (rule-based / statistical path). Flip only after evaluating the matching `models/*` and `validation/` docs. Reference: [`docs/FEATURE_FLAGS.md`](docs/FEATURE_FLAGS.md), [`.env.example`](.env.example).
+
+Restart **ai-service** after changing flags (registry is process-cached).
+
+---
+
+## Tests
 
 ```bash
-# Unit + Phase 1 OCR + Phase 1A hardening
-python -m pytest tests/unit/ai-service tests/phase1 tests/phase1a -q
+# From repo root (PYTHONPATH set for imports)
+# Windows: $env:PYTHONPATH="."
+# macOS/Linux: export PYTHONPATH=.
+
+python -m pytest tests/unit -q
+python -m pytest tests/phase1 tests/phase1a tests/phase2 tests/phase3 -q
+# Additional ML phases: tests/phase4 … tests/phase9
 ```
 
-ML flag defaults stay off (`USE_UNLIMITED_OCR=0`). Optional OCR config: `docs/CONFIGURATION.md`.
-
-```bash
-# From repo root — sets PYTHONPATH so imports resolve correctly
-$env:PYTHONPATH="."; python -m pytest          # Windows PowerShell
-PYTHONPATH="." python -m pytest                 # macOS/Linux
-
-# Run only Feature 2 tests
-python -m pytest tests/unit/ai-service/test_anomaly.py tests/unit/health-service/test_timeline.py -v
-```
-
-**Test coverage by area:**
-
-| Area | Test File |
-|------|-----------|
-| Auth (JWT + scoping) | `tests/unit/auth-service/test_auth.py` |
-| Report upload + parsing | `tests/unit/health-service/test_reports.py` |
-| Timeline storage + scoping | `tests/unit/health-service/test_timeline.py` |
-| Z-score + anomaly detection | `tests/unit/ai-service/test_anomaly.py` |
-| OCR + parser + explainer | `tests/unit/ai-service/test_parser.py` |
-| Unlimited-OCR Phase 1 / 1A | `tests/phase1/`, `tests/phase1a/` |
-| Test name normalizer Phase 2 | `tests/phase2/` |
-| Semantic retrieval Phase 3 | `tests/phase3/` |
-| Disease risk Phase 4 | `tests/phase4/` |
-| Biomarker forecast Phase 5 | `tests/phase5/` |
-| Health score Phase 6 | `tests/phase6/` |
-| Anomaly detection Phase 7 | `tests/phase7/` |
-| Image quality Phase 8 | `tests/phase8/` |
-| Platform hardening Phase 9 | `tests/phase9/` |
-
-**ML platform (offline):**
+Offline ML tooling:
 
 ```bash
 python models/platform/audit.py
@@ -245,49 +268,77 @@ python models/platform/benchmark_suite.py
 python models/platform/e2e_validate.py
 ```
 
-Deliverables: [`platform-summary.md`](platform-summary.md), [`benchmark_complete.md`](benchmark_complete.md), [`docs/MODEL_REGISTRY.md`](docs/MODEL_REGISTRY.md), [`validation/platform-validation.md`](validation/platform-validation.md).
+---
 
-## Project Structure
+## Project structure
 
 ```
 MediVault/
 ├── apps/
-│   ├── api/              # API Gateway (BFF)
-│   └── web/              # Frontend (Feature 3)
+│   ├── api/                 # JWT BFF / API gateway
+│   ├── web/                 # React + Vite demo SPA
+│   └── research-site/       # Static research / portfolio site
 ├── services/
-│   ├── auth-service/     # JWT auth
-│   ├── health-service/   # Reports + timeline
-│   └── ai-service/       # OCR, parsing, anomaly, RAG
+│   ├── auth-service/        # Register, login, JWT
+│   ├── health-service/      # Reports, timeline, Q&A proxy
+│   └── ai-service/          # OCR, anomaly, RAG, ML adapters
 ├── packages/
-│   ├── shared-types/     # Pydantic schemas
-│   └── shared-utils/     # Redacting logger
-├── infra/
-│   └── migrations/       # Alembic migrations
-├── tests/
-│   ├── unit/             # Per-service unit tests
-│   └── integration/      # End-to-end tests (WIP)
-├── data/
-│   └── datasets/         # Synthetic evaluation scripts
-├── docs/
-│   ├── 01_PROJECT_CONTEXT.md
-│   ├── 02_ARCHITECTURE.md
-│   ├── 03_MVP_SCOPE.md
-│   ├── 04_AGENT_RULES.md
-│   └── DEV_LOG.md
-├── 00_PROJECT_STATE.md   # ← read this first every session
-├── conftest.py           # pytest configuration + module resolution
+│   ├── shared-types/        # Shared Pydantic schemas
+│   ├── shared-utils/        # Redacting logger
+│   ├── ml-interfaces/       # ML protocol interfaces
+│   └── ml-eval/             # Eval helpers
+├── models/                  # Offline train/eval for ML phases
+├── datasets/                # Synthetic / fixture datasets + licensing
+├── data/knowledge-base/     # Guideline text for live Q&A
+├── infra/migrations/        # Alembic
+├── scripts/                 # run_service, smoke_demo, demo_preflight
+├── tests/                   # Unit + phase suites
+├── validation/              # Per-model validation notes
+├── docs/                    # Architecture, API, demo, ML docs
+├── BIBLE.md                 # Long-form technical encyclopedia
 ├── docker-compose.yml
+├── requirements-dev.txt
 └── .env.example
 ```
 
 ---
 
-## Privacy & Safety Rules
+## Documentation
 
-1. **No diagnoses.** The AI summarises trends in plain language. It never says "you have [condition]".
-2. **Owner-scoped queries.** Every DB query requires `owner_id` — structurally enforced at the repository layer (`ScopedRepository`).
-3. **Redacting logger.** All services use `from packages.shared_utils import get_logger`. Never `import logging` directly — health field names are redacted before emission.
-4. **Local OCR.** We use Tesseract (self-hosted), not a cloud OCR API, to avoid transmitting raw health data externally.
-5. **JWT-only user identity.** Browser clients send `Authorization: Bearer <jwt>` to the BFF. The BFF decodes the JWT and injects trusted `X-User-ID` for health-service — never trust a client-supplied owner id.
+| Doc | Purpose |
+|-----|---------|
+| [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) | Judge / live demo flow |
+| [`docs/FEATURE_FLAGS.md`](docs/FEATURE_FLAGS.md) | ML flag matrix |
+| [`docs/CONFIGURATION.md`](docs/CONFIGURATION.md) | Env and backend knobs |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Architecture index |
+| [`docs/API.md`](docs/API.md) | ML-oriented API notes |
+| [`docs/KNOWN_LIMITATIONS.md`](docs/KNOWN_LIMITATIONS.md) | Honest platform limits |
+| [`docs/MODEL_REGISTRY.md`](docs/MODEL_REGISTRY.md) | Model inventory |
+| [`docs/PRESENTATION_CLAIMS.md`](docs/PRESENTATION_CLAIMS.md) | Conservative claims sheet |
+| [`BIBLE.md`](BIBLE.md) | Full technical encyclopedia |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contributor workflow |
 
-For the full rules, see [`docs/04_AGENT_RULES.md`](docs/04_AGENT_RULES.md).
+---
+
+## Privacy & safety
+
+1. **No diagnoses** — Summaries and RAG answers must not assert “you have X.”
+2. **Owner-scoped queries** — Enforced in health-service repositories.
+3. **Redacting logger** — Use `packages.shared_utils.get_logger`; do not log raw PHI field values.
+4. **Local OCR by default** — Tesseract; avoid cloud OCR unless privacy rationale is explicit.
+5. **Trusted identity** — Only the BFF may inject `X-User-ID` after JWT validation.
+6. **Emergency safety layer** — Chest-pain / breathing-style prompts trigger fixed safety copy before RAG.
+
+Agent rules: [`docs/04_AGENT_RULES.md`](docs/04_AGENT_RULES.md).
+
+---
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Keep ML flags off unless you are intentionally enabling and evaluating a model.
+
+---
+
+## License
+
+No `LICENSE` file is present in this repository yet. Treat the code as source-available for evaluation unless the owners publish terms. Do not use MediVault outputs as clinical advice.

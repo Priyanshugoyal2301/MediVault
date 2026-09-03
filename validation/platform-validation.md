@@ -14,7 +14,7 @@ Date: 2026-08-11
 | Tests (prior phases green; platform tooling smoke) | ✓ |
 | Model registry (full 8-model inventory) | ✓ |
 | Feature flags (all default off) | ✓ |
-| Deployment checklist | ✓ `deployment-checklist.md` |
+| Deployment notes | ✓ `docs/DEPLOYMENT.md` |
 | Configuration (env-driven, no hard-coded production paths in flags) | ✓ |
 | Reproducibility audit 8/8 | ✓ `platform_reproducibility_audit.json` |
 | E2E chain validation | ✓ 13/13 checks `platform_e2e_validation.json` |

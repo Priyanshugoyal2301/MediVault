@@ -276,7 +276,7 @@ export const team = [
   {
     name: "Open contributors",
     role: "Platform & documentation",
-    bio: "Tests, migrations, demo reliability, and institutional documentation (DEV_LOG, agent rules, ship checklists) that keep the system auditable.",
+    bio: "Tests, migrations, demo reliability, and documentation that keep the system auditable.",
   },
 ];
 
@@ -527,7 +527,7 @@ Optional sentence-transformer weights follow Hugging Face model card terms when 
   credits: `Product and research direction: MediVault Research / Priyanshu Goyal.
 Engineering surfaces: FastAPI services, React research portal, React demo SPA.
 Intelligence: statistical anomaly design, BM25 retrieval, safety rules, evaluation harnesses.
-Institutional documentation: BIBLE.md, DEV_LOG, Plan B/C reports, presentation claims sheet.
+Institutional documentation: BIBLE.md, Plan B/C reports, presentation claims sheet.
 Visual system: clinical research site design tokens, Canvas scientific visuals, institutional typography (Space Grotesk, Source Serif 4, IBM Plex Mono).`,
 };
 

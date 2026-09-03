@@ -57,4 +57,4 @@ UNLIMITED_OCR_BACKEND=http
 UNLIMITED_OCR_ENDPOINT=http://127.0.0.1:30000/v1/chat/completions
 ```
 
-See `models/ocr/README.md` and `phase1-summary.md`.
+See `models/ocr/README.md` and `docs/model-cards/unlimited-ocr.md`.

@@ -185,7 +185,11 @@ def run_evaluation() -> dict:
 
 
 def _append_to_dev_log(metrics: dict) -> None:
+    """Optionally append metrics to docs/DEV_LOG.md when that file exists."""
     dev_log = ROOT / "docs" / "DEV_LOG.md"
+    if not dev_log.exists():
+        print(f"[skip] {dev_log} not present — print metrics only")
+        return
     today = date.today().isoformat()
     rows = []
     for name, m in metrics["methods"].items():
