@@ -48,7 +48,7 @@ export function Seo({
           },
           founder: {
             '@type': 'Person',
-            name: 'Priyanshu Goyal',
+            name: 'Deepansh Khanna',
           },
         })}
       </script>

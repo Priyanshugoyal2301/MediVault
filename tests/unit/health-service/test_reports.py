@@ -2,7 +2,7 @@
 tests/unit/health-service/test_reports.py
 
 Health service report endpoint tests.
-Cross-user scoping test (04_AGENT_RULES.md §5):
+Cross-user scoping test (docs/DEVELOPER_RULES.md §5):
   User A cannot retrieve User B's report — gets 404 for both "not found"
   and "wrong owner" (prevents record enumeration).
 """
@@ -20,7 +20,7 @@ REPORT_A_ID = uuid.uuid4()
 
 class TestReportOwnerScoping:
     """
-    Cross-user scoping tests — 04_AGENT_RULES.md §5.
+    Cross-user scoping tests — docs/DEVELOPER_RULES.md §5.
     GET /reports/{id}: user B must receive 404 when requesting user A's report.
     """
 

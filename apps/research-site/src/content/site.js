@@ -264,19 +264,9 @@ export const publications = [
 
 export const team = [
   {
-    name: "Priyanshu Goyal",
-    role: "Project lead & systems research",
-    bio: "Steers MediVault architecture, privacy boundaries, and research–engineering integration across auth, health, and AI services.",
-  },
-  {
-    name: "MediVault Research",
-    role: "Intelligence & evaluation",
-    bio: "Designs non-diagnostic pipelines: statistical personal-series monitoring, BM25 retrieval, template synthesis, and published evaluation harnesses.",
-  },
-  {
-    name: "Open contributors",
-    role: "Platform & documentation",
-    bio: "Tests, migrations, demo reliability, and documentation that keep the system auditable.",
+    name: "Deepansh Khanna",
+    role: "Author & maintainer",
+    bio: "Designs and maintains MediVault: architecture, privacy boundaries, services, ML platform, and documentation.",
   },
 ];
 
@@ -502,7 +492,7 @@ By using MediVault Research software or websites, you agree that the system is p
 
 You may not rely on outputs for emergency decisions. If you believe you are experiencing a medical emergency, contact local emergency services immediately.
 
-Software is provided “as is” without warranty of merchantability or fitness for a particular purpose, to the extent permitted by law. Repository licensing is defined in the monorepo LICENSE (and dependency licenses). Contributions must respect non-diagnostic and privacy rules stated in project agent and architecture documents.
+Software is provided “as is” without warranty of merchantability or fitness for a particular purpose, to the extent permitted by law. Repository licensing is defined in the monorepo LICENSE (and dependency licenses). Contributions must respect non-diagnostic and privacy rules stated in project developer and architecture documents.
 
 Contact: ${site.email}.`,
 
@@ -524,7 +514,7 @@ Knowledge-base snippets retain SOURCE and LICENCE headers in data/knowledge-base
 
 Optional sentence-transformer weights follow Hugging Face model card terms when downloaded for dense experiments.`,
 
-  credits: `Product and research direction: MediVault Research / Priyanshu Goyal.
+  credits: `Product and research direction: Deepansh Khanna.
 Engineering surfaces: FastAPI services, React research portal, React demo SPA.
 Intelligence: statistical anomaly design, BM25 retrieval, safety rules, evaluation harnesses.
 Institutional documentation: BIBLE.md, Plan B/C reports, presentation claims sheet.

@@ -1,86 +1,123 @@
-# Python
+# MediVault — .gitignore
+# Ignore build artifacts, secrets, IDE/agent tooling, and large ML weights.
+# Keep source, docs, synthetic fixtures, and configs tracked.
+
+# --- Secrets & local env ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials*
+
+# --- Python ---
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
 *.pyd
 .Python
+*.egg
 *.egg-info/
+.eggs/
 dist/
 build/
-.eggs/
-*.egg
 .venv/
 venv/
 env/
-.env
+pip-wheel-metadata/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.junit.xml
+.tox/
+.nox/
 
-# Node / Frontend
+# --- Node / frontend ---
 node_modules/
+.npm/
 .next/
-out/
 .nuxt/
-dist/
+out/
+apps/**/dist/
+apps/web/dist/
+apps/research-site/dist/
 
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-*.env
-
-# Docker
-.dockerignore
-
-# IDEs
+# --- Editors / OS ---
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# Logs
+# --- Cursor / AI coding tooling (never commit) ---
+.cursor/
+.cursorignore
+.cursorrules
+.aider*
+.claude/
+.codex/
+.continue/
+*.code-workspace
+agent-transcripts/
+.agents/
+
+# --- Logs & local scratch ---
 *.log
 logs/
-phase*_logs/
 *_logs/
+phase*_logs/
+tmp/
+temp/
+*.tmp
 
-# Local ops / verification scratch (never commit)
+# --- Local ops reports (machine-specific) ---
 PUSH_READINESS.md
 POST_PUSH_VERIFICATION.md
 
-# Test artefacts
-.pytest_cache/
-.coverage
-htmlcov/
-coverage.xml
-*.junit.xml
+# --- Docker local overrides ---
+docker-compose.override.yml
 
-# Alembic
-# (keep alembic.ini and versions/ — only ignore generated artefacts)
+# --- ML artifacts & caches (store externally; regenerate via train) ---
+models/**/artifacts/
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+.cache/
+.huggingface/
+mlruns/
+wandb/
+.mlflow/
 
-# Data / model artefacts (large files — store externally)
+# --- Dataset blobs (keep README / small JSONL fixtures) ---
 data/datasets/*.csv
 data/datasets/*.parquet
 data/datasets/*.pkl
 data/knowledge-base/*.pdf
-*.bin
-*.pt
-*.safetensors
-models/**/artifacts/
 datasets/**/*.csv
 datasets/**/*.parquet
 datasets/**/*.pkl
 datasets/**/*.zip
 !datasets/**/.gitkeep
 !datasets/**/README.md
-datasets/evaluation/*_latest.json
+!datasets/**/LICENSING.md
 
-# Plan C generated eval output
+# Regenerated eval / train reports (local only)
+datasets/evaluation/*_latest.json
+datasets/evaluation/safe_train_*.json
 data/datasets/plan_c/results_latest.json
 
-# ML / HF caches (if created in-repo)
-.cache/
-.huggingface/
-
-# Research site deploy metadata
+# --- Research site deploy metadata ---
 apps/research-site/.vercel
+.vercel/

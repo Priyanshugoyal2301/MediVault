@@ -8,7 +8,7 @@ MANDATORY: all services MUST use get_logger() from this module for any code
 path that touches user health data. Never use stdlib logging.getLogger()
 directly in health-data-handling code — it will not redact.
 
-Per 04_AGENT_RULES.md §4:
+Per docs/DEVELOPER_RULES.md §4:
   "Do not log or print raw health data (report values, user answers)
    to application logs. Redact before logging."
 """

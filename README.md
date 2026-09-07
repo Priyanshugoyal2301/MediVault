@@ -263,10 +263,14 @@ python -m pytest tests/phase1 tests/phase1a tests/phase2 tests/phase3 -q
 Offline ML tooling:
 
 ```bash
+python models/platform/safe_train.py   # guarded auto-train (Phases 2–8)
+python models/platform/train_guard.py  # decisions only
 python models/platform/audit.py
 python models/platform/benchmark_suite.py
 python models/platform/e2e_validate.py
 ```
+
+See [`docs/TRAINING.md`](docs/TRAINING.md).
 
 ---
 
@@ -316,7 +320,9 @@ MediVault/
 | [`docs/MODEL_REGISTRY.md`](docs/MODEL_REGISTRY.md) | Model inventory |
 | [`docs/PRESENTATION_CLAIMS.md`](docs/PRESENTATION_CLAIMS.md) | Conservative claims sheet |
 | [`BIBLE.md`](BIBLE.md) | Full technical encyclopedia |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Author — Deepansh Khanna |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contributor workflow |
+| [`docs/DEVELOPER_RULES.md`](docs/DEVELOPER_RULES.md) | Developer conventions |
 
 ---
 
@@ -329,13 +335,15 @@ MediVault/
 5. **Trusted identity** — Only the BFF may inject `X-User-ID` after JWT validation.
 6. **Emergency safety layer** — Chest-pain / breathing-style prompts trigger fixed safety copy before RAG.
 
-Agent rules: [`docs/04_AGENT_RULES.md`](docs/04_AGENT_RULES.md).
+Developer rules: [`docs/DEVELOPER_RULES.md`](docs/DEVELOPER_RULES.md).
 
 ---
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Keep ML flags off unless you are intentionally enabling and evaluating a model.
+Maintainer: **Deepansh Khanna** — see [`CONTRIBUTORS.md`](CONTRIBUTORS.md).
+
+Development workflow: [`CONTRIBUTING.md`](CONTRIBUTING.md). Keep ML flags off unless you are intentionally enabling and evaluating a model.
 
 ---
 

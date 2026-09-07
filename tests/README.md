@@ -12,7 +12,7 @@ tests/
   integration/        # tests that span service boundaries
 ```
 
-## Mandatory coverage rule (04_AGENT_RULES.md §5)
+## Mandatory coverage rule (docs/DEVELOPER_RULES.md §5)
 
 Every endpoint or function that touches user health data **must** have a test that verifies it is scoped to the requesting user — i.e. it cannot return another user's data (cross-user data leakage test).
 

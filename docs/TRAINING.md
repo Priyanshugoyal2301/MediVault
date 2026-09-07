@@ -1,5 +1,33 @@
 # Training
 
+## Guarded auto-train (recommended)
+
+One command runs a pre-training **protector**, picks safe backends automatically, then trains + evaluates Phases 2–8:
+
+```bash
+# From repo root
+python models/platform/safe_train.py
+```
+
+The guard will:
+
+1. Keep all production `USE_*` flags **off** for this process (live demo stays non-ML)
+2. Disable HF / Unlimited-OCR local weight downloads
+3. Disable cloud experiment tracking
+4. Choose offline-safe backends (e.g. normalizer `char_tfidf`, risk XGBoost if installed)
+5. Skip Phase 1 OCR (no offline training — external VLM only)
+6. Block if disk / layout / core deps fail
+
+Reports land in `datasets/evaluation/safe_train_guard_report.json` and `safe_train_run_report.json`.
+
+```bash
+python models/platform/train_guard.py          # decisions only
+python models/platform/safe_train.py --skip-eval
+python models/platform/safe_train.py --phases normalizer,risk_prediction
+```
+
+---
+
 ## Platform (Phase 9) — no new models
 
 Optional experiment logging (default off):
@@ -69,4 +97,4 @@ Optional: `pip install xgboost lightgbm`
 
 ## Phase 3 Retrieval / Phase 2 Normalizer / Phase 1 OCR
 
-See respective `models/*/README.md`.
+See respective `models/*/README.md`. Prefer `python models/platform/safe_train.py` instead of calling these ad hoc.

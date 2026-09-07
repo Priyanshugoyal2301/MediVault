@@ -1,6 +1,8 @@
 # CONTRIBUTING.md — MediVault AI
 
-Thank you for contributing! This guide covers the development workflow, code conventions, database migrations, and the non-negotiable privacy rules every contributor must follow.
+**Maintainer:** Deepansh Khanna ([`CONTRIBUTORS.md`](CONTRIBUTORS.md))
+
+Thank you for contributing. This guide covers the development workflow, code conventions, database migrations, and the non-negotiable privacy rules. Also see [`docs/DEVELOPER_RULES.md`](docs/DEVELOPER_RULES.md).
 
 ---
 

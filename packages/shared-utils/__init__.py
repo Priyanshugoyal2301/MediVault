@@ -14,7 +14,7 @@ Do NOT import stdlib logging directly in any file that handles health data:
     logging.getLogger(...)  # ← wrong — no redaction
 
 The redacting filter in get_logger() ensures health-data fields are stripped
-before any log record is emitted (04_AGENT_RULES.md §4).
+before any log record is emitted (docs/DEVELOPER_RULES.md §4).
 
 If you genuinely need raw stdlib logging (e.g. for a non-health ops script),
 import it explicitly from the stdlib with a comment explaining why it's safe.

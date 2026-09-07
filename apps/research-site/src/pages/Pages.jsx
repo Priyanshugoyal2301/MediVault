@@ -726,14 +726,14 @@ export function DocsPage() {
               h: '/benchmarks',
             },
             {
-              t: 'Contributing',
-              d: 'Conventions and privacy rules for contributors.',
-              h: 'https://github.com/Priyanshugoyal2301/MediVault/blob/main/CONTRIBUTING.md',
+              t: 'Contributors',
+              d: 'Author and maintainer — Deepansh Khanna.',
+              h: 'https://github.com/Priyanshugoyal2301/MediVault/blob/main/CONTRIBUTORS.md',
             },
             {
-              t: 'Project state',
-              d: 'What is demoable today versus deferred.',
-              h: 'https://github.com/Priyanshugoyal2301/MediVault/blob/main/00_PROJECT_STATE.md',
+              t: 'Developer rules',
+              d: 'Conventions and privacy rules for maintainers.',
+              h: 'https://github.com/Priyanshugoyal2301/MediVault/blob/main/docs/DEVELOPER_RULES.md',
             },
           ].map((item) => (
             <Reveal key={item.t}>

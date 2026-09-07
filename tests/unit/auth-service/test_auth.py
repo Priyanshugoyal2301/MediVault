@@ -75,7 +75,7 @@ class TestPasswordHashing:
 
 
 # ---------------------------------------------------------------------------
-# Cross-user scoping test (04_AGENT_RULES.md §5)
+# Cross-user scoping test (docs/DEVELOPER_RULES.md §5)
 # ---------------------------------------------------------------------------
 
 class TestMeEndpointScoping:

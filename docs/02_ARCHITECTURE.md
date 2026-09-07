@@ -63,7 +63,7 @@
     01_PROJECT_CONTEXT.md
     02_ARCHITECTURE.md
     03_MVP_SCOPE.md
-    04_AGENT_RULES.md
+    DEVELOPER_RULES.md
     DEMO_SCRIPT.md
     FEATURE_FLAGS.md
   /tests

@@ -213,7 +213,7 @@ MediVault/
 | `docs/01_PROJECT_CONTEXT.md` | Product vision & non-negotiables |
 | `docs/02_ARCHITECTURE.md` | Target architecture principles |
 | `docs/03_MVP_SCOPE.md` | Locked in/out scope |
-| `docs/04_AGENT_RULES.md` | Agent/dev operating rules |
+| `docs/DEVELOPER_RULES.md` | Developer operating rules |
 | `docs/DEV_LOG.md` | Why code looks this way (append-only) |
 | `docs/ML_PLAN_B_RESULTS.md` / `PLAN_C_REPORT.md` | Benchmark truth |
 | `docs/DEMO_SCRIPT.md` / `SHIP_CHECKLIST.md` / `JUDGE_QA.md` | Demo day |
@@ -1477,9 +1477,9 @@ Fixed strings in `safety/red_flags.py` per category (not model-generated). Inclu
 
 Per-test educational notes in `explainer/templates.py` — educational framing only.
 
-## 16.7 Agent / builder rules (`docs/04_AGENT_RULES.md`)
+## 16.7 Developer rules (`docs/DEVELOPER_RULES.md`)
 
-Govern how coding agents modify the repo: no dead dual implementations, log decisions in DEV_LOG, don’t bypass safety, record ML evals.
+Govern how contributors modify the repo: no dead dual implementations, document decisions, don’t bypass safety, record ML evals.
 
 ## 16.8 Frontend honest copy
 
@@ -1958,7 +1958,7 @@ API, BFF, BM25, CBC, CER, CUSUM, FAQ, FAR, FK, HF (Hugging Face), IE, JWT, KB, L
 - Product context: `docs/01_PROJECT_CONTEXT.md`  
 - Architecture intent: `docs/02_ARCHITECTURE.md`  
 - Scope lock: `docs/03_MVP_SCOPE.md`  
-- Agent rules: `docs/04_AGENT_RULES.md`  
+- Developer rules: `docs/DEVELOPER_RULES.md`  
 - Demo: `docs/DEMO_SCRIPT.md`, `docs/SHIP_CHECKLIST.md`, `docs/JUDGE_QA.md`  
 - Claims hygiene: `docs/PRESENTATION_CLAIMS.md`  
 

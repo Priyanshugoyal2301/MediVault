@@ -12,5 +12,5 @@ Shared utilities used across services:
 ## Key module: `logging.py`
 
 The logger in `logging.py` redacts known health-data fields before emitting any log record.
-This enforces `04_AGENT_RULES.md §4`: "Do not log or print raw health data to application logs."
+This enforces `docs/DEVELOPER_RULES.md` §4: "Do not log or print raw health data to application logs."
 All services MUST use this logger, never the stdlib logger directly for health-data-touching code paths.
