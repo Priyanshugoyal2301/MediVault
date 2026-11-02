@@ -63,6 +63,7 @@ class TestTimelineRepository:
             )
 
             session = MagicMock()
+            session.scalar = AsyncMock(return_value=None)
             session.add_all = MagicMock()
             session.flush = AsyncMock()
             repo = TimelineRepository(session)
@@ -96,6 +97,7 @@ class TestTimelineRepository:
             result_mock.scalars.return_value.all.return_value = [event_old, event_new]
 
             session = MagicMock()
+            session.scalar = AsyncMock(return_value=None)
             session.execute = AsyncMock(return_value=result_mock)
             repo = TimelineRepository(session)
 
@@ -123,6 +125,7 @@ class TestTimelineRepository:
             result_mock.scalars.return_value.all.return_value = events
 
             session = MagicMock()
+            session.scalar = AsyncMock(return_value=None)
             session.execute = AsyncMock(return_value=result_mock)
             repo = TimelineRepository(session)
 
@@ -153,6 +156,7 @@ class TestTimelineRepository:
             empty_result.scalars.return_value.all.return_value = []
 
             session = MagicMock()
+            session.scalar = AsyncMock(return_value=None)
             session.execute = AsyncMock(return_value=empty_result)
             repo = TimelineRepository(session)
 
@@ -174,6 +178,7 @@ class TestTimelineRepository:
 # Stub get_db so the session module never calls create_async_engine (asyncpg absent)
 async def _stub_get_db():
     session = MagicMock()
+    session.scalar = AsyncMock(return_value=None)
     result_mock = MagicMock()
     result_mock.scalars.return_value.all.return_value = []
     session.execute = AsyncMock(return_value=result_mock)

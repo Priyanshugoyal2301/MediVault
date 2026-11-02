@@ -13,6 +13,7 @@ demo-reliable (no HF download / MD5 cosine theater).
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass
 
 from .bm25 import BM25Index
@@ -131,6 +132,21 @@ def retrieve(
 def _retrieve_kb(query: str, top_k: int) -> list[RetrievedChunk]:
     n = len(_knowledge_chunks)
     assert _bm25_index is not None
+
+    # Simple definition questions should use a complete, explicit definition when
+    # the curated corpus has one, rather than unrelated high-scoring fragments.
+    definition = re.fullmatch(r'\s*(?:what does (.+?) mean|what (?:is|are) (.+?))\s*[?!.]*\s*', query, re.I)
+    if definition and top_k > 0:
+        term = next(v for v in definition.groups() if v).strip().rstrip('?!.').strip()
+        aliases = {'hb':'haemoglobin', 'hemoglobin':'haemoglobin', 'a1c':'hba1c'}
+        term = aliases.get(term.lower(),term)
+        if 2 <= len(term) <= 60:
+            pattern = re.compile(r'\b'+re.escape(term)+r'\b\s+(?:is|are|measures)\s+[^.!?]+[.!?]',re.I)
+            for chunk in _knowledge_chunks:
+                match = pattern.search(chunk['chunk_text'])
+                if match:
+                    return [RetrievedChunk(text=match.group(0), source=chunk.get('source_title','Knowledge Base'),
+                        source_url=chunk.get('source_url'), score=1.2)]
 
     bm25_raw = _bm25_index.score(query)
     bm25_norm = _normalize_scores(bm25_raw)

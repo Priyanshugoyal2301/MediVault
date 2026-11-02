@@ -21,6 +21,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from packages.shared_utils import get_logger
 
 from ..core.config import Settings, get_settings
+from ..care.document_scope import DocumentScope, document_scope
 from ..db.repositories.timeline_repository import TimelineRepository
 from ..db.session import get_db
 
@@ -87,6 +88,7 @@ def _get_owner_id(x_user_id: Annotated[str | None, Header()] = None) -> uuid.UUI
 async def get_timeline_summary(
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
+    scope: Annotated[DocumentScope, Depends(document_scope)],
 ) -> list[TimelineSummaryItem]:
     """
     Returns a summary of the user's full health timeline:
@@ -95,7 +97,7 @@ async def get_timeline_summary(
 
     This is the main dashboard view for the health timeline feature.
     """
-    repo = TimelineRepository(db)
+    repo = TimelineRepository(db, scope)
     summary = await repo.get_timeline_summary(owner_id)
     return [TimelineSummaryItem(**item) for item in summary]
 
@@ -105,13 +107,14 @@ async def get_test_anomaly(
     test_name: str,
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
+    scope: Annotated[DocumentScope, Depends(document_scope)],
     settings: Annotated[Settings, Depends(get_settings)],
 ) -> AnomalyAnalysisOut:
     """
     Full history for a metric plus AI-service trend/anomaly analysis.
     Declared before /{test_name} so FastAPI matches the static suffix.
     """
-    repo = TimelineRepository(db)
+    repo = TimelineRepository(db, scope)
     events = await repo.list_events_for_test(owner_id, test_name)
     if not events:
         raise HTTPException(
@@ -176,12 +179,13 @@ async def get_test_history(
     test_name: str,
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
+    scope: Annotated[DocumentScope, Depends(document_scope)],
 ) -> list[TimelineEventOut]:
     """
     Returns the full chronological history (oldest first) for a single
     lab metric (e.g., "Haemoglobin", "Total Cholesterol").
     """
-    repo = TimelineRepository(db)
+    repo = TimelineRepository(db, scope)
     events = await repo.list_events_for_test(owner_id, test_name)
 
     if not events:

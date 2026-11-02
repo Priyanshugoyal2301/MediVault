@@ -24,6 +24,14 @@ from .health_scorer import HealthScorer
 from .normalizer import Normalizer
 from .quality_checker import QualityChecker
 from .retriever import Retriever
+from .query import (
+    ClinicalQuery,
+    ComparisonTarget,
+    QueryIntent,
+    RelativeWindow,
+    TemporalOperator,
+    WindowUnit,
+)
 from .risk_predictor import RiskPredictor
 from .types import (
     AnomalyDetectionResult,
@@ -42,6 +50,8 @@ __all__ = [
     "BiomarkerForecast",
     "BiomarkerForecastBatch",
     "BiomarkerForecaster",
+    "ClinicalQuery",
+    "ComparisonTarget",
     "DocumentParser",
     "HealthScoreResult",
     "HealthScorer",
@@ -49,8 +59,12 @@ __all__ = [
     "ParsedField",
     "QualityCheckResult",
     "QualityChecker",
+    "QueryIntent",
+    "RelativeWindow",
     "RetrievedDocument",
     "Retriever",
     "RiskPredictionResult",
     "RiskPredictor",
+    "TemporalOperator",
+    "WindowUnit",
 ]

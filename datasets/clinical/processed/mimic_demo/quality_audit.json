@@ -1,0 +1,25 @@
+{
+  "dataset": "mimic_demo",
+  "total_observations": 8,
+  "total_source_patients": 2,
+  "longitudinal_patients": 2,
+  "distinct_raw_analytes": 4,
+  "distinct_canonical_analytes": 4,
+  "date_range_start": "2160-12-28 07:00:00",
+  "date_range_end": "2180-05-06 15:30:00",
+  "missing_dates_count": 0,
+  "missing_units_count": 0,
+  "normalization_coverage_pct": 100.0,
+  "loinc_mapping_coverage_pct": 100.0,
+  "duplicated_observations_count": 0,
+  "malformed_observations_count": 0,
+  "analytes_breakdown": {
+    "LDL Cholesterol": 2,
+    "Total Cholesterol": 2,
+    "Haemoglobin": 2,
+    "Creatinine": 2
+  },
+  "mapping_status_breakdown": {
+    "exact_loinc": 8
+  }
+}

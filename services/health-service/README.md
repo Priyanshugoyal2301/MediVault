@@ -6,6 +6,12 @@ Report metadata, extracted health values, health timeline events, and all user h
 
 **This service is the privacy enforcement point.** Every query must be scoped to `owner_id`. No global read endpoints exist here.
 
+All data routes require `X-Internal-Key` from the authenticated gateway before
+trusting `X-User-ID`. Set a random 32+ character `INTERNAL_SERVICE_KEY`, shared
+with BFF and AI. Missing/placeholder configuration denies requests. `/health`
+remains a liveness endpoint. This is an interim service boundary, not the planned
+doctor/guardian consent model; see `docs/SECURITY_AND_PRIVACY_PLAN.md`.
+
 ## Tech
 
 FastAPI + SQLAlchemy (asyncpg) + Alembic + boto3 (S3-compat storage)

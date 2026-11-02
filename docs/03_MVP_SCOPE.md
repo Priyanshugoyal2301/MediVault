@@ -1,6 +1,11 @@
-# MVP SCOPE — LOCKED
+# Original MVP scope — historical baseline
 
-> If a feature isn't listed under "In scope," it does not get built without an explicit new instruction from the project owner. Log any scope question in `DEV_LOG.md` under "Open Questions" rather than assuming.
+> Superseded by explicit owner instructions on 24 October 2026. Prescriptions,
+> doctors, children, guardians and family cards are now authorized product scope.
+> See [ECOSYSTEM_BLUEPRINT.md](ECOSYSTEM_BLUEPRINT.md) and
+> [ECOSYSTEM_DELIVERY_PLAN.md](ECOSYSTEM_DELIVERY_PLAN.md). This document records
+> the original demo baseline; it does not restrict the approved expansion.
+> Diagnosis/prediction and autonomous prescribing remain excluded.
 
 ## In scope (build this, in this order)
 

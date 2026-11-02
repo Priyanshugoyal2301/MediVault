@@ -14,7 +14,7 @@ FastAPI + SQLAlchemy (asyncpg) + Alembic + python-jose
 
 | Method | Path | Description |
 |---|---|---|
-| `POST` | `/auth/register` | Create user (email + password). Returns JWT. |
+| `POST` | `/auth/register` | Create user (email + password). Returns a generic 202 response; sign in afterward. |
 | `POST` | `/auth/login` | Authenticate. Returns JWT. |
 | `POST` | `/auth/logout` | Invalidate session token. |
 | `GET` | `/auth/me` | Return authenticated user's profile. |

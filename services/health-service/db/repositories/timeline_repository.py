@@ -16,11 +16,20 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..base_repository import ScopedRepository
-from ..models import TimelineEvent
+from ..models import Report, TimelineEvent
 
 
 class TimelineRepository(ScopedRepository[TimelineEvent]):
     model = TimelineEvent
+
+    def __init__(self, session, scope=None):
+        super().__init__(session)
+        self.scope = scope
+
+    def predicate(self, owner_id):
+        from .report_repository import ReportRepository
+        reports = select(Report.id).where(ReportRepository(self._session, self.scope).predicate(owner_id))
+        return TimelineEvent.source_report_id.in_(reports)
 
     async def create_event(
         self,
@@ -31,10 +40,23 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
         value_numeric: Decimal | None = None,
         value_text: str | None = None,
         unit: str | None = None,
+        analyte_canonical: str | None = None,
+        concept_id: str | None = None,
+        loinc_code: str | None = None,
+        reference_range_low: Decimal | None = None,
+        reference_range_high: Decimal | None = None,
+        flag: str | None = None,
+        date_type: str | None = None,
+        date_confidence: str | None = None,
+        source_provenance: str | None = None,
     ) -> TimelineEvent:
         """
         Insert a single timeline event for a given metric+date.
         Always stamps owner_id from the caller — never from request body.
+
+        CP-04: canonical clinical concept fields (analyte_canonical, concept_id,
+        loinc_code, reference ranges, flag, date_type, date_confidence,
+        source_provenance) are accepted and persisted when provided.
         """
         return await self.create(
             owner_id=owner_id,
@@ -44,6 +66,15 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
             value_numeric=value_numeric,
             value_text=value_text,
             unit=unit,
+            analyte_canonical=analyte_canonical,
+            concept_id=concept_id,
+            loinc_code=loinc_code,
+            reference_range_low=reference_range_low,
+            reference_range_high=reference_range_high,
+            flag=flag,
+            date_type=date_type,
+            date_confidence=date_confidence,
+            source_provenance=source_provenance,
             created_at=datetime.now(UTC),
         )
 
@@ -57,6 +88,12 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
         Bulk-insert timeline events from a parsed report.
         Each dict in `events` must contain: test_name, date_of_test.
         Optional keys: value_numeric, value_text, unit.
+
+        CP-04: The following optional canonical concept keys are also accepted
+        and persisted when present:
+          analyte_canonical, concept_id, loinc_code,
+          reference_range_low, reference_range_high, flag,
+          date_type, date_confidence, source_provenance.
         """
         from ..models import TimelineEvent as TE
 
@@ -69,6 +106,15 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
                 value_numeric=e.get("value_numeric"),
                 value_text=e.get("value_text"),
                 unit=e.get("unit"),
+                analyte_canonical=e.get("analyte_canonical"),
+                concept_id=e.get("concept_id"),
+                loinc_code=e.get("loinc_code"),
+                reference_range_low=e.get("reference_range_low"),
+                reference_range_high=e.get("reference_range_high"),
+                flag=e.get("flag"),
+                date_type=e.get("date_type"),
+                date_confidence=e.get("date_confidence"),
+                source_provenance=e.get("source_provenance"),
                 created_at=datetime.now(UTC),
             )
             for e in events
@@ -78,6 +124,7 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
             self._session.add_all(records)
             await self._session.flush()
         return records
+
 
     async def list_events_for_test(
         self,
@@ -93,7 +140,7 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
         result = await self._session.execute(
             select(TimelineEvent)
             .where(
-                TimelineEvent.owner_id == owner_id,
+                self.predicate(owner_id),
                 TimelineEvent.test_name == test_name,
             )
             .order_by(TimelineEvent.date_of_test.asc())
@@ -116,7 +163,7 @@ class TimelineRepository(ScopedRepository[TimelineEvent]):
         # database-specific window-function syntax that may not work on SQLite in tests).
         result = await self._session.execute(
             select(TimelineEvent)
-            .where(TimelineEvent.owner_id == owner_id)
+            .where(self.predicate(owner_id))
             .order_by(TimelineEvent.test_name, TimelineEvent.date_of_test.desc())
         )
         rows = result.scalars().all()

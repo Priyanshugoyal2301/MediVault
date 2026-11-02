@@ -1,0 +1,26 @@
+{
+  "ratios": {
+    "dev": 0.6,
+    "val": 0.2,
+    "test": 0.2
+  },
+  "patient_counts": {
+    "dev": 2,
+    "val": 0,
+    "test": 0
+  },
+  "record_counts": {
+    "dev": 8,
+    "val": 0,
+    "test": 0,
+    "unassigned": 0
+  },
+  "patients": {
+    "dev": [
+      "10000032",
+      "10000084"
+    ],
+    "val": [],
+    "test": []
+  }
+}

@@ -48,8 +48,10 @@ class RegexDocumentParser:
                 reference_range_low=pv.reference_range_low,
                 reference_range_high=pv.reference_range_high,
                 reference_range_text=pv.reference_range_text,
-                confidence=None,
+                confidence=getattr(pv, "date_confidence", None),
                 raw_span=None,
+                date_of_test=getattr(pv, "date_of_test", None),
+                date_type=getattr(pv, "date_type", None),
             )
             for pv in values
         ]

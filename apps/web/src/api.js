@@ -1,131 +1,46 @@
-/**
- * MediVault web API client — talks only to the BFF (apps/api).
- * Never send X-User-ID from the browser; the gateway injects it from JWT.
- */
-
-const API_BASE = import.meta.env.VITE_API_BASE || '';
-
-function authHeaders(token, extra = {}) {
-  const headers = { ...extra };
-  if (token) headers.Authorization = `Bearer ${token}`;
-  return headers;
+/** Same-origin BFF client. Credentials stay in an HttpOnly session cookie. */
+const BASE = import.meta.env.VITE_API_BASE || '';
+export class ApiError extends Error { constructor(message, status) { super(message); this.status = status; } }
+function notifyExpiredSession(response, path) {
+  // Invalid sign-in/MFA attempts are local form errors, not session expiry.
+  if(response.status===401 && !path.startsWith('/auth/'))
+    window.dispatchEvent(new Event('medivault:session-expired'));
 }
-
-async function parseError(res) {
-  let detail = `Request failed (${res.status})`;
-  try {
-    const data = await res.json();
-    detail = data.detail || JSON.stringify(data);
-  } catch {
-    /* ignore */
+export async function request(path, {method = 'GET', body, headers = {}, signal} = {}) {
+  const form = body instanceof FormData;
+  const response = await fetch(BASE + path, { method, credentials: 'include', cache: 'no-store', signal,
+    headers: {...(body && !form ? {'Content-Type': 'application/json'} : {}), ...headers},
+    body: body ? (form ? body : JSON.stringify(body)) : undefined });
+  if (!response.ok) {
+    notifyExpiredSession(response,path);
+    let message = `Request failed (${response.status}). Please try again.`;
+    try { const data = await response.json(); message = typeof data.detail === 'string' ? data.detail :
+      Array.isArray(data.detail) ? data.detail.map(x => `${x.loc.at(-1)}: ${x.msg}`).join('; ') : message; } catch {}
+    const error = new ApiError(message, response.status);
+    error.mfaRequired = response.headers.get('X-MFA-Required') === 'true';
+    throw error;
   }
-  throw new Error(typeof detail === 'string' ? detail : JSON.stringify(detail));
+  return response.status === 204 ? null : response.json();
 }
-
-export async function register(email, password, locale = 'en-IN') {
-  const res = await fetch(`${API_BASE}/auth/register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password, locale_preference: locale }),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function login(email, password) {
-  const res = await fetch(`${API_BASE}/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function me(token) {
-  const res = await fetch(`${API_BASE}/auth/me`, {
-    headers: authHeaders(token),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function listReports(token) {
-  const res = await fetch(`${API_BASE}/reports`, {
-    headers: authHeaders(token),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function getReport(token, reportId) {
-  const res = await fetch(`${API_BASE}/reports/${reportId}`, {
-    headers: authHeaders(token),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function uploadReport(token, file) {
-  const form = new FormData();
-  form.append('file', file);
-  const res = await fetch(`${API_BASE}/reports`, {
-    method: 'POST',
-    headers: authHeaders(token),
-    body: form,
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function seedDemoReport(token, panel = 'cbc') {
-  const res = await fetch(`${API_BASE}/reports/demo/seed?panel=${encodeURIComponent(panel)}`, {
-    method: 'POST',
-    headers: authHeaders(token),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function getTimelineSummary(token) {
-  const res = await fetch(`${API_BASE}/timeline`, {
-    headers: authHeaders(token),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function getTimelineAnomaly(token, testName) {
-  const res = await fetch(
-    `${API_BASE}/timeline/${encodeURIComponent(testName)}/anomaly`,
-    { headers: authHeaders(token) },
-  );
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function askQuestion(token, question, locale = 'en-IN', sessionId = null) {
-  const res = await fetch(`${API_BASE}/qa`, {
-    method: 'POST',
-    headers: authHeaders(token, { 'Content-Type': 'application/json' }),
-    body: JSON.stringify({
-      question,
-      locale,
-      session_id: sessionId,
-    }),
-  });
-  if (!res.ok) await parseError(res);
-  return res.json();
-}
-
-export async function pollReportUntilDone(token, reportId, { timeoutMs = 90000, intervalMs = 1500 } = {}) {
-  const start = Date.now();
-  while (Date.now() - start < timeoutMs) {
-    const report = await getReport(token, reportId);
-    if (report.parsed_status === 'complete' || report.parsed_status === 'failed') {
-      return report;
-    }
-    await new Promise((r) => setTimeout(r, intervalMs));
+export const patientPath = (id, resource) => `/care/patients/${encodeURIComponent(id)}/${resource}`;
+export const scoped = (path, patientId) => `${path}${path.includes('?') ? '&' : '?'}patient_id=${encodeURIComponent(patientId)}`;
+export async function listAll(path) {
+  const rows = [];
+  for (let offset=0; offset<10000; offset+=100) {
+    const page = await request(`${path}${path.includes('?')?'&':'?'}offset=${offset}`);
+    rows.push(...page);
+    if(page.length<100)return rows;
   }
-  throw new Error('Timed out waiting for report parsing');
+  throw new Error('This record contains more than 10,000 entries. A paginated review is required.');
+}
+export async function documentBlob(id, patientId) {
+  const response = await fetch(BASE + scoped(`/reports/${id}/file`, patientId), {credentials:'include', cache:'no-store'});
+  notifyExpiredSession(response,'/reports');
+  if (!response.ok) throw new ApiError('The original document could not be downloaded.', response.status);
+  return response.blob();
+}
+export async function downloadDocument(id, patientId, filename) {
+  const url = URL.createObjectURL(await documentBlob(id, patientId));
+  const link = document.createElement('a'); link.href = url; link.download = filename; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

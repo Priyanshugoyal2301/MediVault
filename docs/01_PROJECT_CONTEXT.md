@@ -1,7 +1,13 @@
 # PROJECT CONTEXT — READ THIS FIRST
 
-> This file is the single source of truth for what this project is and why it exists.
-> Read this before writing any code. If a task request conflicts with this file, flag the conflict — do not silently override it.
+> Direction update — 24 October 2026: the owner explicitly expanded this project
+> to an India-first patient, doctor and family ecosystem, including children,
+> guardians, a family-tree card, prescriptions, medication/reaction history and
+> CGHS-inspired patient administration. [ECOSYSTEM_BLUEPRINT.md](ECOSYSTEM_BLUEPRINT.md)
+> is the current product source of truth; [ECOSYSTEM_DELIVERY_PLAN.md](ECOSYSTEM_DELIVERY_PLAN.md)
+> defines stages and what is actually delivered. The original MVP context below
+> remains historical background. Its patient-only and deferred-family/prescription
+> restrictions are superseded; the non-diagnostic and evidence/privacy principles remain.
 
 ## 1. What we are building
 

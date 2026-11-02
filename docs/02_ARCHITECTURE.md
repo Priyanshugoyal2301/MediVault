@@ -1,5 +1,11 @@
 # ARCHITECTURE & PROJECT STRUCTURE
 
+> Architecture evolution (24 October 2026): retain these service boundaries, but
+> use [ECOSYSTEM_BLUEPRINT.md](ECOSYSTEM_BLUEPRINT.md) for the new separation of
+> account, patient profile, family relationship and access authority. Consult
+> [SECURITY_AND_PRIVACY_PLAN.md](SECURITY_AND_PRIVACY_PLAN.md) for current gaps and
+> release gates. The original MVP design below is not a production-security claim.
+
 > Goal: an MVP that is small in scope but built like a real product — cleanly separated services, so future features (biometrics, avatar, ID verification, family accounts) plug in without a rewrite.
 
 ## 1. High-level system design

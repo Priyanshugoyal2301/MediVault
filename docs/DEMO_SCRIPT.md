@@ -72,7 +72,7 @@ Same as 3-minute, plus:
 
 1. Open `http://localhost:3000`
 2. **Register Now** → email `judge@example.com` → password `password123` → submit  
-   - If 409: switch to Sign In with same credentials
+   - Registration always shows the same confirmation. Switch to Sign In afterward; for an existing account, use its current password.
 3. Sidebar **Upload & Parse**
 4. Click **LIPID Demo** (wait for table + explanations)
 5. Sidebar **Timeline** → select **LDL Cholesterol** (wait for bars + summary)

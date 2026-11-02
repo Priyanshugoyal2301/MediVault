@@ -252,9 +252,11 @@ class TestDetector:
 def anomaly_app():
     from fastapi import FastAPI
     from services.ai_service.routers.anomaly import router as anomaly_router  # type: ignore
+    from services.ai_service.core.internal_auth import require_internal_key  # type: ignore
 
     app = FastAPI()
     app.include_router(anomaly_router)
+    app.dependency_overrides[require_internal_key] = lambda: None
     return app
 
 

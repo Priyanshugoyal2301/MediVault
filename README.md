@@ -1,8 +1,28 @@
 # MediVault AI
 
+**Status as of 2 November 2026:** MediVault is a feature-rich local alpha; it is not deployed. The patient, family/guardian, clinician consultation, prescription review, encrypted document, MFA/session, and AI-assisted retrieval flows have local implementations. Their presence does not establish clinical validation or production readiness. See the [implementation checklist](docs/IMPLEMENTATION_CHECKLIST.md), [engineering/product review](docs/ENGINEERING_PRODUCT_REVIEW.md), and [security and privacy plan](docs/SECURITY_AND_PRIVACY_PLAN.md) for evidence and remaining release gates. [Fictional test documents](apps/web/public/test-documents/medivault-test-documents.zip) are linked from the upload form.
+
+**Current technical documentation:** [Information retrieval: tools, algorithms, data flow and limitations](docs/INFORMATION_RETRIEVAL.md). This distinguishes the active local pipeline from optional and research implementations. See the [implementation checklist](docs/IMPLEMENTATION_CHECKLIST.md) for current delivery status; historical prototype descriptions below may predate the ecosystem expansion.
+
 A privacy-conscious health vault prototype: upload lab reports, get plain-language explanations (English + Hindi), track personal biomarker trends, and ask citation-backed questions — without issuing diagnoses.
 
-**Status:** Hackathon / research prototype. JWT-backed FastAPI microservices, React demo client, and an optional ML platform behind feature flags (all off by default).
+**Hosting:** No MediVault frontend or backend is currently deployed. A free Supabase staging project exists in Mumbai, but it has no application tables or migrations yet. See [deployment status and instructions](docs/DEPLOYMENT.md). Do not enter real patient data.
+
+**Product direction — 24 October 2026:** evolving into an India-first patient,
+doctor and family health-record ecosystem, including children/guardians, a
+family-tree card, prescription review, medication and reaction history,
+consent-based consultations, and CGHS-inspired administrative assistance.
+These expanded workflows currently run in the local prototype; third-party integrations, clinical review and production operations remain incomplete.
+Read the [researched blueprint](docs/ECOSYSTEM_BLUEPRINT.md),
+[delivery plan](docs/ECOSYSTEM_DELIVERY_PLAN.md), and
+[security/privacy plan](docs/SECURITY_AND_PRIVACY_PLAN.md).
+
+**Configuration change:** all health-data routes now require authenticated
+internal service calls. Set the same random `INTERNAL_SERVICE_KEY` (32+ characters)
+in BFF, health and AI; empty/placeholder values deny access. Generate a value with
+`python -c "import secrets; print(secrets.token_urlsafe(48))"`. The browser must
+never receive it. Protected BFF requests also check current account status with
+auth-service, which must be reachable.
 
 > Not medical device software. Not a substitute for clinical care.
 
@@ -74,7 +94,8 @@ API Gateway / BFF (apps/api :8000)
           PostgreSQL + pgvector
 ```
 
-AI ports are not exposed through the BFF. Health→AI calls use `INTERNAL_SERVICE_KEY` when set.
+AI ports are not exposed through the BFF. BFF→health and health→AI calls require
+`INTERNAL_SERVICE_KEY`; keep these services on private networks in deployment.
 
 ---
 

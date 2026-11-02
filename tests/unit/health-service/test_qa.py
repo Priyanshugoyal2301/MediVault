@@ -31,19 +31,27 @@ def _stub_env_and_db(monkeypatch):
 
 
 @pytest.fixture
-def client(_stub_env_and_db):
+def client(_stub_env_and_db, monkeypatch):
     from fastapi.testclient import TestClient
     from services.health_service.main import app
     from services.health_service.db.session import get_db
+    from services.health_service.core.internal_auth import require_internal_key
+    from services.health_service.core.config import get_settings, Settings
+    from services.health_service.care import worker
+    monkeypatch.setattr(worker, "worker_loop", AsyncMock())
 
     async def _fake_db():
         session = MagicMock()
+        session.scalar = AsyncMock(return_value=None)
         result = MagicMock()
         result.scalars.return_value.all.return_value = []
         session.execute = AsyncMock(return_value=result)
         yield session
 
     app.dependency_overrides[get_db] = _fake_db
+    app.dependency_overrides[get_settings] = lambda: Settings(_env_file=None, postgres_password="testpassword", ai_service_url="http://127.0.0.1:9")
+    # Service authentication is exercised separately in tests/security.
+    app.dependency_overrides[require_internal_key] = lambda: None
     with TestClient(app) as c:
         yield c
     app.dependency_overrides.clear()
