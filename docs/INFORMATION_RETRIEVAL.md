@@ -18,9 +18,7 @@ loaded curated corpus, falling back to the existing ranker if none is found. Thi
 prevents the tested haemoglobin question from returning platelet or HbA1c fragments;
 broader answer relevance and clinical validation remain separate work.
 
-**Code review date:** 26 October 2026  
-**Scope:** Current local application, optional retrieval backends and separate research code.  
-**Evidence:** Repository implementation and saved evaluation artifacts; no new performance benchmark was run for this document.
+**Code review date:** 26 October 2026`n**Scope:** Current local application, optional retrieval backends and separate research code.`n**Evidence:** Repository implementation and saved evaluation artifacts; no new performance benchmark was run for this document.
 
 ## 1. Executive overview
 
