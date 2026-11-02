@@ -104,16 +104,17 @@ export function AboutPage() {
           <div className="prose">
             <h2>Deployment status</h2>
             <p>
-              <strong>{site.deployment.status}.</strong> This is a local prototype,
-              not a public health-record service. Use fictional test records only.
+              <strong>{site.deployment.status}.</strong> The deployed page is
+              informational only; the health-record prototype remains local and
+              is not a public health-record service. Use fictional test records only.
             </p>
             <p>{site.deployment.product}</p>
             <p>Frontend: {site.deployment.frontend}</p>
             <p>Backend: {site.deployment.backend}</p>
             <p>Database: {site.deployment.database}</p>
             <p>
-              A public application link will be listed here after deployment,
-              database setup, and health checks are verified.
+              The application link will be listed here only after its backend,
+              database, document storage, and health checks are deployed and verified.
             </p>
           </div>
           <div className="panel stack-md">

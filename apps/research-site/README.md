@@ -4,7 +4,7 @@ This is a static overview of MediVault's purpose, local capabilities, safety lim
 
 ## Status
 
-The site and the MediVault application are not deployed. The canonical domain is intentionally unset; do not invent or publish a deployment URL. After deployment, set `site.domain`, add absolute canonical URLs to the sitemap, and update the deployment section in the root README and project About page with verified links.
+The informational project site is deployed at <https://medivault-project-site.vercel.app/>. The MediVault health-record application is not deployed and has no public app URL. This site does not connect to an API or database. Vercel Authentication protects the deployment; access requires the authorized Vercel team or a temporary share link.
 
 ## Local development
 

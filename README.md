@@ -10,10 +10,11 @@ The AI service is present in the repository and runs locally. It uses Tesseract 
 
 ## Current status
 
-**Local alpha; not deployed. Do not enter real patient information.** The application, database migrations, and AI service have local implementations. They have not been deployed together or verified as a public service.
+**Local alpha; the health-record application is not deployed. Do not enter real patient information.** The [informational project site](https://medivault-project-site.vercel.app/) is live on Vercel; it does not include or connect to the MediVault API, database, or document storage. The application, database migrations, and AI service have local implementations. They have not been deployed together or verified as a public service.
 
 | Component | Current state |
 |---|---|
+| Informational project site | [Live on Vercel](https://medivault-project-site.vercel.app/) |
 | Product web app | Vite build passes locally; no public app URL |
 | API and service containers | Source and Dockerfiles exist; no Render service |
 | Database | Free Supabase staging project exists in Mumbai; application schema and migrations are not applied |
@@ -21,7 +22,7 @@ The AI service is present in the repository and runs locally. It uses Tesseract 
 | Monitoring | No application deployment or production monitoring |
 | Release assurance | Clinical review, recovery/restore drills, hostile-file isolation, independent security assessment, and complete security verification remain open |
 
-See [deployment status and release prerequisites](docs/DEPLOYMENT.md), [implementation checklist](docs/IMPLEMENTATION_CHECKLIST.md), and [security and privacy plan](docs/SECURITY_AND_PRIVACY_PLAN.md). There is no deployment link yet; add one here only after the application is live and its health checks pass.
+See [deployment status and release prerequisites](docs/DEPLOYMENT.md), [implementation checklist](docs/IMPLEMENTATION_CHECKLIST.md), and [security and privacy plan](docs/SECURITY_AND_PRIVACY_PLAN.md). The Vercel link above is an informational site only, not an application login or patient-data service.
 
 ## Features implemented locally
 

@@ -2,9 +2,14 @@
 
 ## Verified cloud status — 2 November 2026
 
-MediVault is **not deployed** to Vercel or Render. The connected Vercel account
-has no MediVault project, and the Render workspace has no MediVault service; the
-services listed there belong to other repositories. The free Supabase staging
+The [MediVault project information site](https://medivault-project-site.vercel.app/)
+is deployed on Vercel from the reviewed feature branch. It is a static site only;
+it is not the health-record application and has no API or database connection.
+Vercel Authentication is enabled, so access requires the authorized team or a
+temporary share link. No production data is exposed by this site.
+The MediVault application is **not deployed** to Vercel or Render. There is no
+Render MediVault service; the existing services belong to other repositories.
+The free Supabase staging
 project `MediVault-Staging` is active in Mumbai (`ap-south-1`), but currently
 has no public-schema tables and no recorded migrations. It is an empty database,
 not a running application backend. No production monitoring is active.
