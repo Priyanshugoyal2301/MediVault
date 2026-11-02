@@ -8,6 +8,7 @@ never from the request body (where a client could tamper with it).
 
 import uuid
 import hashlib
+import asyncio
 from typing import Annotated, Literal
 from datetime import date
 from sqlalchemy import select, update
@@ -28,6 +29,7 @@ from ..db.repositories.report_repository import ReportRepository
 from ..db.repositories.timeline_repository import TimelineRepository
 from ..db.session import get_db
 from ..storage.local_storage import LocalStorage, StorageFullError, DocumentIntegrityError, encrypted_size
+from ..storage.s3_storage import S3Storage
 from ..care.storage_usage import reserve_upload
 
 logger = get_logger(__name__)
@@ -114,11 +116,22 @@ def _get_owner_id(x_user_id: Annotated[str | None, Header()] = None) -> uuid.UUI
         raise HTTPException(status_code=401, detail="Invalid X-User-ID")
 
 
-def _get_storage(settings: Annotated[Settings, Depends(get_settings)]) -> LocalStorage:
-    if settings.storage_backend != 'local':
-        raise HTTPException(503,'The selected storage backend has not been implemented')
+def _get_storage(settings: Annotated[Settings, Depends(get_settings)]) -> LocalStorage | S3Storage:
     try:
-        return LocalStorage(settings.storage_local_path, settings.file_encryption_key,settings.storage_min_free_bytes)
+        if settings.storage_backend == "s3":
+            return S3Storage(
+                settings.storage_s3_bucket,
+                settings.storage_s3_endpoint,
+                settings.storage_s3_access_key,
+                settings.storage_s3_secret_key,
+                settings.file_encryption_key,
+                settings.storage_s3_region,
+            )
+        return LocalStorage(
+            settings.storage_local_path,
+            settings.file_encryption_key,
+            settings.storage_min_free_bytes,
+        )
     except (ValueError, UnicodeError):
         raise HTTPException(503, "Document encryption is not configured") from None
 
@@ -303,7 +316,7 @@ async def upload_report(
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
     scope: Annotated[DocumentScope, Depends(document_scope)],
-    storage: Annotated[LocalStorage, Depends(_get_storage)],
+    storage: Annotated[LocalStorage | S3Storage, Depends(_get_storage)],
     settings: Annotated[Settings, Depends(get_settings)],
     document_kind: Annotated[Literal["report", "prescription", "discharge", "other"], Form()] = "report",
     document_date: Annotated[date | None, Form()] = None,
@@ -653,7 +666,7 @@ async def delete_report(
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
     scope: Annotated[DocumentScope, Depends(document_scope)],
-    storage: Annotated[LocalStorage, Depends(_get_storage)],
+    storage: Annotated[LocalStorage | S3Storage, Depends(_get_storage)],
 ):
     """
     Hard delete: removes report + values + timeline events (DB cascade handles
@@ -676,19 +689,22 @@ async def delete_report(
 async def download_report(
     report_id: uuid.UUID, owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)], scope: Annotated[DocumentScope, Depends(document_scope)],
-    storage: Annotated[LocalStorage, Depends(_get_storage)],
+    storage: Annotated[LocalStorage | S3Storage, Depends(_get_storage)],
 ):
     report = await ReportRepository(db, scope).get_by_id(report_id, owner_id)
     if report is None or report.storage_path.startswith("demo://"):
         raise HTTPException(404, "Document not found")
     try:
-        path = storage.resolve(report.storage_path)
+        if not await asyncio.to_thread(storage.exists, report.storage_path):
+            raise HTTPException(404, "Document not found")
     except ValueError:
         raise HTTPException(404, "Document not found") from None
-    if not path.is_file():
-        raise HTTPException(404, "Document not found")
+    except OSError:
+        raise HTTPException(503, "Document storage is temporarily unavailable") from None
     try:
-        data=storage.read(report.storage_path,report.content_sha256)
+        data = await asyncio.to_thread(
+            storage.read, report.storage_path, report.content_sha256
+        )
     except DocumentIntegrityError:
         raise HTTPException(409,'Document integrity check failed. Contact the administrator; this file has not been returned.') from None
     return Response(data, media_type=report.mime_type,

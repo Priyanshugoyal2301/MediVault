@@ -2,6 +2,7 @@
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -11,6 +12,12 @@ class Settings(BaseSettings):
 
     # Shared with health-service — /parse may only read under this root
     storage_local_path: str = "./data/uploads"
+    storage_backend: Literal["local", "s3"] = "local"
+    storage_s3_bucket: str = ""
+    storage_s3_endpoint: str = ""
+    storage_s3_access_key: str = ""
+    storage_s3_secret_key: str = ""
+    storage_s3_region: str = "ap-south-1"
 
     # Shared secret for gateway → health → AI. Missing/placeholder keys deny
     # protected requests. Tests explicitly override the dependency when needed.

@@ -149,7 +149,7 @@ async def get_test_anomaly(
     try:
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(
-                f"{settings.ai_service_url.rstrip('/')}/anomaly/detect",
+                f"{settings.ai_service_base_url}/anomaly/detect",
                 json={"test_name": test_name, "unit": unit, "data_points": points},
                 headers=headers,
             )

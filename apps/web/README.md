@@ -2,11 +2,12 @@
 
 ## What this service owns
 
-The web UI for MediVault AI (web-first MVP; mobile wrapper deferred to post-MVP).
+The React application for patient and clinician workflows. This is the product
+web app; `apps/research-site` is a separate project-information site.
 
 ## Tech
 
-React or Next.js — to be finalised at Feature 3 (Q&A UI build), but scoped to stay compatible with both.
+React 18, Vite, and JavaScript modules.
 
 ## Responsibilities
 
@@ -19,6 +20,19 @@ React or Next.js — to be finalised at Feature 3 (Q&A UI build), but scoped to 
 
 Communicates exclusively through `apps/api` (the BFF/Gateway). Never calls `auth-service`, `health-service`, or `ai-service` directly.
 
-## Status
+## Local development
 
-Placeholder at scaffold stage — populated starting at Feature 1 frontend sprint.
+From this directory, run `npm ci` and `npm run dev`. The Vite server proxies
+same-origin API paths to the local BFF at `http://127.0.0.1:8000`.
+
+## Vercel deployment
+
+Create a separate Vercel project for this app with the repository root set to
+`apps/web`. `vercel.json` builds the Vite app and rewrites `/api/*` to the
+public API gateway. The frontend defaults to `/api` in production, keeping the
+HttpOnly session cookie same-origin. Update the rewrite destination when the
+Render API service URL is assigned. The API gateway must allow the Vercel app
+origin in `CORS_ORIGINS`.
+
+The UI talks only to the public BFF. Auth, health, and AI service addresses and
+credentials must never be placed in `VITE_*` variables or browser bundles.

@@ -119,7 +119,7 @@ async def proxy_qa(
     try:
         async with httpx.AsyncClient(timeout=60.0) as client:
             response = await client.post(
-                f"{settings.ai_service_url.rstrip('/')}/qa",
+                f"{settings.ai_service_base_url}/qa",
                 json=payload,
                 headers=headers,
             )

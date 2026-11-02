@@ -18,6 +18,7 @@ from ..core.config import Settings, get_settings
 from ..core.internal_auth import require_internal_key, resolve_safe_storage_path
 from ..core.registry import get_document_parser, get_normalizer, get_quality_checker
 from ..explainer.explainer import explain
+from packages.shared_utils.document_storage import S3DocumentStore
 
 logger = get_logger(__name__)
 router = APIRouter(prefix="/parse", tags=["parse"])
@@ -81,21 +82,33 @@ async def parse_report(
     """
     Reads file from disk (within storage root), runs OCR + parsing + explanations.
     """
-    path = resolve_safe_storage_path(body.storage_path, settings.storage_root)
-    if not path.exists() or not path.is_file():
-        logger.error("Storage path not found for report_id=%s", body.report_id)
-        raise HTTPException(status_code=404, detail="File not found at storage path")
-
     from packages.shared_utils.vault_crypto import decrypt_document, MAGIC
     import hashlib
     import hmac
     try:
-        stored=path.read_bytes()
+        if settings.storage_backend == "s3":
+            store = S3DocumentStore(
+                settings.storage_s3_bucket,
+                settings.storage_s3_endpoint,
+                settings.storage_s3_access_key,
+                settings.storage_s3_secret_key,
+                settings.storage_s3_region,
+            )
+            stored = store.read_encrypted(body.storage_path)
+        else:
+            path = resolve_safe_storage_path(body.storage_path, settings.storage_root)
+            if not path.exists() or not path.is_file():
+                logger.error("Storage path not found for report_id=%s", body.report_id)
+                raise HTTPException(status_code=404, detail="File not found at storage path")
+            stored = path.read_bytes()
         if body.expected_sha256 and not stored.startswith(MAGIC):
             raise ValueError('Encrypted envelope missing')
         file_bytes = decrypt_document(stored, settings.file_encryption_key)
         if body.expected_sha256 and not hmac.compare_digest(hashlib.sha256(file_bytes).hexdigest(),body.expected_sha256):
             raise ValueError('File does not match report')
+    except OSError:
+        logger.error("Document storage unavailable for report_id=%s", body.report_id)
+        raise HTTPException(503, detail={"code": "storage_unavailable"}) from None
     except Exception:
         raise HTTPException(422, detail={'code':'integrity_failed'}) from None
 

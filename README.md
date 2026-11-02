@@ -10,19 +10,21 @@ The AI service is present in the repository and runs locally. It uses Tesseract 
 
 ## Current status
 
-**Local alpha; the health-record application is not deployed. Do not enter real patient information.** The [informational project site](https://medivault-project-site.vercel.app/) is live on Vercel; it does not include or connect to the MediVault API, database, or document storage. The application, database migrations, and AI service have local implementations. They have not been deployed together or verified as a public service.
+**Local alpha; the health-record application is not deployed. Do not enter real patient information.** The [informational project site](https://medivault-project-site.vercel.app/) is live on Vercel; it does not include or connect to the MediVault API, database, or document storage. The application, database migrations, and AI service have local implementations. A Render Blueprint and Vercel product-app configuration are now included, but no application services have been provisioned or connected yet.
 
 | Component | Current state |
 |---|---|
 | Informational project site | [Live on Vercel](https://medivault-project-site.vercel.app/) |
 | Product web app | Vite build passes locally; no public app URL |
-| API and service containers | Source and Dockerfiles exist; no Render service |
+| API and service containers | Render Blueprint is prepared; no Render service |
 | Database | Free Supabase staging project exists in Mumbai; application schema and migrations are not applied |
-| Document storage | Local filesystem adapter only; not suitable for ephemeral cloud instances |
+| Document storage | Local adapter for development; encrypted S3-compatible adapter is implemented but no cloud bucket/keys are configured |
 | Monitoring | No application deployment or production monitoring |
 | Release assurance | Clinical review, recovery/restore drills, hostile-file isolation, independent security assessment, and complete security verification remain open |
 
 See [deployment status and release prerequisites](docs/DEPLOYMENT.md), [implementation checklist](docs/IMPLEMENTATION_CHECKLIST.md), and [security and privacy plan](docs/SECURITY_AND_PRIVACY_PLAN.md). The Vercel link above is an informational site only, not an application login or patient-data service.
+
+The product app deployment path and repository settings are documented in [the frontend guide](apps/web/README.md), [Render service Blueprint](render.yaml), and [deployment runbook](docs/DEPLOYMENT.md). Completing this plan still requires provider-side credentials, schema migration, a private object-storage bucket, and approval for the always-on private Render compute required by this architecture.
 
 ## Features implemented locally
 

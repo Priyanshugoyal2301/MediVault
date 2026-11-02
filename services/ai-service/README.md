@@ -19,6 +19,11 @@ ML-swappable components use `packages/ml-interfaces` Protocols and resolve via
 rule/stats implementations — no behaviour change until models are validated.
 See `docs/ml-migration-plan.md`.
 
+For hosted OCR, configure the same private S3-compatible bucket credentials and
+`FILE_ENCRYPTION_KEY` on AI and health services. The worker reads the encrypted
+object, verifies its digest after decryption, then runs the existing OCR path.
+The S3 keys are server-only and must never be placed in browser configuration.
+
 ## Critical safety rule
 
 The deterministic safety layer MUST run before RAG on `/qa`. If a red-flag triggers, return the fixed emergency message immediately.

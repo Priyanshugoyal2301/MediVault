@@ -8,6 +8,7 @@ Runs in offline mode (emit SQL) or online mode (direct connection).
 import os
 from logging.config import fileConfig
 from pathlib import Path
+from urllib.parse import quote_plus
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
@@ -38,9 +39,13 @@ _port = os.environ.get("POSTGRES_PORT", "5432")
 _db = os.environ.get("POSTGRES_DB", "medivault")
 _user = os.environ.get("POSTGRES_USER", "medivault_user")
 _pass = os.environ.get("POSTGRES_PASSWORD", "")
+_ssl = "?sslmode=require" if os.environ.get("POSTGRES_SSL", "false").lower() == "true" else ""
 
 # Use psycopg2 (sync) for Alembic — asyncpg is for runtime FastAPI use
-_dsn = f"postgresql+psycopg2://{_user}:{_pass}@{_host}:{_port}/{_db}"
+_dsn = (
+    f"postgresql+psycopg2://{quote_plus(_user)}:{quote_plus(_pass)}"
+    f"@{_host}:{_port}/{quote_plus(_db)}{_ssl}"
+)
 config.set_main_option("sqlalchemy.url", _dsn)
 
 # ---------------------------------------------------------------------------

@@ -20,3 +20,11 @@ class StorageBackend(Protocol):
     async def delete(self, storage_path: str) -> None:
         """Hard-delete a stored file. Called on report deletion."""
         ...
+
+    def exists(self, storage_path: str) -> bool:
+        """Check whether a stored opaque object reference exists."""
+        ...
+
+    def read(self, storage_path: str, expected_sha256: str | None = None) -> bytes:
+        """Read and authenticate a document before returning its original bytes."""
+        ...

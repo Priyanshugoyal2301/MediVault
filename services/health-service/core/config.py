@@ -4,6 +4,7 @@ health-service/core/config.py
 
 from functools import lru_cache
 from typing import Literal
+from urllib.parse import quote_plus
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
@@ -24,6 +25,8 @@ class Settings(BaseSettings):
     storage_s3_endpoint: str = ""
     storage_s3_access_key: str = ""
     storage_s3_secret_key: str = ""
+    storage_s3_region: str = "ap-south-1"
+    postgres_ssl: bool = False
 
     ai_service_url: str = "http://localhost:8003"
 
@@ -36,10 +39,16 @@ class Settings(BaseSettings):
 
     @property
     def async_db_url(self) -> str:
-        return (
-            f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}"
+        url = (
+            f"postgresql+asyncpg://{quote_plus(self.postgres_user)}:{quote_plus(self.postgres_password)}"
             f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
         )
+        return f"{url}?ssl=require" if self.postgres_ssl else url
+
+    @property
+    def ai_service_base_url(self) -> str:
+        value = self.ai_service_url.strip().rstrip("/")
+        return value if "://" in value else f"http://{value}"
 
 
 @lru_cache

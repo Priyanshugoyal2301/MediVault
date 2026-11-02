@@ -1,5 +1,5 @@
 /** Same-origin BFF client. Credentials stay in an HttpOnly session cookie. */
-const BASE = import.meta.env.VITE_API_BASE || '';
+const BASE = import.meta.env.VITE_API_BASE || (import.meta.env.PROD ? '/api' : '');
 export class ApiError extends Error { constructor(message, status) { super(message); this.status = status; } }
 function notifyExpiredSession(response, path) {
   // Invalid sign-in/MFA attempts are local form errors, not session expiry.

@@ -6,6 +6,7 @@ All env vars must be set — the service refuses to start if required vars are a
 """
 
 from functools import lru_cache
+from urllib.parse import quote_plus
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -19,6 +20,7 @@ class Settings(BaseSettings):
     postgres_db: str = "medivault"
     postgres_user: str = "medivault_user"
     postgres_password: str
+    postgres_ssl: bool = False
 
     # JWT
     auth_secret_key: str
@@ -28,10 +30,11 @@ class Settings(BaseSettings):
 
     @property
     def async_db_url(self) -> str:
-        return (
-            f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}"
+        url = (
+            f"postgresql+asyncpg://{quote_plus(self.postgres_user)}:{quote_plus(self.postgres_password)}"
             f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
         )
+        return f"{url}?ssl=require" if self.postgres_ssl else url
 
 
 @lru_cache

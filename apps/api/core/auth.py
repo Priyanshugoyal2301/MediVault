@@ -56,7 +56,7 @@ async def require_user_id(
     try:
         async with httpx.AsyncClient(timeout=5.0) as client:
             response = await client.get(
-                f"{settings.auth_service_url.rstrip('/')}/auth/me",
+                f"{settings.auth_service_base_url}/auth/me",
                 headers={"Authorization": f"Bearer {credentials.credentials}"},
             )
         if response.status_code in (401, 403, 404):
