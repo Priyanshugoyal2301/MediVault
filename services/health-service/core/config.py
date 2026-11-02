@@ -6,6 +6,7 @@ from functools import lru_cache
 from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 
 
 class Settings(BaseSettings):
@@ -26,8 +27,12 @@ class Settings(BaseSettings):
 
     ai_service_url: str = "http://localhost:8003"
 
-    # Shared with ai-service for service-to-service calls
+    # Shared by BFF, health and AI; required for protected service calls.
     internal_service_key: str = ""
+    file_encryption_key: str = ""
+    storage_account_quota_bytes: int = Field(default=1024*1024*1024,ge=1)
+    storage_account_file_limit: int = Field(default=500,ge=1)
+    storage_min_free_bytes: int = Field(default=1024*1024*1024,ge=0)
 
     @property
     def async_db_url(self) -> str:

@@ -11,14 +11,16 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fastapi import APIRouter, Header, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 
 from packages.shared_utils import get_logger
 
+from ..core.internal_auth import require_internal_key
+
 logger = get_logger(__name__)
 
-router = APIRouter(prefix="/embeddings", tags=["embeddings"])
+router = APIRouter(prefix="/embeddings", tags=["embeddings"], dependencies=[Depends(require_internal_key)])
 
 
 class EmbedReportRequest(BaseModel):

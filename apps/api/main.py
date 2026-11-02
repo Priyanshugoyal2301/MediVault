@@ -1,7 +1,7 @@
 """
 API Gateway / BFF — apps/api/main.py
 
-Run (from apps/api): uvicorn main:app --reload --port 8000
+Run from repo root: python scripts/run_service.py apps.api.main:app 8000
 Requires AUTH_SECRET_KEY in environment / .env (shared with auth-service).
 """
 
@@ -16,8 +16,7 @@ try:
 except Exception as exc:  # noqa: BLE001
     raise RuntimeError(
         "API gateway failed to load settings. Copy .env.example → .env and set "
-        "AUTH_SECRET_KEY (must match auth-service). Original error: "
-        f"{type(exc).__name__}: {exc}"
+        "AUTH_SECRET_KEY (must match auth-service). Configuration could not be loaded."
     ) from exc
 
 app = FastAPI(
@@ -46,6 +45,4 @@ async def health_check() -> dict:
         "status": "ok",
         "service": "api-gateway",
         "version": "0.2.1",
-        "auth_service_url": settings.auth_service_url,
-        "health_service_url": settings.health_service_url,
     }

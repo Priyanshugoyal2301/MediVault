@@ -19,6 +19,9 @@ class Settings(BaseSettings):
 
     auth_service_url: str = "http://localhost:8001"
     health_service_url: str = "http://localhost:8002"
+    internal_service_key: str = ""
+    cookie_secure: bool = True
+    trust_cf_connecting_ip: bool = False
 
     # Comma-separated browser origins allowed to call the BFF
     cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
