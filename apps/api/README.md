@@ -4,8 +4,8 @@
 
 Browser-facing Backend-for-Frontend:
 
-- Validate JWT (`Authorization: Bearer …`)
-- Strip any client `X-User-ID` and inject trusted identity from token `sub`
+- Validate JWT with required subject, issued-at and expiry claims; check the current account through auth `/auth/me`
+- Strip client identity/service-key headers and inject trusted identity plus the configured internal service key
 - Proxy to auth-service and health-service
 - **Does not** expose AI-service routes
 
@@ -29,12 +29,12 @@ There is **no** `/api` prefix. Vite proxies these paths to `:8000`.
 ## Running locally
 
 ```bash
-# From repo root: ensure .env has AUTH_SECRET_KEY matching auth-service
-cd apps/api
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+# From repo root: AUTH_SECRET_KEY must match auth-service;
+# INTERNAL_SERVICE_KEY must match health/AI (random, 32+ characters).
+pip install -r apps/api/requirements.txt
+python scripts/run_service.py apps.api.main:app 8000
 ```
 
 ## Health
 
-`GET /health` → gateway status + configured upstream URLs.
+`GET /health` → gateway status and version (no internal service addresses).

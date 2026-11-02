@@ -19,7 +19,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from packages.shared_utils import get_logger
 
 from ..core.config import Settings, get_settings
-from ..db.models import ReportValue
+from ..db.models import Report, ReportValue
+from ..care.document_scope import DocumentScope, document_scope
+from ..db.repositories.report_repository import ReportRepository
 from ..db.session import get_db
 
 logger = get_logger(__name__)
@@ -60,10 +62,11 @@ async def _load_user_report_values(
     db: AsyncSession,
     owner_id: uuid.UUID,
     limit: int = 50,
+    scope=None,
 ) -> list[dict]:
     result = await db.execute(
         select(ReportValue)
-        .where(ReportValue.owner_id == owner_id)
+        .where(ReportValue.report_id.in_(select(Report.id).where(ReportRepository(db, scope).predicate(owner_id))))
         .order_by(ReportValue.created_at.desc())
         .limit(limit)
     )
@@ -87,10 +90,20 @@ async def proxy_qa(
     body: QARequest,
     owner_id: Annotated[uuid.UUID, Depends(_get_owner_id)],
     db: Annotated[AsyncSession, Depends(get_db)],
+    scope: Annotated[DocumentScope, Depends(document_scope)],
     settings: Annotated[Settings, Depends(get_settings)],
 ) -> QAResponse:
     session_id = body.session_id or str(uuid.uuid4())
-    user_values = await _load_user_report_values(db, owner_id)
+    if scope.pediatric:
+        from services.ai_service.safety import check_safety
+        safety = check_safety(body.question)
+        return QAResponse(session_id=session_id,
+            answer=(safety.emergency_message_en if safety.triggered else
+                    "This is a child's record. Open the original report and review its age-specific reference ranges with the child's clinician. Automated interpretation of pediatric results is not available."),
+            answer_hi=(safety.emergency_message_hi if safety.triggered else
+                       "यह बच्चे का रिकॉर्ड है। मूल रिपोर्ट और आयु के अनुसार संदर्भ सीमाओं की समीक्षा बच्चे के डॉक्टर के साथ करें। बच्चों के परिणामों की स्वचालित व्याख्या उपलब्ध नहीं है।"),
+            citations=[], safety_triggered=safety.triggered)
+    user_values = await _load_user_report_values(db, owner_id, scope=scope)
 
     headers = {"X-User-Id": str(owner_id)}
     if settings.internal_service_key:

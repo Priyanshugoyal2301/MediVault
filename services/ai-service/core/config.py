@@ -12,10 +12,10 @@ class Settings(BaseSettings):
     # Shared with health-service — /parse may only read under this root
     storage_local_path: str = "./data/uploads"
 
-    # Shared secret for service-to-service calls (health → AI).
-    # If empty, internal auth is disabled (unit tests / local without .env).
-    # Hackathon/demo: set INTERNAL_SERVICE_KEY in .env and never publish AI ports.
+    # Shared secret for gateway → health → AI. Missing/placeholder keys deny
+    # protected requests. Tests explicitly override the dependency when needed.
     internal_service_key: str = ""
+    file_encryption_key: str = ""
 
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     tesseract_cmd: str = "tesseract"

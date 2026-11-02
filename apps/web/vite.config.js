@@ -8,6 +8,7 @@ export default defineConfig({
     host: true,
     proxy: {
       // Browser → Vite → BFF (JWT + trusted X-User-ID). Never proxy AI ports.
+      '/care': 'http://127.0.0.1:8000',
       '/auth': 'http://127.0.0.1:8000',
       '/reports': 'http://127.0.0.1:8000',
       '/timeline': 'http://127.0.0.1:8000',

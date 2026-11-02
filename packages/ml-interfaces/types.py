@@ -28,6 +28,8 @@ class ParsedField:
     reference_range_text: str | None = None
     confidence: float | None = None
     raw_span: str | None = None
+    date_of_test: str | None = None
+    date_type: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -41,6 +43,8 @@ class ParsedField:
             "reference_range_text": self.reference_range_text,
             "confidence": self.confidence,
             "raw_span": self.raw_span,
+            "date_of_test": self.date_of_test,
+            "date_type": self.date_type,
         }
 
 

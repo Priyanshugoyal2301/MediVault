@@ -26,9 +26,12 @@ class UserRepository:
         )
         return result.scalar_one_or_none()
 
-    async def get_by_email(self, email: str) -> User | None:
+    async def get_by_email(self, email: str, *, lock=False) -> User | None:
+        statement = select(User).where(User.email == email.lower(), User.is_active.is_(True))
+        if lock:
+            statement = statement.with_for_update()
         result = await self._session.execute(
-            select(User).where(User.email == email.lower(), User.is_active.is_(True))
+            statement
         )
         return result.scalar_one_or_none()
 

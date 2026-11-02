@@ -1,0 +1,80 @@
+[
+  {
+    "file": "prescription-clear.png",
+    "kind": "prescription",
+    "expected": "complete",
+    "fragments": [
+      "Examplemed Alpha 250 mg",
+      "Examplemed Beta 10 mg",
+      "Examplemed Gamma",
+      "14 January 2024",
+      "21 January 2024"
+    ]
+  },
+  {
+    "file": "prescription-photo.jpg",
+    "kind": "prescription",
+    "expected": "complete",
+    "fragments": [
+      "Examplemed Alpha 250 mg",
+      "Examplemed Beta 10 mg",
+      "Examplemed Gamma",
+      "14 January 2024",
+      "21 January 2024"
+    ]
+  },
+  {
+    "file": "prescription-sideways.png",
+    "kind": "prescription",
+    "expected": "complete",
+    "fragments": [
+      "Examplemed Alpha 250 mg",
+      "Examplemed Beta 10 mg",
+      "Examplemed Gamma",
+      "14 January 2024",
+      "21 January 2024"
+    ]
+  },
+  {
+    "file": "prescription-scanned.pdf",
+    "kind": "prescription",
+    "expected": "complete",
+    "fragments": [
+      "Examplemed Alpha 250 mg",
+      "Examplemed Beta 10 mg",
+      "Examplemed Gamma",
+      "14 January 2024",
+      "21 January 2024"
+    ]
+  },
+  {
+    "file": "lab-report.pdf",
+    "kind": "report",
+    "expected": "complete",
+    "values": {
+      "Haemoglobin": 13.5
+    }
+  },
+  {
+    "file": "blank.pdf",
+    "kind": "prescription",
+    "expected": "failed"
+  },
+  {
+    "file": "invalid.pdf",
+    "kind": "prescription",
+    "expected": "failed"
+  },
+  {
+    "file": "prescription-clear.png",
+    "kind": "report",
+    "expected": "complete",
+    "fragments": [
+      "Examplemed Alpha 250 mg",
+      "Examplemed Beta 10 mg",
+      "Examplemed Gamma",
+      "14 January 2024",
+      "21 January 2024"
+    ]
+  }
+]

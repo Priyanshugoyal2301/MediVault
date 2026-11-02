@@ -5,6 +5,11 @@ from typing import Annotated
 
 from fastapi import Depends, Header, HTTPException, status
 
+from packages.shared_utils.service_auth import (
+    service_key_is_configured,
+    service_key_matches,
+)
+
 from .config import Settings, get_settings
 
 
@@ -13,13 +18,12 @@ def require_internal_key(
     settings: Annotated[Settings, Depends(get_settings)] = ...,
 ) -> None:
     """
-    Enforce X-Internal-Key when INTERNAL_SERVICE_KEY is configured.
-    When unset (empty), skips check so unit tests keep working without .env.
+    Require a configured service key; configuration errors never disable auth.
     """
     expected = (settings.internal_service_key or "").strip()
-    if not expected:
-        return
-    if not x_internal_key or x_internal_key != expected:
+    if not service_key_is_configured(expected):
+        raise HTTPException(503, "Internal authentication is not configured")
+    if not service_key_matches(expected, x_internal_key):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or missing internal service key",

@@ -8,7 +8,7 @@ this module never reads env vars directly, making it unit-testable.
 """
 
 from datetime import UTC, datetime, timedelta
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -25,6 +25,8 @@ def hash_password(plain_password: str) -> str:
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
+    if len(plain_password.encode("utf-8")) > 72:
+        return False
     return _pwd_context.verify(plain_password, hashed_password)
 
 
@@ -44,6 +46,7 @@ def create_access_token(
         "sub": str(user_id),
         "exp": expire,
         "iat": datetime.now(UTC),
+        "jti": str(uuid4()),
     }
     return jwt.encode(payload, secret_key, algorithm=algorithm)
 
@@ -58,10 +61,13 @@ def decode_access_token(
     Never raises — all failures return None so callers can return 401 uniformly.
     """
     try:
-        payload = jwt.decode(token, secret_key, algorithms=[algorithm])
+        payload = jwt.decode(
+            token, secret_key, algorithms=[algorithm],
+            options={"require_exp": True, "require_sub": True, "require_iat": True},
+        )
         sub: str | None = payload.get("sub")
         if sub is None:
             return None
         return UUID(sub)
-    except (JWTError, ValueError):
+    except (JWTError, ValueError, TypeError):
         return None

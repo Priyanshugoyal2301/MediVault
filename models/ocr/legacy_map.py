@@ -24,6 +24,9 @@ class CompatibilityLabValue:
     reference_range_low: Decimal | None
     reference_range_high: Decimal | None
     reference_range_text: str | None
+    date_of_test: str | None = None
+    date_type: str | None = None
+    date_confidence: float | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -35,6 +38,9 @@ class CompatibilityLabValue:
             "reference_range_low": self.reference_range_low,
             "reference_range_high": self.reference_range_high,
             "reference_range_text": self.reference_range_text,
+            "date_of_test": self.date_of_test,
+            "date_type": self.date_type,
+            "date_confidence": self.date_confidence,
         }
 
 
@@ -42,6 +48,7 @@ def medical_json_to_compatibility_values(
     doc: MedicalDocumentJSON,
 ) -> list[CompatibilityLabValue]:
     out: list[CompatibilityLabValue] = []
+    doc_date = doc.metadata.get("date_of_test") if doc.metadata else None
     for e in doc.laboratory:
         val_num = None
         val_text = None
@@ -75,6 +82,7 @@ def medical_json_to_compatibility_values(
                 reference_range_low=ref_low,
                 reference_range_high=ref_high,
                 reference_range_text=ref_text,
+                date_of_test=doc_date,
             )
         )
     return out

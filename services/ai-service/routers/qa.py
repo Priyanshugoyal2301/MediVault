@@ -20,19 +20,20 @@ import uuid
 from datetime import datetime, UTC
 from typing import Optional
 
-from fastapi import APIRouter, Header, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 
 from packages.shared_utils import get_logger
 
 from ..core.registry import get_retriever
+from ..core.internal_auth import require_internal_key
 from ..rag.retriever import RetrievedChunk
 from ..rag.synthesizer import synthesize
 from ..safety import check_safety
 
 logger = get_logger(__name__)
 
-router = APIRouter(prefix="/qa", tags=["qa"])
+router = APIRouter(prefix="/qa", tags=["qa"], dependencies=[Depends(require_internal_key)])
 
 
 # ---------------------------------------------------------------------------
