@@ -1,0 +1,32 @@
+{
+  "dataset": "synthea",
+  "total_observations": 2790,
+  "total_source_patients": 60,
+  "longitudinal_patients": 60,
+  "distinct_raw_analytes": 11,
+  "distinct_canonical_analytes": 11,
+  "date_range_start": "2021-02-28T10:00:00Z",
+  "date_range_end": "2024-05-18T09:00:00Z",
+  "missing_dates_count": 0,
+  "missing_units_count": 0,
+  "normalization_coverage_pct": 100.0,
+  "loinc_mapping_coverage_pct": 100.0,
+  "duplicated_observations_count": 0,
+  "malformed_observations_count": 0,
+  "analytes_breakdown": {
+    "Total Cholesterol": 330,
+    "Triglycerides": 330,
+    "Haemoglobin": 330,
+    "WBC": 330,
+    "Platelets": 330,
+    "HbA1c": 330,
+    "LDL Cholesterol": 180,
+    "HDL Cholesterol": 180,
+    "Glucose": 150,
+    "Creatinine": 150,
+    "TSH": 150
+  },
+  "mapping_status_breakdown": {
+    "exact_loinc": 2790
+  }
+}
