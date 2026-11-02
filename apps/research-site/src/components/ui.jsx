@@ -12,7 +12,7 @@ export function Seo({
     title && title !== 'Home'
       ? `${title} · ${site.institution}`
       : `${site.institution} — ${site.tagline}`;
-  const url = `${site.domain}${path === '/' ? '' : path}`;
+  const url = site.domain ? `${site.domain}${path === '/' ? '' : path}` : '';
   return (
     <Helmet>
       <title>{full}</title>
@@ -22,11 +22,11 @@ export function Seo({
         name="keywords"
         content="MediVault, medical AI research, lab report intelligence, BM25 RAG, personal series anomaly, non-diagnostic AI, health privacy"
       />
-      <link rel="canonical" href={url || site.domain} />
+      {url && <link rel="canonical" href={url} />}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={full} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url || site.domain} />
+      {url && <meta property="og:url" content={url} />}
       <meta property="og:site_name" content={site.institution} />
       <meta property="og:locale" content="en_IN" />
       <meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +38,7 @@ export function Seo({
           '@type': 'ResearchProject',
           name: site.institution,
           description,
-          url: site.domain,
+          url: site.domain || site.github,
           keywords:
             'laboratory literacy, personal-series monitoring, BM25 retrieval, medical safety AI',
           parentOrganization: {

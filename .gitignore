@@ -1,5 +1,5 @@
 # MediVault — .gitignore
-# Ignore build artifacts, secrets, IDE/agent tooling, and large ML weights.
+# Ignore build artifacts, secrets, local settings, and large ML weights.
 # Keep source, docs, synthetic fixtures, and configs tracked.
 
 # --- Secrets & local env ---
@@ -58,18 +58,6 @@ apps/research-site/dist/
 Thumbs.db
 Desktop.ini
 
-# --- Cursor / AI coding tooling (never commit) ---
-.cursor/
-.cursorignore
-.cursorrules
-.aider*
-.claude/
-.codex/
-.continue/
-*.code-workspace
-agent-transcripts/
-.agents/
-
 # --- Logs & local scratch ---
 *.log
 logs/
@@ -113,6 +101,10 @@ datasets/**/*.zip
 !datasets/**/README.md
 !datasets/**/LICENSING.md
 
+# External downloaded clinical & terminology distributions
+datasets/clinical/external/
+
+
 # Regenerated eval / train reports (local only)
 datasets/evaluation/*_latest.json
 datasets/evaluation/safe_train_*.json
@@ -121,3 +113,14 @@ data/datasets/plan_c/results_latest.json
 # --- Research site deploy metadata ---
 apps/research-site/.vercel
 .vercel/
+
+# Research retrieval embeddings cache
+validation/retrieval/embeddings/
+
+# Local application runtime and verification artifacts
+.local-logs/
+data/local-uploads/
+scratch/
+output/
+validation/
+*.pptx

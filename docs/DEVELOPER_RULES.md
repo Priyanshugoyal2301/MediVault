@@ -5,6 +5,9 @@ Conventions for anyone changing MediVault. Follow these in addition to normal en
 ## 1. Context discipline
 
 - Before large changes, read `01_PROJECT_CONTEXT.md`, `02_ARCHITECTURE.md`, and `03_MVP_SCOPE.md` in `/docs`.
+- For the owner-approved ecosystem expansion, also read `ECOSYSTEM_BLUEPRINT.md`,
+  `ECOSYSTEM_DELIVERY_PLAN.md`, and `SECURITY_AND_PRIVACY_PLAN.md`; these supersede
+  the historical patient-only scope restrictions.
 - If a request conflicts with locked MVP scope or architecture, say so before building — do not silently expand scope.
 
 ## 2. No dead code, no parallel implementations

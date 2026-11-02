@@ -56,13 +56,37 @@ export function AboutPage() {
               <p>{narrative.philosophy}</p>
               <h2>Why this project exists</h2>
               <p>{narrative.problem}</p>
+              <h2>What the local prototype includes</h2>
+              <p>
+                Patient and family profiles, consent-scoped sharing, clinician
+                consultation, uploaded document review, source-linked medication
+                records, lab history, access activity, and consultation summaries.
+                Administrative features such as appointments and claims are personal
+                organizers; they do not connect to providers or government services.
+              </p>
+              <h2>AI and data handling</h2>
+              <p>
+                The local AI service uses Tesseract OCR, deterministic parsing and
+                safety rules, and evidence retrieval. Optional ML paths are disabled
+                by default. No hosted LLM or cloud OCR provider is configured in the
+                default setup. Extracted medication details require human review.
+              </p>
+              <h2>Safety and limitations</h2>
+              <p>
+                MediVault does not diagnose, prescribe, or replace clinical care.
+                Pediatric automated interpretation is withheld. OCR, Hindi
+                explanations, and retrieval have not received comprehensive
+                clinical validation. Encrypted document originals are not
+                end-to-end encryption; derived health data require trusted database
+                and infrastructure controls.
+              </p>
             </div>
           </Reveal>
           <Reveal delay={0.08}>
             <div className="panel stack-md">
               <p className="eyebrow">Innovation principles</p>
               <ul className="stack-sm" style={{ paddingLeft: '1.1rem', color: 'var(--ink-muted)', margin: 0 }}>
-                <li>Ship narrow, ship real—not a seven-module fantasy product</li>
+                <li>Keep product claims tied to verified implementation</li>
                 <li>Citations and owner data over fluent hallucinations</li>
                 <li>Privacy structural, not ornamental</li>
                 <li>Publish failures with the same care as wins</li>
@@ -73,6 +97,35 @@ export function AboutPage() {
               </Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+      <section className="section section-tight">
+        <div className="shell two-col">
+          <div className="prose">
+            <h2>Deployment status</h2>
+            <p>
+              <strong>{site.deployment.status}.</strong> This is a local prototype,
+              not a public health-record service. Use fictional test records only.
+            </p>
+            <p>{site.deployment.product}</p>
+            <p>Frontend: {site.deployment.frontend}</p>
+            <p>Backend: {site.deployment.backend}</p>
+            <p>Database: {site.deployment.database}</p>
+            <p>
+              A public application link will be listed here after deployment,
+              database setup, and health checks are verified.
+            </p>
+          </div>
+          <div className="panel stack-md">
+            <p className="eyebrow">Project information</p>
+            <p>
+              Architecture, implementation evidence, known limits, and release
+              requirements are maintained in the repository documentation.
+            </p>
+            <a className="btn btn-primary" href={site.github} target="_blank" rel="noreferrer">
+              Browse the source and documentation
+            </a>
+          </div>
         </div>
       </section>
     </>
@@ -623,58 +676,30 @@ export function FaqPage() {
 export function ContactPage() {
   return (
     <>
-      <Seo title="Contact" path="/contact" description="Contact MediVault Research for collaboration." />
+      <Seo title="Contact" path="/contact" description="Project support and collaboration information." />
       <PageHeader
-        title="Contact"
-        lede="Research inquiries, evaluation partnerships, and institutional collaboration."
+        title="Project contact"
+        lede="Use the public repository for project questions, corrections, and collaboration requests. Do not submit medical documents or personal health information."
         crumbs={[{ label: 'Contact', href: '/contact' }]}
       />
       <section className="section section-tight">
         <div className="shell two-col">
           <Reveal>
-            <form
-              className="form-grid"
-              action={`mailto:${site.email}`}
-              method="get"
-              encType="text/plain"
-            >
-              <div className="field">
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" autoComplete="name" required />
-              </div>
-              <div className="field">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" required />
-              </div>
-              <div className="field">
-                <label htmlFor="org">Organization</label>
-                <input id="org" name="org" autoComplete="organization" />
-              </div>
-              <div className="field">
-                <label htmlFor="topic">Topic</label>
-                <select id="topic" name="subject" defaultValue="Research inquiry">
-                  <option value="Research inquiry">Research inquiry</option>
-                  <option value="Collaboration">Collaboration</option>
-                  <option value="Press">Press</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="field">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="body" rows={5} required />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Open email client
-              </button>
-              <p className="metric-note">Opens your mail client with a draft to {site.email}.</p>
-            </form>
+            <div className="prose">
+              <h2>Get in touch</h2>
+              <p>
+                The project does not publish a support email or collect messages
+                through this site. Open a repository issue for non-sensitive
+                questions. Never attach health records, credentials, invitation
+                codes, or security secrets.
+              </p>
+              <a className="btn btn-primary" href={site.github} target="_blank" rel="noreferrer">
+                Open the project repository
+              </a>
+            </div>
           </Reveal>
           <Reveal delay={0.08}>
             <div className="panel stack-md">
-              <div>
-                <p className="eyebrow">Email</p>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
-              </div>
               <div>
                 <p className="eyebrow">GitHub</p>
                 <a href={site.github} target="_blank" rel="noreferrer">
@@ -969,9 +994,7 @@ export function PressPage() {
             ))}
           </ul>
           <h2>Media contact</h2>
-          <p>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-          </p>
+          <p>Use the project repository for non-sensitive media inquiries.</p>
           <Link className="btn btn-primary" to="/media">
             Media resources
           </Link>
@@ -1119,7 +1142,7 @@ export function StatusPage({ code = 404 }) {
     },
     500: {
       title: '500',
-      message: `Something failed on our side. Retry shortly or contact ${site.email}.`,
+      message: 'Something failed on our side. Retry shortly or report the issue through the project repository.',
     },
     maintenance: {
       title: 'Maintenance',
