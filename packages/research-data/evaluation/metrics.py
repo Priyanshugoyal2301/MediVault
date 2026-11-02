@@ -136,5 +136,4 @@ class EvaluationMetrics:
             ndcg_at_5=round(means["ndcg_at_5"], 4),
             ndcg_at_10=round(means["ndcg_at_10"], 4),
             query_count=n,
-        )
-
+        )`n

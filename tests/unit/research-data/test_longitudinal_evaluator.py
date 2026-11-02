@@ -261,7 +261,7 @@ class TestLongitudinalEvaluator:
     def test_supporting_precision_strict_relevance_verification(self):
         # Verify that supporting observations without valid clinical roles are penalized
         evaluator = LongitudinalEvidenceEvaluator(retriever=MockRetriever([]))
-        
+
         # Valid package: supporting observation has role 'reference_latest'
         c_prim = make_cand("ev_p", "2022-01-01T00:00:00Z", 6.0)
         c_supp = make_cand("ev_s", "2023-01-01T00:00:00Z", 6.5)
@@ -380,6 +380,4 @@ class TestLongitudinalEvaluator:
         assert metrics.micro_supporting_precision == 1.0
         # Intent-stratified: current_value has None supporting precision; previous_value has 1.0
         assert metrics.intent_stratified["current_value"]["supporting_precision"] is None
-        assert metrics.intent_stratified["previous_value"]["supporting_precision"] == 1.0
-
-
+        assert metrics.intent_stratified["previous_value"]["supporting_precision"] == 1.0`n
