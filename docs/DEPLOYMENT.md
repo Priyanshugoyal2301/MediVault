@@ -9,15 +9,7 @@ project `MediVault-Staging` is active in Mumbai (`ap-south-1`), but currently
 has no public-schema tables and no recorded migrations. It is an empty database,
 not a running application backend. No production monitoring is active.
 
-The current workspace includes substantial changes after the repository's
-7 September 2026 `main` commit, but those changes are uncommitted. Do not treat
-GitHub `main` as containing them. The deployment remains blocked until the
-reviewed source is committed, migrations and runtime roles are applied to the
-staging database, durable private document storage is configured, all service
-secrets are provisioned, and end-to-end staging checks pass. The current upload
-adapter only supports local storage; Render's free filesystem is ephemeral, so
-it is not safe for storing uploaded documents. Use only fictional test records
-until the security, privacy, clinical and recovery release gates are satisfied.
+The reviewed changes are on the pushed branch [`feature/medivault-ecosystem`](https://github.com/Priyanshugoyal2301/MediVault/tree/feature/medivault-ecosystem); `main` remains at the 7 September 2026 baseline. The deployment remains blocked until migrations and runtime roles are applied to the staging database, durable private document storage is configured, all service secrets are provisioned, and end-to-end staging checks pass. The current upload adapter only supports local storage; Render's free filesystem is ephemeral, so it is not safe for storing uploaded documents. Use only fictional test records until the security, privacy, clinical and recovery release gates are satisfied.
 
 The local verification on 2 November passed the Vite production build, Python
 bytecode compilation, and Docker Compose configuration validation. The focused
