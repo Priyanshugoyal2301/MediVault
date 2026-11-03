@@ -11,12 +11,12 @@ from .models import StorageDeletion, now
 
 async def run_once():
     from ..routers.reports import _trigger_parse
-    from ..storage.local_storage import LocalStorage
+    from ..routers.reports import _get_storage
     settings = get_settings()
     async with _SessionLocal() as db:
         deletion = await db.scalar(select(StorageDeletion).order_by(StorageDeletion.created_at).with_for_update(skip_locked=True).limit(1))
         if deletion:
-            await LocalStorage(settings.storage_local_path, settings.file_encryption_key).delete(deletion.storage_path)
+            await _get_storage(settings).delete(deletion.storage_path)
             await db.delete(deletion)
             await db.commit()
             return True
@@ -33,7 +33,7 @@ async def run_once():
                     mime_type=row.mime_type, locale="en-IN", document_kind=row.document_kind,
                     processing_token=str(row.processing_token),expected_sha256=row.content_sha256)
         await db.commit()
-    await _trigger_parse(**args, ai_service_url=settings.ai_service_url, db_url=settings.async_db_url)
+    await _trigger_parse(**args, ai_service_url=settings.ai_service_base_url, db_url=settings.async_db_url)
     return True
 
 

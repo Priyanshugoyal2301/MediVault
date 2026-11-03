@@ -2,8 +2,9 @@
 
 Updated 26 October 2026 after local prototype implementation. Latest verification:
 267 selected regression tests passing, nine core walkthrough checks passing, and
-the retained 8/8 synthetic document acceptance cases. Browser observations were
-supplied separately by AntiGravity; the new review UI has build verification.
+the retained 8/8 synthetic document acceptance cases. These are historical local
+results; the new review UI has build verification only. Current deployment and
+verification status is recorded in [DEPLOYMENT.md](DEPLOYMENT.md).
 The hosted-service comparisons below are optional research, not setup requirements.
 Azure and large-model hosting are deferred at the owner's request.
 
@@ -80,7 +81,7 @@ Status meanings:
 | Pediatric explanations | Intentionally unavailable | Safety response and source review only pending validation |
 | Patient Q&A | Partial | References plus recent-50 lab-value payload; prescription/medicine/history retrieval incomplete |
 | Longitudinal hybrid retrieval | Research only | Implemented experiments; not the full live Q&A path |
-| Responsive web interface | Implemented; externally checked | AntiGravity reported four viewport checks; latest refinements only build-verified |
+| Responsive web interface | Implemented locally | Recent refinements are build-verified; a full browser and accessibility audit remains open |
 | Installed Android/iOS application | Missing | Manifest exists; signed apps/device lifecycle verification absent |
 | Supabase integration | Not used | Local PostgreSQL currently supplies persistence |
 | CGHS/ABDM/ABHA/insurer connections | Missing | Inspired workflows only; no authorized live connectors |
@@ -103,9 +104,9 @@ Status meanings:
 4. **Live MFA checks:** encrypted seed, hashed recovery codes, password-only
    challenge, invalid password behavior, single-use recovery, disabling and limits.
 5. **Production web build:** compiled successfully after the latest changes.
-6. **External frontend report:** AntiGravity reported successful workflows and
-   responsive layouts; it is a separate source of evidence with qualifications in
-   `FRONTEND_VERIFICATION_REVIEW.md`.
+6. **Browser verification:** Full automated browser, keyboard, and accessibility
+   testing remains open. The current workspace validation includes a production
+   build but no browser automation.
 
 Known defects fixed in the latest review were sideways extraction and wrong-type
 empty results. Known unfinished functionality is listed above. Handwriting and

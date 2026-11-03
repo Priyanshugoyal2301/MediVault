@@ -30,6 +30,19 @@ class Settings(BaseSettings):
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
+    @property
+    def auth_service_base_url(self) -> str:
+        return self._http_url(self.auth_service_url)
+
+    @property
+    def health_service_base_url(self) -> str:
+        return self._http_url(self.health_service_url)
+
+    @staticmethod
+    def _http_url(value: str) -> str:
+        value = value.strip().rstrip("/")
+        return value if "://" in value else f"http://{value}"
+
 
 @lru_cache
 def get_settings() -> Settings:

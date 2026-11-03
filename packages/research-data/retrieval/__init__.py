@@ -54,5 +54,4 @@ __all__ = [
     "format_evidence_dense_doc",
     "format_evidence_lexical_doc",
     "sort_and_rank_results",
-]
-
+]`n

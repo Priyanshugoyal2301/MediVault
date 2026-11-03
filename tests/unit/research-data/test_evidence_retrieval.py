@@ -792,5 +792,4 @@ class TestTieBreakingAndEdgeCases:
         assert ranked[1].rank == 2
 
         assert ranked[2].evidence_id == "ev_b"
-        assert ranked[2].rank == 3
-
+        assert ranked[2].rank == 3`n

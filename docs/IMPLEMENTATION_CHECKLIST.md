@@ -1,6 +1,6 @@
 # MediVault implementation checklist
 
-Status as of 26 October 2026. A checked item means implemented locally; verification
+Status as of 2 November 2026. A checked item means implemented locally; verification
 evidence is listed separately. This does not certify production readiness.
 
 **Latest prototype update:** the local prescription-to-reviewed-medication-to-
@@ -41,10 +41,8 @@ release remain incomplete; historical findings are in the engineering review.
 - [x] Latest selected regression suite: 271 passed, 2 warnings; prescription review permissions and transactional persistence included.
 - [x] Editable prescription candidates, original-document preview, explicit selection/confirmation and atomic source-linked medication approval; repeat submissions rejected.
 - [x] Fictional patient/doctor presentation accounts and nine-check local walkthrough; no cloud OCR prerequisite.
-- [x] Vite 8 dependency upgrade; npm audit reports zero known vulnerabilities. Python/container audit remains separate.
-- [ ] Resolve 3 npm audit findings and complete Python/container dependency audit; package compatibility check was blocked by approval-service usage limit.
-
-- [x] Reviewed owner-supplied AntiGravity browser report; addressed narrow-screen search and recipient-wide revocation observations. See [review and qualifications](FRONTEND_VERIFICATION_REVIEW.md).
+- [x] Vite 8 dependency upgrade. A new npm audit could not reach the npm registry on 2 November; current dependency status is unverified. Python/container dependency review is also open.
+- [ ] Complete Python/container dependency audit and independent dependency review.
 
 - [x] Migration chain applied to isolated PostgreSQL, preserving the existing Compose database.
 - [x] Real PostgreSQL cross-account, read-only, category, expiry and revocation tests.
@@ -56,6 +54,19 @@ release remain incomplete; historical findings are in the engineering review.
 - [x] Regression rerun after OCR, MFA and persisted authentication limits.
 - [x] Backend-only live smoke: exact synthetic OCR, storage/retrieval/deletion, consent and logout replay denial.
 - [x] Frontend production compilation (no browser automation).
+
+### Current workspace checks — 2 November 2026
+
+- [x] Product web production build.
+- [x] Python bytecode compilation.
+- [x] Docker Compose configuration validation with local-only placeholder values.
+- [x] Alembic offline SQL generation through migration head.
+- [x] Eleven synchronous authentication checks.
+- [ ] Async authentication/database security tests did not complete in the available Windows runtime.
+- [ ] npm audit could not reach the npm registry due to DNS/network failure.
+- [ ] No cloud service is deployed; the Supabase staging database is empty.
+
+These checks are local evidence only. PostgreSQL runtime integration, browser automation, production secret wiring, hosted storage, and deployment health remain unverified.
 
 ## Remaining engineering and launch gates
 

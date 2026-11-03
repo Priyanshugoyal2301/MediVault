@@ -30,8 +30,7 @@ Adding more dashboard sections does not close that gap. â€œImplemented locally,â
 Reviewed: login/MFA, upload UI and API, OCR selection and processing worker,
 database models/migrations, document feedback and downloads, care authorization,
 sharing, current Q&A/retrieval, existing delivery/security plans and dependency
-metadata. Reused the previously reviewed AntiGravity report as externally reported
-UI evidence; did not repeat its entire browser suite.
+metadata. Browser automation was not repeated as part of this review.
 
 New evidence:
 

@@ -1,5 +1,5 @@
 # MediVault — .gitignore
-# Ignore build artifacts, secrets, IDE/agent tooling, and large ML weights.
+# Ignore build artifacts, secrets, local settings, and large ML weights.
 # Keep source, docs, synthetic fixtures, and configs tracked.
 
 # --- Secrets & local env ---
@@ -57,18 +57,6 @@ apps/research-site/dist/
 .DS_Store
 Thumbs.db
 Desktop.ini
-
-# --- Cursor / AI coding tooling (never commit) ---
-.cursor/
-.cursorignore
-.cursorrules
-.aider*
-.claude/
-.codex/
-.continue/
-*.code-workspace
-agent-transcripts/
-.agents/
 
 # --- Logs & local scratch ---
 *.log
@@ -133,3 +121,6 @@ validation/retrieval/embeddings/
 .local-logs/
 data/local-uploads/
 scratch/
+output/
+validation/
+*.pptx

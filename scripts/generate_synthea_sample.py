@@ -74,7 +74,7 @@ def generate_synthea_sample(output_dir: Path, n_patients: int = 60, seed: int = 
         })
 
         enc_dates = encounter_dates_pool[p_idx % len(encounter_dates_pool)]
-        
+
         # Individual patient trend factor for longitudinal trajectory simulation
         trend_factor = random.choice([1.08, 0.94, 1.0, 1.15, 0.90])
 
@@ -138,4 +138,4 @@ def generate_synthea_sample(output_dir: Path, n_patients: int = 60, seed: int = 
 
 if __name__ == "__main__":
     out = Path("datasets/clinical/synthea/sample")
-    generate_synthea_sample(out, n_patients=60)
+    generate_synthea_sample(out, n_patients=60)`n

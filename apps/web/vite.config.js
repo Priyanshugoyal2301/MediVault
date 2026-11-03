@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  // Vercel's same-origin routing keeps HttpOnly session cookies on the app
+  // origin and lets the browser call only the public BFF, never internal APIs.
   server: {
     port: 3000,
     host: true,

@@ -1,44 +1,26 @@
-# MediVault Research Site
+# MediVault project site
 
-Production research website for **MediVault** — the institutional face of the project.
+This is a static overview of MediVault's purpose, local capabilities, safety limits, and deployment status. It contains no patient data and has no form backend.
 
-> Not the product demo SPA (`apps/web`). This site is for faculty review, competitions, and portfolio publication.
+## Status
 
-## Quick start
+The informational project site is deployed at <https://medivault-project-site.vercel.app/>. The MediVault health-record application is not deployed and has no public app URL. This site does not connect to an API or database. Vercel Authentication protects the deployment; access requires the authorized Vercel team or a temporary share link.
+
+## Local development
+
+Requirements: Node.js 20.19+ or 22.12+.
 
 ```bash
-cd apps/research-site
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # → dist/ static export
-npm run preview  # preview production build
+npm ci
+npm run dev
+npm run build
+npm run preview
 ```
 
-## Content source of truth
+The production build is emitted to `dist/`. All narrative content lives in `src/content/site.js`; the About page is in `src/pages/Pages.jsx`.
 
-`src/content/site.js` holds all narrative copy, metrics, publications, FAQ, legal text, and navigation.  
-Claims stay aligned with `docs/PRESENTATION_CLAIMS.md` and Plan B/C reports.
+## Hosting configuration
 
-## Structure
+`vercel.json` configures a Vite static build for a future Vercel project. The expected root directory is `apps/research-site`; the build command is `npm run build`, and the output directory is `dist`. No Vercel project is currently linked. The site is informational only and does not deploy the product API or database.
 
-```
-src/
-  content/site.js       # All page content
-  components/           # Layout chrome, SEO, hero canvases
-  pages/                # Route views
-  styles/               # Tokens + global + layout
-public/                 # favicon, robots, sitemap
-dist/                   # Production build output
-```
-
-## Deploy (static)
-
-`npm run build` emits static assets in `dist/`. Host with any static CDN (Vercel, Netlify, GitHub Pages, Nginx).
-
-Set a real canonical domain by updating `site.domain` in `src/content/site.js` and matching entries in `public/sitemap.xml` / `index.html`.
-
-## Accessibility & SEO
-
-- Skip link, semantic landmarks, focus styles, reduced-motion canvas gates
-- react-helmet-async titles/descriptions, Open Graph, JSON-LD ResearchProject
-- `public/sitemap.xml` + `robots.txt`
+Do not add credentials, real patient examples, private contact details, fabricated service links, or unverified clinical claims to this site.

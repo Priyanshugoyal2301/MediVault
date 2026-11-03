@@ -16,6 +16,18 @@ doctor/guardian consent model; see `docs/SECURITY_AND_PRIVACY_PLAN.md`.
 
 FastAPI + SQLAlchemy (asyncpg) + Alembic + boto3 (S3-compat storage)
 
+## Durable document storage
+
+Local development uses `STORAGE_BACKEND=local`. For hosted staging, configure a
+private S3-compatible bucket and set `STORAGE_BACKEND=s3`, `STORAGE_S3_BUCKET`,
+`STORAGE_S3_ENDPOINT`, `STORAGE_S3_ACCESS_KEY`, `STORAGE_S3_SECRET_KEY`, and
+`STORAGE_S3_REGION` on both health-service and AI-service. Supabase S3 access
+keys are server-side credentials with broad bucket access; store them only in
+the hosting provider's secret manager. The service encrypts each original
+document before upload, and OCR reads the encrypted object through the same
+private S3 endpoint. Never use a public bucket or pass these keys to the
+browser.
+
 ## API contract
 
 | Method | Path | Description |

@@ -274,5 +274,4 @@ class TestResearchEvaluationHarness:
                 "top_k_miss",
                 "temporal_ranking_error",
                 "concept_ranking_error",
-            )
-
+            )`n

@@ -1,27 +1,31 @@
 /**
- * MediVault Research — production site content.
- * Source of truth for narrative: project BIBLE, Plan B/C reports, PROJECT_STATE.
- * Claims stay conservative (see docs/PRESENTATION_CLAIMS.md).
+ * MediVault project overview content.
+ * Claims reflect the local prototype and published repository evidence.
  */
 
 export const site = {
   brand: "MediVault",
   institution: "MediVault Research",
   tagline: "Longitudinal medical intelligence — without diagnosis",
-  domain: "https://medivault.research",
+  domain: "https://medivault-project-site.vercel.app",
   version: "1.0.0",
-  build: "2026.08.10",
-  email: "research@medivault.dev",
+  build: "2026.11.02",
   github: "https://github.com/Priyanshugoyal2301/MediVault",
-  linkedin: "https://github.com/Priyanshugoyal2301/MediVault",
-  location: "Research initiative · India-focused lab literacy (en-IN / hi-IN)",
-  lastReview: "10 August 2026",
+  location: "India-focused health-record prototype",
+  lastReview: "2 November 2026",
+  deployment: {
+    status: "Project information site deployed; application not deployed",
+    product: "The public project site is https://medivault-project-site.vercel.app. The MediVault health-record application has no public URL.",
+    frontend: "The informational site is hosted on Vercel; the product web app is not deployed",
+    backend: "No Render application services",
+    database: "Supabase staging is active in Mumbai; application migrations are not applied",
+  },
 };
 
 /** Core narrative blocks used across pages */
 export const narrative = {
   abstract:
-    "MediVault is a research prototype that converts scattered medical lab reports into an owner-scoped health vault. It combines three capabilities usually shipped in isolation: longitudinal memory of structured results, personal-series trend and anomaly monitoring on short outpatient timelines, and evidence-cited question answering over a curated guideline corpus plus the user’s own values. Every explanation path is non-diagnostic by design—template-bound language, deterministic emergency safety before retrieval, and structural privacy at the repository layer. Evaluation is published under explicit synthetic protocols (anomaly F1 ≈ 0.87 on spike series; BM25+intent Hit@5 = 1.0 on a 50-question FAQ set; IE field F1 ≈ 0.97 on layout fixtures), with clear limits: these numbers are research measurements, not clinical validation.",
+    "MediVault is a local health-record prototype for organizing reports, reviewed medication history, care permissions, and longitudinal lab results. It includes patient, family/guardian, and clinician workflows alongside local OCR and evidence retrieval. Explanations are non-diagnostic and do not replace clinical judgment. The repository contains synthetic research evaluations; their scores are limited to their disclosed test fixtures and are not clinical evidence.",
 
   problem:
     "Healthcare interaction is still binary for many people: “I feel fine” or “I need a clinician.” Between those states, patients are left to interpret multi-page lab PDFs, notice patterns across years of tests, and judge free-form answers from search or chatbots that neither remember their history nor cite sources. Existing products typically solve one slice well—OCR parsers, generic health chat, or single-point flagging against population reference ranges—but rarely combine durable personal memory, within-person trend reasoning, and cited retrieval under a hard non-diagnostic and safety constraint.",
@@ -39,10 +43,10 @@ export const narrative = {
     "A unified system architecture and open evaluation of three coupled methods: (1) classical OCR plus multi-alias regex information extraction for CBC, lipid, thyroid, and HbA1c panels; (2) a causal statistical personal-series monitor—leave-last-out z-score, relative change for narration, and two-sided CUSUM—replacing IsolationForest on n≈3–10 series; (3) BM25 with panel intent boosting and a template synthesizer for cited answers, with optional warm MiniLM hybrid retrieval under strict demo-risk gates. Structural multi-tenant privacy (ScopedRepository + owner_id FKs) and a rule-based red-flag safety layer complete the research platform.",
 
   limitations:
-    "Anomaly and retrieval results are primarily synthetic or small labeled sets; they are not a substitute for multi-site clinical trials. OCR quality on diverse Indian printouts and handwriting is not rigorously measured. Live Q&A loads an in-memory knowledge base rather than production pgvector retrieval. The stack is a hackathon-grade prototype: no encryption-at-rest by default, no durable OCR job queue, no formal access audit log, and no HIPAA/clinical-device certification. Hindi support uses template and phrase assistance, not full neural machine translation.",
+    "MediVault is a local alpha and has not been deployed as a public application. OCR quality across Indian document formats and handwriting is not clinically validated. Hindi explanations use limited templates and phrase assistance. Encrypted originals do not provide end-to-end encryption; extracted text and health rows remain subject to database and infrastructure controls. Durable private cloud storage, production key and backup operations, independent security assessment, clinical review, and formal accessibility review remain open. No government, hospital, insurer, or appointment-booking integration is connected.",
 
   future:
-    "Near-term: durable parse queues, encrypt-at-rest and TLS, integration tests, and optional warm dense retrieval. Medium-term: licensed India lab image corpora for OCR/IE evaluation, access auditing, and S3-backed storage. Longer horizon: pluggable identity (device, ABHA-class IDs), family profiles only after privacy redesign, and clinical co-evaluation partners—without relaxing the non-diagnostic product boundary.",
+    "Before a synthetic-data staging release: configure private durable document storage, apply and verify database migrations, provision service-specific secrets, and complete end-to-end deployment checks. Before any real-patient pilot: complete hostile-file isolation, recovery and restore exercises, an independent security assessment, clinical review, privacy/legal review, and an operational incident process.",
 };
 
 export const hero = {
@@ -277,11 +281,11 @@ export const faq = [
   },
   {
     q: "How is privacy enforced?",
-    a: "Browser traffic goes through a BFF that validates JWTs and injects a trusted X-User-ID after stripping any client-supplied identity header. Health repositories subclass ScopedRepository so queries require owner_id. Database foreign keys cascade on delete. Logs use a redacting shared logger. Encryption-at-rest and TLS termination are not yet production defaults—disclose that honestly.",
+    a: "The application code includes JWT validation in the browser-facing BFF, trusted owner scoping in health repositories, cascading database relationships, encrypted original documents, and redacted application logs. These controls have not been validated in a hosted production environment. Database encryption, TLS termination, backup recovery, access review, and deletion operations must be configured and verified by deployment operators.",
   },
   {
     q: "Is this production-ready for PHI?",
-    a: "No. MediVault is a research and demonstration prototype. It lacks formal encrypt-at-rest, durable job queues, complete access audit logs, and healthcare compliance certifications. Do not treat demos as clinical systems of record.",
+    a: "No. MediVault is not deployed and is a research and demonstration prototype. Hosted infrastructure, production storage and recovery, operational security review, and clinical validation are incomplete. Do not enter real patient information or treat demos as clinical systems of record.",
   },
   {
     q: "What ML models are used?",
@@ -482,9 +486,11 @@ What we collect in a typical local or demo deployment: account email, password h
 
 Ownership and deletion: report deletion removes the file and cascades related rows. Database cascades also remove owned health data when a user row is hard-deleted. Soft-delete fields exist on accounts; operators must follow documented procedures.
 
-Security posture: JWT sessions, optional service keys for internal AI, redacting logs, magic-byte upload checks. Encryption-at-rest, formal consent management, and comprehensive access audit trails are incomplete relative to production healthcare systems.
+Security posture: the application implements JWT sessions, scoped consent grants, access history, encrypted original documents, optional service keys for internal AI, redacted logs, and magic-byte upload checks. These controls have not been independently validated in a hosted deployment. Production database encryption, TLS termination, durable backups and recovery, access review, deletion operations, and operational audit coverage remain deployment requirements.
 
-Contact: ${site.email} for data questions. This prototype is for research demonstration; do not process regulated PHI in production deployments without independent security review.`,
+Deployment status: no public MediVault application URL is available. Do not enter real patient information. A public project page, if hosted separately, is informational and is not the application.
+
+Contact: use the public project repository for non-sensitive questions. Do not send health records or credentials through public issues. This local prototype has not passed independent security or clinical review.`,
 
   terms: `Last reviewed: ${site.lastReview}
 
@@ -494,7 +500,7 @@ You may not rely on outputs for emergency decisions. If you believe you are expe
 
 Software is provided “as is” without warranty of merchantability or fitness for a particular purpose, to the extent permitted by law. Repository licensing is defined in the monorepo LICENSE (and dependency licenses). Contributions must respect non-diagnostic and privacy rules stated in project developer and architecture documents.
 
-Contact: ${site.email}.`,
+Contact: use the public project repository for non-sensitive questions.`,
 
   accessibility: `Last reviewed: ${site.lastReview}
 
@@ -502,7 +508,7 @@ MediVault Research aims for clear structure, keyboard-reachable controls, visibl
 
 Known gaps: a full formal WCAG 2.2 AA audit has not been completed; Hindi content is limited; some data tables require horizontal scroll on small screens; interactive charts are decorative supplements to tabular data.
 
-Accommodations and defects: email ${site.email} with “Accessibility” in the subject. We treat accessibility reports as first-class engineering work items.`,
+Accommodations and defects: use the project repository for non-sensitive accessibility reports. Do not include health information or security secrets.`,
 
   acknowledgements: `We thank open-source maintainers of FastAPI, SQLAlchemy, PostgreSQL, React, Vite, Framer Motion, Tesseract, pdfplumber, and related libraries; authors of educational medical references used in the knowledge base; and peer reviewers who insisted on metric honesty (including retracting MD5-as-MiniLM claims).
 

@@ -78,6 +78,12 @@ class LocalStorage:
             raise ValueError("Storage path is outside the vault")
         return path
 
+    def exists(self, storage_path: str) -> bool:
+        try:
+            return self.resolve(storage_path).is_file()
+        except (OSError, ValueError):
+            return False
+
     def read(self, storage_path: str, expected_sha256: str | None = None) -> bytes:
         stored=self.resolve(storage_path).read_bytes()
         if expected_sha256 and not stored.startswith(MAGIC):

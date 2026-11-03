@@ -25,7 +25,8 @@ async def account_usage(db,actor,settings):
         quota_bytes=settings.storage_account_quota_bytes,file_limit=settings.storage_account_file_limit,
         remaining_bytes=max(0,settings.storage_account_quota_bytes-int(size)),
         max_file_bytes=MAX_DOCUMENT_BYTES,scope='uploads_by_your_account_across_profiles',
-        storage_location='local_server',encryption='Fernet authenticated encryption')
+        storage_location='private_object_storage' if settings.storage_backend == 's3' else 'local_server',
+        encryption='Fernet authenticated encryption')
 
 
 async def reserve_upload(db,actor,settings,required_bytes):

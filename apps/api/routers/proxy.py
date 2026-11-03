@@ -23,7 +23,7 @@ router = APIRouter(tags=["proxy"])
 async def proxy_care(path: str, request: Request,
                      settings: Annotated[Settings, Depends(get_settings)],
                      user_id: Annotated[str, Depends(require_user_id)]) -> Response:
-    return await _forward(request, settings.health_service_url, f"/care/{path}",
+    return await _forward(request, settings.health_service_base_url, f"/care/{path}",
                           user_id=user_id, internal_service_key=settings.internal_service_key)
 
 _HOP_BY_HOP = {
@@ -142,7 +142,7 @@ async def proxy_auth(
             return JSONResponse(status_code=400, content={"detail": "Invalid client address"})
         if not auth_client_ip:
             return JSONResponse(status_code=503, content={"detail": "Sign-in rate limiting is unavailable"})
-    response = await _forward(request, settings.auth_service_url, f"/auth/{path}", auth_client_ip=auth_client_ip)
+    response = await _forward(request, settings.auth_service_base_url, f"/auth/{path}", auth_client_ip=auth_client_ip)
     if path in ("login", "register") and response.status_code in (200, 201):
         data = json.loads(response.body)
         response = JSONResponse({"authenticated": True}, status_code=response.status_code,
@@ -164,7 +164,7 @@ async def proxy_reports(
 ) -> Response:
     target = f"/reports/{path}" if path else "/reports"
     return await _forward(
-        request, settings.health_service_url, target,
+        request, settings.health_service_base_url, target,
         user_id=user_id, internal_service_key=settings.internal_service_key,
     )
 
@@ -179,7 +179,7 @@ async def proxy_timeline(
 ) -> Response:
     target = f"/timeline/{path}" if path else "/timeline"
     return await _forward(
-        request, settings.health_service_url, target,
+        request, settings.health_service_base_url, target,
         user_id=user_id, internal_service_key=settings.internal_service_key,
     )
 
@@ -194,6 +194,6 @@ async def proxy_qa(
 ) -> Response:
     target = f"/qa/{path}" if path else "/qa"
     return await _forward(
-        request, settings.health_service_url, target,
+        request, settings.health_service_base_url, target,
         user_id=user_id, internal_service_key=settings.internal_service_key,
     )

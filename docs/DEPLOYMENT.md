@@ -2,28 +2,82 @@
 
 ## Verified cloud status — 2 November 2026
 
-MediVault is **not deployed** to Vercel or Render. The connected Vercel account
-has no MediVault project, and the Render workspace has no MediVault service; the
-services listed there belong to other repositories. The free Supabase staging
-project `MediVault-Staging` is active in Mumbai (`ap-south-1`), but currently
-has no public-schema tables and no recorded migrations. It is an empty database,
-not a running application backend. No production monitoring is active.
+The [MediVault project information site](https://medivault-project-site.vercel.app/)
+is deployed on Vercel from the reviewed feature branch. It is a static site only;
+it is not the health-record application and has no API or database connection.
+Vercel Authentication is enabled, so access requires the authorized team or a
+temporary share link. No production data is exposed by this site.
+The MediVault application is **not deployed** to Vercel or Render. There is no
+Render MediVault service; the existing services belong to other repositories.
+The Supabase staging project `MediVault-Staging` is active in Mumbai
+(`ap-south-1`), but currently has no public-schema tables and no recorded
+migrations. No private document bucket or S3 credentials are configured. No
+application monitoring is active.
 
-The current workspace includes substantial changes after the repository's
-7 September 2026 `main` commit, but those changes are uncommitted. Do not treat
-GitHub `main` as containing them. The deployment remains blocked until the
-reviewed source is committed, migrations and runtime roles are applied to the
-staging database, durable private document storage is configured, all service
-secrets are provisioned, and end-to-end staging checks pass. The current upload
-adapter only supports local storage; Render's free filesystem is ephemeral, so
-it is not safe for storing uploaded documents. Use only fictional test records
-until the security, privacy, clinical and recovery release gates are satisfied.
+The current branch contains an S3-compatible storage adapter. It encrypts originals
+before writing them and lets the OCR service read them from the same private
+bucket. The adapter is unit-tested, but it is not active in the hosted project
+until the bucket and server-side access keys are configured. Render's free
+compute does not provide private services: free web services cannot receive
+private-network traffic, while this architecture requires the API gateway to be
+the only public backend and auth, health, and OCR to stay private. An always-on
+Render layout therefore needs paid compute. At current rates, a baseline of a
+$7/month API gateway, $7/month auth service, $7/month health service, and a
+$25/month 2 GB OCR service is about $46/month before transfer and any extra
+storage or workspace costs. No paid Render resources have been created.
+
+The app remains a prototype. Keep it limited to fictional test records until
+the migration, access-control, backup/restore, monitoring, clinical review,
+privacy, and security release gates have been completed. This staging setup is
+not a clinical or compliance certification.
 
 The local verification on 2 November passed the Vite production build, Python
 bytecode compilation, and Docker Compose configuration validation. The focused
 async security/database test run did not complete in the available Windows
 runtime, and `npm audit` could not reach the npm registry due to DNS/network
 failure. These are open verification gates, not passing checks.
+
+## Product app deployment configuration — 3 November 2026
+
+`render.yaml` describes the actual services: the public API gateway and private
+auth, health, and AI services. `apps/web/vercel.json` configures the React
+product app. Create a **separate Vercel project** with its root directory set to
+`apps/web`; the existing `medivault-project-site` serves only project information.
+The app uses same-origin `/api/*` requests so its HttpOnly session cookie stays
+on the app origin. Update the Vercel rewrite target to the actual Render API URL
+after provisioning, then set `CORS_ORIGINS` to the product app's Vercel origin.
+
+The Blueprint targets the existing Mumbai Supabase project, so it does not
+create a new database project. Supply the Supabase session-pooler host and
+credentials as Render secrets (use the pooler endpoint for IPv4-compatible
+connectivity). Apply migrations `001` through `017` using the
+database migration-owner credentials before the runtime services start. Migration
+`017` creates least-privilege service roles and requires unique 32+ character
+`POSTGRES_AUTH_PASSWORD` and `POSTGRES_HEALTH_PASSWORD` values. Configure the
+auth database username as `medivault_auth` and the health username as
+`medivault_health`; use their corresponding role passwords.
+
+Create a private Supabase Storage bucket and server-side S3 credentials for
+health and AI. Use the same Fernet `FILE_ENCRYPTION_KEY` for both services, the
+same `AUTH_SECRET_KEY` for BFF and auth, and the same `INTERNAL_SERVICE_KEY`
+for BFF, health, and AI. Enter values only in Render's secret fields; never
+commit or share them in chat. Use fictional data during staging.
+
+The current always-on compute estimate is about **$46/month** for the API
+gateway (0.5 CPU/512 MB), auth (0.5 CPU/512 MB), health (0.5 CPU/512 MB), and
+AI (1 CPU/2 GB), before transfer, storage, and any workspace subscription.
+Render's current service plan identifiers and service types are documented in
+[its Blueprint reference](https://render.com/docs/blueprint-spec) and live
+[pricing page](https://render.com/pricing). No paid resources have been created.
+
+Deployment sequence: create the Blueprint from this repository and configure
+secrets; apply database migrations; verify private service health; deploy the
+public BFF; create the separate Vercel project rooted at `apps/web`; configure
+the final API rewrite target and BFF allowed origin; then smoke-test signup,
+sign-in, MFA, upload, OCR processing, download, deletion, and account scoping
+using synthetic records. The current free Render workspace cannot keep this
+private-service architecture running without paid compute. Do not treat the
+existing informational site as the product app.
 
 ## Service boundary update — 24 October 2026
 

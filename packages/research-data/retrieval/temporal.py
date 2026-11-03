@@ -63,7 +63,7 @@ class TemporalScorer:
 
         # 1. Group records by analyte to establish chronological trajectories
         target_analyte = (query.analyte_canonical or "").lower()
-        
+
         # Sort patient records chronologically
         sorted_records = sorted(
             patient_records,
@@ -214,4 +214,4 @@ class TemporalScorer:
             TemporalOperator.SINCE,
         ):
             return True
-        return False
+        return False`n
